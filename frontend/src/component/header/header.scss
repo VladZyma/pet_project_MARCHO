@@ -50,6 +50,12 @@
     width: 20px;
     height: 20px;
     position: relative;
+    transition: color .3s;
+    &:hover {
+      path {
+        fill: $accent;
+      }
+    }
   }
   &__link-num {
     position: absolute;
