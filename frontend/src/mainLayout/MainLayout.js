@@ -1,17 +1,14 @@
 import {Outlet} from 'react-router-dom';
 
-import {Header, Main, Footer} from "../component";
 
 const MainLayout = () => {
 
     return (
-        <div className={'main-layout'}>
-            <Header/>
-            <Main>
+        <main className={'main-layout'}>
+            <div className={'container'}>
                 <Outlet/>
-            </Main>
-            <Footer/>
-        </div>
+            </div>
+        </main>
     );
 };
 

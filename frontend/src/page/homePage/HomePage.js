@@ -1,8 +1,11 @@
+import {Home} from "../../component";
 
 const HomePage = () => {
 
     return (
-        <div></div>
+        <div>
+            <Home/>
+        </div>
     );
 };
 
