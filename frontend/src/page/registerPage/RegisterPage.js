@@ -3,7 +3,7 @@ import {Register} from "../../component";
 const RegisterPage = () => {
 
     return (
-        <div>
+        <div className={'register-page'}>
             <Register/>
         </div>
     );

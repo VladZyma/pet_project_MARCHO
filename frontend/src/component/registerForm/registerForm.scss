@@ -1,0 +1,85 @@
+@import '../../style/styles';
+
+.modal {
+  padding: 120px 0;
+  
+  &__links {
+    margin-bottom: 45px;
+    text-align: center;
+  }
+  &__link {
+    margin: 0 30px;
+    @extend %roboto-700;
+    font-size: 22px;
+    text-transform: uppercase;
+    color: $title;
+    &.active {
+      color: $accent;
+    }
+  }
+
+  &__form {
+    width: 100%;
+    max-width: 570px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  &__label{
+    margin: 10px 0 30px;
+  }
+  &__input{
+    display: block;
+    margin-top: 10px;
+    padding: 0 15px;
+    width: 100%;
+    height: 60px;
+    border: none;
+    background-color: $bg;
+    outline-color: $accent;
+  }
+  &__text {
+    margin-bottom: 30px;
+  }
+  &__terms-label {
+    margin-bottom: 20px;
+    display: flex;
+  }
+  &__terms-box {
+    display: inline-block;
+  }
+  &__terms-input {
+    @extend %checkbox-hidden;
+    &:checked + .modal__terms-checkbox {
+      background-image: url('../../image/icons/check-arrow.svg');
+      background-position: center ;
+    }
+  }
+  &__terms-checkbox {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    margin-top: 5px;
+    border: 1px solid $default;
+  }
+  &__terms-text {
+    margin-left: 25px;
+  }
+  &__terms-link {
+    margin-left: 5px;
+    color: $default;
+    &:hover {
+      color: $accent;
+    }
+  }
+  &__button {
+    border: none;
+    cursor: pointer;
+    height: 60px;
+    background-color: #292929;
+    @extend %roboto-400;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #fff;
+  }
+}

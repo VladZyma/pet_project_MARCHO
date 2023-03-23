@@ -15,6 +15,14 @@ $border: #ececec;
   cursor: pointer;
 }
 
+%checkbox-hidden {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  position: absolute;
+}
+
 %quicksand-400 {
   font-family: "Quicksand-Regular", sans-serif;
   font-weight: 400;

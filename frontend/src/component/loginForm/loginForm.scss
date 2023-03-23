@@ -1,0 +1,12 @@
+@import '../../style/styles';
+@import '../registerForm/registerForm';
+
+.modal {
+  &__lost-password-link {
+    margin-top: 20px;
+    color: $default;
+    &:hover {
+      color: $accent;
+    }
+  }
+}

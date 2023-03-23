@@ -1,10 +1,11 @@
-
+import {Top ,RegisterForm} from "../../component";
 
 const Register = () => {
 
     return (
-        <div>
-
+        <div className={'register'}>
+            <Top title={'Register'}/>
+            <RegisterForm/>
         </div>
     );
 };
