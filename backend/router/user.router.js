@@ -6,6 +6,7 @@ const {userController} = require('../controller');
 router.post(
     '/',
     userMiddleware.isNewUserBodyValid,
+    userMiddleware.isUserByEmailExists,
     userController.registerNewUser,
 );
 router.get(

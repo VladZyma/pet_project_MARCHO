@@ -1,4 +1,4 @@
 module.exports = {
-    config: require('./config'),
-    userRegExp: require('./user.regexp'),
+  config: require('./config'),
+  userRegExp: require('./user.regexp'),
 };

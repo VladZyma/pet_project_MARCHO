@@ -7,6 +7,7 @@ module.exports = {
         name: Joi.string().regex(userRegExp.NAME).required(),
         email: Joi.string().regex(userRegExp.EMAIL).required(),
         password: Joi.string().regex(userRegExp.PASSWORD).required(),
+        terms: Joi.boolean().required(),
     }),
     updatingUserBodyValidator: Joi.object({
         name: Joi.string().regex(userRegExp.NAME).optional(),

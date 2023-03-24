@@ -1,3 +1,5 @@
+@import 'vars';
+
 .container {
   max-width: 1200px;
   padding: 0 15px;
@@ -11,6 +13,15 @@
   text-align: center;
   background-image: url('../image/top-bg.jpg');
 }
+
+.modal__form-error {
+  color: $accent;
+}
+
+//button[disabled].modal__button {
+//  background-color: #bb9191;
+//  cursor: default;
+//}
 
 //body {
 //  margin: 0;

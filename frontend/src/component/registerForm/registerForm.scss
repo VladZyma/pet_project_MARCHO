@@ -83,3 +83,8 @@
     color: #fff;
   }
 }
+
+button[disabled].modal__button-register {
+  background-color: #bb9191;
+  cursor: default;
+}

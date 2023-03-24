@@ -1,7 +1,11 @@
-const baseURL = 'http://localhost:3000';
+const baseURL = 'http://localhost:5000';
 
 const urls = {
     register: '/users',
+    auth: {
+        login: '/auth/login',
+        refresh: '/auth/refresh',
+    },
     users: '/users',
 };
 

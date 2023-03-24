@@ -9,4 +9,10 @@
       color: $accent;
     }
   }
+
 }
+  button[disabled].modal__button-login {
+    background-color: #bb9191;
+    cursor: default;
+  }
+
