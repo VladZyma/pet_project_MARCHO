@@ -1,12 +1,13 @@
-import {Home} from "../../component";
+import {HomeSlider, CategoriesInfo} from "../../component";
 
 const HomePage = () => {
 
-    return (
-        <div>
-            <Home/>
-        </div>
-    );
+  return (
+      <div className={'home-page'}>
+        <HomeSlider/>
+        <CategoriesInfo/>
+      </div>
+  );
 };
 
 export {HomePage}

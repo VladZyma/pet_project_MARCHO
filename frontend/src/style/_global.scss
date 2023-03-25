@@ -18,6 +18,15 @@
   color: $accent;
 }
 
+.title {
+  @extend %roboto-700;
+  font-size: 48px;
+  line-height: 26px;
+  text-align: center;
+  text-transform: uppercase;
+  color: $title;
+}
+
 //button[disabled].modal__button {
 //  background-color: #bb9191;
 //  cursor: default;

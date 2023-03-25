@@ -1,5 +1,4 @@
 export * from './header/Header';
-export * from './home/Home';
 export * from './footer/Footer';
 export * from './shop/Shop';
 export * from './blog/Blog';
@@ -12,3 +11,5 @@ export * from './cartList/CartList';
 export * from './wishlistList/WishlistList';
 export * from './account/Account';
 export * from './top/Top';
+export * from './homeSlider/HomeSlider';
+export * from './categoriesInfo/CategoriesInfo';
