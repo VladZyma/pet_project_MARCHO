@@ -1,0 +1,90 @@
+@import '../../style/styles';
+
+.card {
+  width: 100%;
+  max-width: 370px;
+  &:hover {
+    .card__links {
+      transform: translate(-50%, 0%);
+    }
+  }
+
+  &__img-wrapper {
+    max-width: 370px;
+    padding-top: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+  &__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+  }
+  &__sale {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    padding: 2px 9px;
+    @extend %roboto-400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+    background-color: $accent;
+  }
+  &__links {
+    transition: transform .4s;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translate(-50%, 300%);
+    width: 100%;
+    max-width: 212px;
+    height: 50px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #fff;
+    box-shadow: 0px 5px 30px 0px rgba(152, 152, 152, 0.2);
+    border-radius: 23px;
+  }
+  &__link {
+    padding: 5px 25px;
+    display: flex;
+    align-items: center;
+    transition: all .3s;
+    &:hover {
+      path {
+        fill: $accent;
+      }
+    }
+    &:nth-child(2) {
+      border-left: 1px solid #ececec;
+      border-right: 1px solid #ececec;
+    }
+  }
+  &__content {
+    padding: 30px 0 20px;
+    text-align: center;
+  }
+  &__title {
+    margin-bottom: 10px;
+    @extend %roboto-400;
+    font-size: 22px;
+    color: $title;
+  }
+  &__price {
+    display: inline-flex;
+    margin: 0 auto;
+  }
+  &__price-old {
+    margin-left: 20px;
+    @extend %roboto-400;
+    text-decoration: line-through;
+    color: #ccccce;
+  }
+  &__price-current {
+    @extend %roboto-500;
+    color: $title;
+  }
+}

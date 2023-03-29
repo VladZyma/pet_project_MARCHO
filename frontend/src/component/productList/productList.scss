@@ -1,0 +1,19 @@
+@import '../../style/styles';
+
+.product-list {
+  padding: 120px 0;
+
+  &__title {
+    margin-bottom: 30px;
+  }
+  &__text {
+    margin: 0 auto 60px;
+    max-width: 550px;
+    text-align: center;
+  }
+  &__inner {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+  }
+}

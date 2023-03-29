@@ -1,0 +1,54 @@
+@import '../../style/styles';
+
+.video {
+  padding: 120px 0;
+  background-color: $bg;
+  background-image: url('../../image/decor/video-bg.svg');
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__img-wrapper {
+    margin-right: 60px;
+    width: 100%;
+    max-width: 535px;
+    position: relative;
+  }
+  &__img {
+    object-fit: cover;
+  }
+  &__play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  &__content {
+    max-width: 570px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  &__subtitle {
+    margin-bottom: 25px;
+    font-size: 22px;
+    text-transform: uppercase;
+    color: $accent;
+  }
+  &__title {
+    text-align: left;
+    margin-bottom: 40px;
+  }
+  &__text {
+    margin-bottom: 60px;
+  }
+  &__button {
+    @extend %btn;
+    max-width: 160px;
+    text-align: center;
+    letter-spacing: 2px;
+  }
+}
+

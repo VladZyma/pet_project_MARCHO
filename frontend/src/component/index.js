@@ -13,3 +13,6 @@ export * from './account/Account';
 export * from './top/Top';
 export * from './homeSlider/HomeSlider';
 export * from './categoriesInfo/CategoriesInfo';
+export * from './video/Video';
+export * from './productList/ProductList';
+export * from './promo/Promo';

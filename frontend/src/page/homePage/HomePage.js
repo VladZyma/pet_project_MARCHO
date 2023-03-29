@@ -1,4 +1,4 @@
-import {HomeSlider, CategoriesInfo} from "../../component";
+import {HomeSlider, CategoriesInfo, Video, ProductList, Promo} from "../../component";
 
 const HomePage = () => {
 
@@ -6,6 +6,9 @@ const HomePage = () => {
       <div className={'home-page'}>
         <HomeSlider/>
         <CategoriesInfo/>
+        <Video/>
+        <ProductList/>
+        <Promo/>
       </div>
   );
 };
