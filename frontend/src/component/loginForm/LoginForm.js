@@ -2,14 +2,17 @@ import {useForm} from 'react-hook-form';
 import {NavLink, useNavigate} from "react-router-dom";
 import {joiResolver} from '@hookform/resolvers/joi';
 import {useState} from 'react';
+import {useDispatch} from 'react-redux';
 
 import './loginForm.scss';
 
 import {userValidator} from "../../validator";
 import {oauthService} from "../../service";
+import {oauthActions} from "../../redux";
 
 const LoginForm = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [loginError, setLoginError] = useState(null);
 
@@ -23,6 +26,9 @@ const LoginForm = () => {
       const {data} = await oauthService.login(user);
       console.log('DATA:',data)
       oauthService.setAccessTokens(data);
+
+      dispatch(oauthActions.logIn(true));
+
       navigate('/home');
     } catch (e) {
       console.log(e);

@@ -41,6 +41,7 @@
 
 .user-nav {
   display: flex;
+  align-items: center;
 
   &__link {
     margin-right: 25px;
@@ -54,6 +55,17 @@
     &:hover {
       path {
         fill: $accent;
+      }
+    }
+    &.user-nav__link-name {
+      width: auto;
+      height: auto;
+      @extend %roboto-400;
+      font-size: 20px;
+      color: $title;
+      transition: color .3s;
+      &:hover {
+        color: $accent;
       }
     }
   }

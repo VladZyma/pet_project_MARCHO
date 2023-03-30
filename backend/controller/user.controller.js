@@ -10,7 +10,7 @@ const userController = {
       const userName = userNameNormalizer(userInfo.name);
       const hashedPassword = await oauthService.hashPassword(userInfo.password);
 
-      userInfo = {...userInfo, name: userName, password: hashedPassword};
+      userInfo = {...userInfo, name: userName, password: hashedPassword, wishlist: []};
 
       const user = await userService.register(userInfo);
 
