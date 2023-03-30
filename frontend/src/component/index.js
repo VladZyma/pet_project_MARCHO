@@ -16,3 +16,4 @@ export * from './categoriesInfo/CategoriesInfo';
 export * from './video/Video';
 export * from './productList/ProductList';
 export * from './promo/Promo';
+export * from './partners/Partners';

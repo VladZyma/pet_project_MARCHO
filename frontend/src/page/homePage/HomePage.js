@@ -1,4 +1,4 @@
-import {HomeSlider, CategoriesInfo, Video, ProductList, Promo} from "../../component";
+import {HomeSlider, CategoriesInfo, Video, ProductList, Promo, Partners} from "../../component";
 
 const HomePage = () => {
 
@@ -9,6 +9,7 @@ const HomePage = () => {
         <Video/>
         <ProductList/>
         <Promo/>
+        <Partners/>
       </div>
   );
 };
