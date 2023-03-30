@@ -1,0 +1,49 @@
+@import '../../style/styles';
+
+.blog-list {
+  padding-bottom: 165px;
+  position: relative;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 45%;
+    left: 5%;
+    width: 105px;
+    height: 105px;
+    background-image: url('../../image/decor/blog-list-1.svg');
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 6%;
+    right: 8%;
+    width: 57px;
+    height: 57px;
+    background-image: url('../../image/decor/blog-list-2.svg');
+  }
+
+  &__title {
+    margin-bottom: 30px;
+  }
+  &__text {
+    margin:0 auto 60px;
+    max-width: 570px;
+    text-align: center;
+  }
+  &__cards {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      top: -30px;
+      right: -27px;
+      width: 126px;
+      height: 53px;
+      background-image: url('../../image/decor/blog-cards.svg');
+      z-index: -1;
+    }
+  }
+}
+
