@@ -7,14 +7,15 @@ const productSchema = new Schema({
   sku: {type: String, trim: true, uppercase: true, require: true},
   rating: {type: Number},
   votes: {type: Number},
+  quantity: {type: Number, require: true},
   isSale: {type: Boolean, require: true},
-  review: {type: String, require: true},
   price: {
     current: {type: Number, require: true},
     sale: {type: Number},
   },
   categories: [String],
   tags: [String],
+  review: {type: String, require: true},
 }, {
   timestamps: true,
 });
