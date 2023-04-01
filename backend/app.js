@@ -25,7 +25,8 @@ app.use((error, req, res, next) => {
 app.listen(config.PORT, async () => {
   try {
     console.log(`LISTENING PORT: ${config.PORT}`);
-    await mongoose.connect(`${config.MONGO_DB_URI}/marcho`);
+    // await mongoose.connect(`${config.MONGO_DB_URI}/marcho`);
+    await mongoose.connect(`${config.MONGO_DB_URL}`, {useNewUrlParser: true, useUnifiedTopology: true});
   } catch (e) {
     console.log(e);
   }
