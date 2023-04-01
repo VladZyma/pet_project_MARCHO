@@ -1,4 +1,4 @@
-const {productService} = require('../service');
+const {productService, s3Service} = require('../service');
 const {ApiError} = require('../customError');
 
 const productController = {
@@ -22,6 +22,21 @@ const productController = {
       next(e);
     }
   },
+  uploadPhoto: async (req, res, next) => {
+    try {
+      const productId = req.productId;
+
+      const uploadedData = await s3Service.uploadPublicFile(req.files.photo, 'product-images', productId);
+
+      const productInfo = await productService.findUpdateProductById(productId, {photo: uploadedData.Location});
+
+      res.status(201).json(productInfo);
+    } catch (e) {
+      next(e);
+    }
+  },
 };
+
+
 
 module.exports = productController;
