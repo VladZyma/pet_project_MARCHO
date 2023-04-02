@@ -15,7 +15,7 @@ const productController = {
   },
   getAllProducts: async (req, res, next) => {
     try {
-      const products = await productService.findAllProducts();
+      const products = await productService.findAllProducts(req.query);
 
       res.status(200).json(products);
     } catch (e) {
