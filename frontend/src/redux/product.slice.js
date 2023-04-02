@@ -4,9 +4,9 @@ import {productService} from "../service";
 
 const getAllProducts = createAsyncThunk(
     'productSlice/getAllProducts',
-    async (_, {rejectWithValue}) => {
+    async ({page}, {rejectWithValue}) => {
       try {
-        const {data} = await productService.getAllProducts()
+        const {data} = await productService.getAllProducts(page)
         console.log('DATA:', data);
         return data;
       } catch (e) {
