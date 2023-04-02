@@ -7,6 +7,7 @@ const urls = {
         refresh: '/auth/refresh',
     },
     users: '/users',
+    products: '/products',
 };
 
 export {
