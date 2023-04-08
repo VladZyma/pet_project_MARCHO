@@ -1,4 +1,5 @@
 const {productService, s3Service} = require('../service');
+const {productPresenter} = require('../presenter');
 const {ApiError} = require('../customError');
 
 const productController = {
@@ -15,9 +16,11 @@ const productController = {
   },
   getAllProducts: async (req, res, next) => {
     try {
-      const products = await productService.findAllProducts(req.query);
+      const data = await productService.findAllProducts(req.query);
 
-      res.status(200).json(products);
+      data.products = productPresenter.normalizeAll(data.products);
+
+      res.status(200).json(data);
     } catch (e) {
       next(e);
     }
