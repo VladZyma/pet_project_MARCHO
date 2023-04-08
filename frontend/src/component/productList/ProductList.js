@@ -1,8 +1,19 @@
-import {ProductCard} from "../productCard/ProductCard";
+import {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 
 import './productList.scss';
 
+import {ProductCard} from "../productCard/ProductCard";
+import {productActions} from "../../redux";
+
 const ProductList = () => {
+  const dispatch = useDispatch();
+  const {products} = useSelector(state => state.productReducer);
+
+  useEffect(() => {
+    dispatch(productActions.getAllProducts({page: '1'}));
+  }, [dispatch]);
+  console.log(products);
 
   return (
       <section className={'product-list'}>
@@ -15,12 +26,7 @@ const ProductList = () => {
             incididunt ut labore et dolore aliqua.
           </p>
           <div className={'product-list__inner'}>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
-            <ProductCard/>
+            {products.products?.map(product => <ProductCard product={product} key={product._id}/>)}
           </div>
         </div>
       </section>

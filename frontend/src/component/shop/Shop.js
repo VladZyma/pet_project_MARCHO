@@ -1,19 +1,44 @@
-const Shop = (props) => {
-  const {products: {products, totalPages, prevPage, nextPage}, setQuery} = props;
+import {useEffect} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {useSearchParams} from 'react-router-dom';
 
-  const prevPageHandler = () => {
-    setQuery(prevQuery => ({page: +prevQuery.get('page') - 1}));
-  };
-  const nextPageHandler = () => {
-    setQuery(prevQuery => ({page: +prevQuery.get('page') + 1}));
-  };
+import './shop.scss';
+
+import {ProductCard} from "../productCard/ProductCard";
+import {Pagination} from "../pagination/Pagination";
+import {productActions} from "../../redux";
+
+const Shop = () => {
+  const dispatch = useDispatch();
+
+  const {products: {products, prevPage, nextPage, totalPages, loading, error}} = useSelector(state => state.productReducer);
+
+  const [query, setQuery] = useSearchParams({page: '1'});
+
+  useEffect(() => {
+    dispatch(productActions.getAllProducts({page: query.get('page')}));
+  }, [dispatch, query]);
+
+
 
   return (
-      <div>
-        <h1>Shop</h1>
-        <button disabled={!prevPage} onClick={prevPageHandler}>prev</button>
-        <button disabled={!nextPage} onClick={nextPageHandler}>next</button>
-      </div>
+      <section className={'shop'}>
+        <div className={'container'}>
+          <div className={'shop__inner'}>
+            <div className={'shop__filters'}>
+
+            </div>
+            <div className={'shop__items'}>
+              <div className={'shop__items-top-filter'}></div>
+              <div className={'shop__items-inner'}>
+                {loading && <h1>Loading................</h1>}
+                {products?.map(product => <ProductCard product={product} key={product._id}/>)}
+              </div>
+              <Pagination setQuery={setQuery} page={query.get('page')} prevPage={prevPage} nextPage={nextPage} totalPages={totalPages}/>
+            </div>
+          </div>
+        </div>
+      </section>
   );
 };
 

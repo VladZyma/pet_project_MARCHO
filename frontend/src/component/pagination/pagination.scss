@@ -1,0 +1,46 @@
+@import '../../style/styles';
+
+.pagination {
+  text-align: center;
+
+  &__inner {
+    display: inline-flex;
+  }
+
+  &__prev-button,
+  &__next-button,
+  &__nums-button {
+    padding: 0 16px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    text-transform: uppercase;
+    color: $default;
+    position: relative;
+  }
+  &__nums-button.active {
+    color: $accent;
+  }
+  &__prev-button::before,
+  &__next-button::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 5px;
+    height: 10px;
+  }
+
+  &__prev-button::before {
+    left: 0;
+    background-image: url('../../image/icons/prev-btn-arrow.svg');
+  }
+  &__next-button::after {
+    right: 0;
+    background-image: url('../../image/icons/next-btn-arrow.svg');
+  }
+
+  &__nums {
+    margin: 0 18px;
+  }
+}

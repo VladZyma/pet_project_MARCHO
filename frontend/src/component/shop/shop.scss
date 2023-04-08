@@ -1,0 +1,24 @@
+.shop {
+  padding: 120px 0;
+
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__filters {
+    width: 100%;
+    max-width: 370px;
+  }
+  &__items {
+    width: 100%;
+    max-width: 770px;
+  }
+  &__items-inner {
+    margin-bottom: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    border-bottom: 1px solid #efefef;
+  }
+}
