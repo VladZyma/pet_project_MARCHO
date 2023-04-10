@@ -1,0 +1,55 @@
+@import '../../../style/styles';
+
+.price {
+  padding: 40px 30px;
+  width: 100%;
+  max-width: 370px;
+  border: 1px solid $border;
+  &__header {
+    margin-bottom: 50px;
+    @extend %roboto-400;
+    font-size: 22px;
+    line-height: 22px;
+    text-transform: uppercase;
+    color: $title;
+  }
+  &__inner {
+    margin-top: 45px;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__info {
+    display: flex;
+    align-items: center;
+  }
+  &__info-number {
+    margin: 0 5px;
+  }
+  &__button {
+    @extend %btn;
+    @extend %quicksand-500;
+    padding: 7px 20px;
+    border: none;
+    font-size: 16px;
+    letter-spacing: 2px;
+  }
+
+
+  .range-slider {
+    width: 100%;
+    height: 5px;
+    border-radius: unset;
+    background-color: $border;
+  }
+  .range-slider__range {
+    background-color: $accent;
+  }
+  .range-slider__thumb {
+    width: 30px;
+    height: 30px;
+    border-radius: unset;
+    background-color: #fff;
+    box-shadow: 0px 0px 13px 0px rgba(90, 90, 90, 0.2);
+  }
+}
+

@@ -1,0 +1,42 @@
+@import '../../../style/styles';
+
+.search {
+  padding: 40px 30px;
+  width: 100%;
+  max-width: 370px;
+  border: 1px solid $border;
+  &__header {
+    margin-bottom: 30px;
+    @extend %roboto-400;
+    font-size: 22px;
+    line-height: 22px;
+    text-transform: uppercase;
+    color: $title;
+  }
+  &__form {
+    display: flex;
+  }
+  &__form-input {
+    width: 100%;
+    max-width: 260px;
+    padding: 15px;
+    border: none;
+    background-color: $bg;
+    @extend %quicksand-400;
+    font-size: 16px;
+    line-height: 16px;
+    color: $default;
+    outline: none;
+  }
+  &__form-button {
+    margin-left: -2px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    background-color: $accent;
+    background-image: url('../../../image/icons/search-form-icon.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+  }
+}

@@ -19,3 +19,4 @@ export * from './promo/Promo';
 export * from './partners/Partners';
 export * from './blogList/BlogList';
 export * from './pagination/Pagination';
+export * from './shopFilters';

@@ -10,6 +10,9 @@
     width: 100%;
     max-width: 370px;
   }
+  &__filters-item:not(:last-child) {
+    margin-bottom: 40px;
+  }
   &__items {
     width: 100%;
     max-width: 770px;

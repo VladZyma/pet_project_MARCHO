@@ -6,8 +6,20 @@ const getAllProducts = createAsyncThunk(
     'productSlice/getAllProducts',
     async ({page}, {rejectWithValue}) => {
       try {
-        const {data} = await productService.getAllProducts(page)
+        const {data} = await productService.getAllProducts(page);
         console.log('DATA:', data);
+        return data;
+      } catch (e) {
+        return rejectWithValue(e);
+      }
+    }
+);
+const getProductsByParams = createAsyncThunk(
+    'productSlice/getProductsByParams',
+    async ({page, value}, {rejectWithValue}) => {
+      try {
+        const {data} = await productService.getProductsByParams(page, value);
+        console.log('BYPARAMS:', data);
         return data;
       } catch (e) {
         return rejectWithValue(e);
@@ -28,7 +40,6 @@ const productSlice = createSlice({
   extraReducers: builder =>
       builder
           .addCase(getAllProducts.fulfilled, (state, action) => {
-            console.log('getAllProducts.fulfilled:', action.payload);
             state.products = action.payload;
             state.loading = false;
           })
@@ -39,11 +50,26 @@ const productSlice = createSlice({
             state.error = action.payload;
             state.loading = false;
           })
+
+          .addCase(getProductsByParams.fulfilled, (state, action) => {
+            state.products = action.payload;
+            state.loading = false;
+          })
+          .addCase(getProductsByParams.pending, (state, action) => {
+            state.loading = true;
+          })
+          .addCase(getProductsByParams.rejected, (state, action) => {
+            state.error = action.payload;
+            state.loading = false;
+          })
 });
 
 const {reducer: productReducer, actions: {}} = productSlice;
 
-const productActions = {getAllProducts};
+const productActions = {
+  getAllProducts,
+  getProductsByParams,
+};
 
 export {
   productReducer,
