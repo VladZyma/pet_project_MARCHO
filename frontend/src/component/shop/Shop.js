@@ -6,20 +6,34 @@ import './shop.scss';
 
 import {ProductCard} from "../productCard/ProductCard";
 import {Pagination} from "../pagination/Pagination";
-import {SearchFilter, PriceFilter, ColorFilter, SizeFilter} from '../shopFilters';
+import {
+  SearchFilter,
+  PriceFilter,
+  ColorFilter,
+  SizeFilter,
+  CategoryFilter,
+} from '../shopFilters';
 import {productActions} from "../../redux";
 
 const Shop = () => {
   const dispatch = useDispatch();
 
-  const {products: {products, prevPage, nextPage, totalPages, loading, error}} = useSelector(state => state.productReducer);
+  const {
+    products: {
+      products,
+      prevPage,
+      nextPage,
+      totalPages,
+      loading,
+      error
+    }
+  } = useSelector(state => state.productReducer);
 
   const [query, setQuery] = useSearchParams({page: '1'});
 
   useEffect(() => {
     dispatch(productActions.getAllProducts({page: query.get('page')}));
   }, [dispatch, query]);
-
 
 
   return (
@@ -39,7 +53,9 @@ const Shop = () => {
               <div className={'shop__filters-item'}>
                 <SizeFilter query={query}/>
               </div>
-              <div className={'shop__filters-item'}></div>
+              <div className={'shop__filters-item'}>
+                <CategoryFilter query={query}/>
+              </div>
               <div className={'shop__filters-item'}></div>
             </div>
             <div className={'shop__items'}>
@@ -48,7 +64,8 @@ const Shop = () => {
                 {loading && <h1>Loading................</h1>}
                 {products?.map(product => <ProductCard product={product} key={product._id}/>)}
               </div>
-              <Pagination setQuery={setQuery} page={query.get('page')} prevPage={prevPage} nextPage={nextPage} totalPages={totalPages}/>
+              <Pagination setQuery={setQuery} page={query.get('page')} prevPage={prevPage} nextPage={nextPage}
+                          totalPages={totalPages}/>
             </div>
           </div>
         </div>
