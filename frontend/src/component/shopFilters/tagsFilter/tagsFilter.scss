@@ -1,0 +1,36 @@
+@import '../../../style/styles';
+
+.tags {
+  padding: 40px 30px;
+  border: 1px solid $border;
+  &__header {
+    margin-bottom: 40px;
+    @extend %roboto-400;
+    font-size: 22px;
+    line-height: 22px;
+    text-transform: uppercase;
+    color: $title;
+  }
+  &__form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  &__form-label:not(:last-child) {
+    margin-bottom: 20px;
+  }
+  &__form-box {
+    padding: 6px 20px;
+    border: 1px solid $default;
+    color: $default;
+    cursor: pointer;
+  }
+  &__form-input{
+    @extend %checkbox-hidden;
+    &:checked+.tags__form-box {
+      border: 1px solid $accent;
+      background-color: $accent;
+      color: #fff;
+    }
+  }
+}

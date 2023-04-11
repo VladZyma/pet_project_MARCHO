@@ -12,6 +12,7 @@ import {
   ColorFilter,
   SizeFilter,
   CategoryFilter,
+  TagsFilter,
 } from '../shopFilters';
 import {productActions} from "../../redux";
 
@@ -56,7 +57,9 @@ const Shop = () => {
               <div className={'shop__filters-item'}>
                 <CategoryFilter query={query}/>
               </div>
-              <div className={'shop__filters-item'}></div>
+              <div className={'shop__filters-item'}>
+                <TagsFilter query={query}/>
+              </div>
             </div>
             <div className={'shop__items'}>
               <div className={'shop__items-top-filter'}></div>
