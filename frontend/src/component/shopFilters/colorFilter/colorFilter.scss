@@ -1,0 +1,58 @@
+@import '../../../style/styles';
+
+.color {
+  padding: 40px 30px;
+  border: 1px solid $border;
+  &__header {
+    margin-bottom: 20px;
+    @extend %roboto-400;
+    font-size: 22px;
+    line-height: 22px;
+    text-transform: uppercase;
+    color: $title;
+  }
+  &__form-label {
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    &:not(:last-child) {
+      padding-bottom: 20px;
+      border-bottom: 1px solid $border;
+    }
+  }
+  &__form-input {
+    @extend %checkbox-hidden;
+    &:checked+.color__form-checkbox {
+      background-image: url('../../../image/icons/check-on.svg');
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+  &__form-checkbox {
+    position: absolute;
+    margin-left: -16px;
+    margin-top: -7px;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+  &__form-checkbox--blue {
+    background-color: #00aeef;
+  }
+  &__form-checkbox--red {
+    background-color: #f52574;
+  }
+  &__form-checkbox--green {
+    background-color: #24d4ac;
+  }
+  &__form-checkbox--orange {
+    background-color: #ff7e00;
+  }
+  &__form-checkbox--black {
+    background-color: #000000;
+  }
+  &__form-checkbox--purple {
+    background-color: #923899;
+  }
+}

@@ -6,7 +6,7 @@ import './shop.scss';
 
 import {ProductCard} from "../productCard/ProductCard";
 import {Pagination} from "../pagination/Pagination";
-import {SearchFilter, PriceFilter} from '../shopFilters';
+import {SearchFilter, PriceFilter, ColorFilter} from '../shopFilters';
 import {productActions} from "../../redux";
 
 const Shop = () => {
@@ -33,7 +33,9 @@ const Shop = () => {
               <div className={'shop__filters-item'}>
                 <PriceFilter query={query}/>
               </div>
-              <div className={'shop__filters-item'}></div>
+              <div className={'shop__filters-item'}>
+                <ColorFilter query={query}/>
+              </div>
               <div className={'shop__filters-item'}></div>
               <div className={'shop__filters-item'}></div>
               <div className={'shop__filters-item'}></div>
