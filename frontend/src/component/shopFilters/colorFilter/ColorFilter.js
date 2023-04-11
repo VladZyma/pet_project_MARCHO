@@ -1,14 +1,15 @@
 import {useState, useEffect} from 'react';
-import {useDispatch} from 'react-redux';
 
 import './colorFilter.scss';
 
-import {productActions} from "../../../redux";
-
-const ColorFilter = ({query}) => {
-  const dispatch = useDispatch();
+const ColorFilter = ({query, setQuery}) => {
 
   const [colors, setColors] = useState([]);
+
+  const search = {};
+  for (let entry of query.entries()) {
+    search[entry[0]] = entry[1];
+  }
 
   const submitHandler = (event) => {
     const target = event.target;
@@ -22,13 +23,12 @@ const ColorFilter = ({query}) => {
 
       setColors(tempColorsArr);
     }
+
   };
 
   useEffect(() => {
-    if (colors.length > 0) {
-      const colorsString = colors.join(',');
-      dispatch(productActions.getProductsByParams({page: query.get('page'), value: `color=${colorsString}`}));
-    }
+    const colorsString = colors.join(',');
+    setQuery({...search, page: '1', color: colorsString});
   }, [colors])
 
   return (

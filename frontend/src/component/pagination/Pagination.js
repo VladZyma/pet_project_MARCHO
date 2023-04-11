@@ -4,20 +4,23 @@ import {useState} from 'react';
 import './pagination.scss';
 
 const Pagination = (props) => {
-  const {setQuery, page, prevPage, nextPage, totalPages, onPageChange} = props;
+  const {query, setQuery, page, prevPage, nextPage, totalPages, onPageChange} = props;
 
   const [currentPage, setCurrentPage] = useState(page);
 
+  const search = {};
+  for (let entry of query.entries()) {
+    search[entry[0]] = entry[1];
+  }
 
   const prevPageHandler = () => {
     setCurrentPage(page - 1);
-    setQuery(prevQuery => ({page: +prevQuery.get('page') - 1}));
+    setQuery(prevQuery => ({...search, page: +prevQuery.get('page') - 1}));
   };
   const nextPageHandler = () => {
     setCurrentPage(page + 1);
-    setQuery(prevQuery => ({page: +prevQuery.get('page') + 1}));
+    setQuery(prevQuery => ({...search, page: +prevQuery.get('page') + 1}));
   };
-
 
   return (
       <div className={'pagination'}>

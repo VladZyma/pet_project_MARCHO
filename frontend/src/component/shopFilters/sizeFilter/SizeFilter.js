@@ -1,14 +1,15 @@
 import {useState, useEffect} from 'react';
-import {useDispatch} from "react-redux";
 
 import './sizeFilter.scss';
 
-import {productActions} from "../../../redux";
-
-const SizeFilter = ({query}) => {
-  const dispatch = useDispatch();
+const SizeFilter = ({query, setQuery}) => {
 
   const [selectedOption, setSelectedOption] = useState('all');
+
+  const search = {};
+  for (let entry of query.entries()) {
+    search[entry[0]] = entry[1];
+  }
 
   const onValueChange = (event) => {
     setSelectedOption(event.target.value);
@@ -16,9 +17,11 @@ const SizeFilter = ({query}) => {
 
   useEffect(() => {
     if (selectedOption !== 'all') {
-      dispatch(productActions.getProductsByParams({page: query.get('page'), value: `size=${selectedOption}`}));
+      setQuery({...search, size: selectedOption});
+    } else {
+      setQuery({...search, size: ''});
     }
-  }, [selectedOption])
+  }, [selectedOption]);
 
   return (
       <div className={'size'}>

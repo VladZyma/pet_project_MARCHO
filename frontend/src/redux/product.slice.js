@@ -16,9 +16,9 @@ const getAllProducts = createAsyncThunk(
 );
 const getProductsByParams = createAsyncThunk(
     'productSlice/getProductsByParams',
-    async ({page, value}, {rejectWithValue}) => {
+    async ({page, limit, title, priceMin, priceMax, color, size, category, tags}, {rejectWithValue}) => {
       try {
-        const {data} = await productService.getProductsByParams(page, value);
+        const {data} = await productService.getProductsByParams(page, limit, title, priceMin, priceMax, color, size, category, tags);
         console.log('BYPARAMS:', data);
         return data;
       } catch (e) {

@@ -1,17 +1,18 @@
 import RangeSlider from 'react-range-slider-input';
 import {useState} from 'react';
-import {useDispatch} from 'react-redux';
 
 import 'react-range-slider-input/dist/style.css';
 import './priceFilter.scss';
 
-import {productActions} from "../../../redux";
+const PriceFilter = ({query, setQuery}) => {
 
-const PriceFilter = ({query}) => {
-  const dispatch = useDispatch();
+  const [minPrice, setMinPrice] = useState(15);
+  const [maxPrice, setMaxPrice] = useState(75);
 
-  const [minPrice, setMinPrice] = useState(15)
-  const [maxPrice, setMaxPrice] = useState(30)
+  const search = {};
+  for (let entry of query.entries()) {
+    search[entry[0]] = entry[1];
+  }
 
   const onInput = (values) => {
    setMinPrice(price => values[0]);
@@ -19,7 +20,7 @@ const PriceFilter = ({query}) => {
   }
 
   const submitHandler = () => {
-    dispatch(productActions.getProductsByParams({page: query.get('page'), value: `priceMin=${minPrice}&priceMax=${maxPrice}`}))
+    setQuery({...search, page: '1', priceMin: minPrice, priceMax: maxPrice});
   };
 
   return (
@@ -29,8 +30,8 @@ const PriceFilter = ({query}) => {
         </h3>
         <RangeSlider
           min={0}
-          max={70}
-          defaultValue={[15, 30]}
+          max={100}
+          defaultValue={[15, 75]}
           onInput={onInput}
         />
         <div className={'price__inner'}>

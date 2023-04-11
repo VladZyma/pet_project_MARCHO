@@ -1,17 +1,17 @@
 import {useForm} from 'react-hook-form';
-import {useDispatch} from 'react-redux';
 
 import './search.scss';
 
-import {productActions} from "../../../redux";
-
-const SearchFilter = ({query}) => {
-  const dispatch = useDispatch();
-
+const SearchFilter = ({query, setQuery}) => {
   const {register, handleSubmit, reset} = useForm();
 
+  const search = {}
+  for (let entry of query.entries()) {
+    search[entry[0]] = entry[1]
+  }
+
   const submitHandler = (title) => {
-    dispatch(productActions.getProductsByParams({page: query.get('page'), value: `title=${title.title}`}));
+    setQuery(prevQuery => ({...search, page: '1', title: `${title.title}`}));
     reset();
   };
 

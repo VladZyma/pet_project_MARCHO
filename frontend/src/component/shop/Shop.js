@@ -30,10 +30,20 @@ const Shop = () => {
     }
   } = useSelector(state => state.productReducer);
 
-  const [query, setQuery] = useSearchParams({page: '1'});
+  const [query, setQuery] = useSearchParams({page: '1', limit: '2', title: '', priceMin: '15', priceMax: '75', color: '', size: '', category: '', tags: ''});
 
   useEffect(() => {
-    dispatch(productActions.getAllProducts({page: query.get('page')}));
+    dispatch(productActions.getProductsByParams({
+      page: query.get('page'),
+      limit: +query.get('limit'),
+      title: query.get('title'),
+      priceMin: query.get('priceMin'),
+      priceMax: query.get('priceMax'),
+      color: query.get('color'),
+      size:query.get('size'),
+      category: query.get('category'),
+      tags: query.get('tags'),
+    }));
   }, [dispatch, query]);
 
 
@@ -43,22 +53,22 @@ const Shop = () => {
           <div className={'shop__inner'}>
             <div className={'shop__filters'}>
               <div className={'shop__filters-item'}>
-                <SearchFilter query={query}/>
+                <SearchFilter query={query} setQuery={setQuery}/>
               </div>
               <div className={'shop__filters-item'}>
-                <PriceFilter query={query}/>
+                <PriceFilter query={query} setQuery={setQuery}/>
               </div>
               <div className={'shop__filters-item'}>
-                <ColorFilter query={query}/>
+                <ColorFilter query={query} setQuery={setQuery}/>
               </div>
               <div className={'shop__filters-item'}>
-                <SizeFilter query={query}/>
+                <SizeFilter query={query} setQuery={setQuery}/>
               </div>
               <div className={'shop__filters-item'}>
-                <CategoryFilter query={query}/>
+                <CategoryFilter query={query} setQuery={setQuery}/>
               </div>
               <div className={'shop__filters-item'}>
-                <TagsFilter query={query}/>
+                <TagsFilter query={query} setQuery={setQuery}/>
               </div>
             </div>
             <div className={'shop__items'}>
@@ -67,7 +77,7 @@ const Shop = () => {
                 {loading && <h1>Loading................</h1>}
                 {products?.map(product => <ProductCard product={product} key={product._id}/>)}
               </div>
-              <Pagination setQuery={setQuery} page={query.get('page')} prevPage={prevPage} nextPage={nextPage}
+              <Pagination query={query} setQuery={setQuery} page={query.get('page')} prevPage={prevPage} nextPage={nextPage}
                           totalPages={totalPages}/>
             </div>
           </div>
