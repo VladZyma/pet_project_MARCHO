@@ -16,9 +16,9 @@ const CategoryFilter = ({query, setQuery}) => {
 
   useEffect(() => {
     if (selectedOption !== 'all') {
-      setQuery({...search, category: selectedOption});
+      setQuery({...search, page: '1', category: selectedOption});
     } else {
-      setQuery({...search, category: ''});
+      setQuery({...search, page: '1', category: ''});
     }
   }, [selectedOption]);
 

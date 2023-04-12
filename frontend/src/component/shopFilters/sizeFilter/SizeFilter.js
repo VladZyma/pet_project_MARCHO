@@ -17,9 +17,9 @@ const SizeFilter = ({query, setQuery}) => {
 
   useEffect(() => {
     if (selectedOption !== 'all') {
-      setQuery({...search, size: selectedOption});
+      setQuery({...search, page: '1', size: selectedOption});
     } else {
-      setQuery({...search, size: ''});
+      setQuery({...search, page: '1', size: ''});
     }
   }, [selectedOption]);
 

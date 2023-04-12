@@ -14,11 +14,12 @@ const getAllProducts = createAsyncThunk(
       }
     }
 );
+
 const getProductsByParams = createAsyncThunk(
-    'productSlice/getProductsByParams',
-    async ({page, limit, title, priceMin, priceMax, color, size, category, tags}, {rejectWithValue}) => {
+    'productSlice/getProductsByParams2',
+    async ({page, values}, {rejectWithValue}) => {
       try {
-        const {data} = await productService.getProductsByParams(page, limit, title, priceMin, priceMax, color, size, category, tags);
+        const {data} = await productService.getProductsByParams(page, values);
         console.log('BYPARAMS:', data);
         return data;
       } catch (e) {

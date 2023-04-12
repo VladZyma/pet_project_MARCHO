@@ -30,20 +30,15 @@ const Shop = () => {
     }
   } = useSelector(state => state.productReducer);
 
-  const [query, setQuery] = useSearchParams({page: '1', limit: '2', title: '', priceMin: '15', priceMax: '75', color: '', size: '', category: '', tags: ''});
+  const [query, setQuery] = useSearchParams({page: '1'});
+
+  const search = {};
+  for (let entry of query.entries()) {
+    search[entry[0]] = entry[1];
+  }
 
   useEffect(() => {
-    dispatch(productActions.getProductsByParams({
-      page: query.get('page'),
-      limit: +query.get('limit'),
-      title: query.get('title'),
-      priceMin: query.get('priceMin'),
-      priceMax: query.get('priceMax'),
-      color: query.get('color'),
-      size:query.get('size'),
-      category: query.get('category'),
-      tags: query.get('tags'),
-    }));
+    dispatch(productActions.getProductsByParams({page: query.get('page'), values: search}));
   }, [dispatch, query]);
 
 
