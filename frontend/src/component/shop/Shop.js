@@ -1,4 +1,4 @@
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useSearchParams} from 'react-router-dom';
 
@@ -13,11 +13,15 @@ import {
   SizeFilter,
   CategoryFilter,
   TagsFilter,
+  SortByFilter,
+  ShowFilter,
 } from '../shopFilters';
 import {productActions} from "../../redux";
 
 const Shop = () => {
   const dispatch = useDispatch();
+
+  const [isGrid, setIsGrid] = useState(true);
 
   const {
     products: {
@@ -40,6 +44,13 @@ const Shop = () => {
   useEffect(() => {
     dispatch(productActions.getProductsByParams({page: query.get('page'), values: search}));
   }, [dispatch, query]);
+
+  const setListProductsView = () => {
+    setIsGrid(false);
+  }
+  const setGridProductsView = () => {
+    setIsGrid(true);
+  }
 
 
   return (
@@ -67,12 +78,47 @@ const Shop = () => {
               </div>
             </div>
             <div className={'shop__items'}>
-              <div className={'shop__items-top-filter'}></div>
-              <div className={'shop__items-inner'}>
+              <div className={'shop__items-filter'}>
+                <div className={'shop__items-filter-buttons'}>
+                  <span className={'shop__items-filter-text'}>View</span>
+                  <button className={!isGrid? 'shop__items-filter-button' : 'shop__items-filter-button shop__items-filter-button--active'}
+                          onClick={setGridProductsView}>
+                    <svg width={15} height={15}>
+                      <path fill="#8D8D8D" fillRule="evenodd"
+                            d="M0 3.75h3.75V0H0v3.75ZM5.625 14.1h3.75v-2.85h-3.75v2.85ZM0 14.1h3.75v-2.85H0v2.85Zm0-4.725h3.75v-3.75H0v3.75Zm5.625 0h3.75v-3.75h-3.75v3.75ZM11.25 0v3.75h2.85V0h-2.85ZM5.625 3.75h3.75V0h-3.75v3.75Zm5.625 5.625h2.85v-3.75h-2.85v3.75Zm0 4.725h2.85v-2.85h-2.85v2.85Z"/>
+                    </svg>
+                  </button>
+                  <button className={isGrid? 'shop__items-filter-button' : 'shop__items-filter-button shop__items-filter-button--active'}
+                          onClick={setListProductsView}>
+                    <svg width={20} height={15}>
+                      <path fill="#8D8D8D" fillRule="evenodd"
+                            d="M5.835 14.998v-4.171h14.159v4.171H5.835Zm0-9.585h14.159v4.172H5.835V5.413Zm0-5.413h14.159v4.172H5.835V0ZM.007 10.827h4.422v4.171H.007v-4.171Zm0-5.414h4.422v4.172H.007V5.413ZM.007 0h4.422v4.172H.007V0Z"
+                      />
+                    </svg>
+                  </button>
+                </div>
+                <div className={'shop__items-filter-selects'}>
+                  <SortByFilter options={[
+                    {value: 'default', label: 'Sort By Default'},
+                    {value: 'ratingDown', label: 'Sort By Rating A-z'},
+                    {value: 'ratingUp', label: 'Sort By Rating z-A'},
+                    {value: 'priceDown', label: 'Sort By Price A-z'},
+                    {value: 'priceUp', label: 'Sort By Price z-A'},
+                  ]}/>
+                  <ShowFilter options={[
+                    {value: 4, label: 'Show 4'},
+                    {value: 6, label: 'Show 6'},
+                    {value: 8, label: 'Show 8'},
+                    {value: 10, label: 'Show 10'},
+                  ]}/>
+                </div>
+              </div>
+              <div className={isGrid? 'shop__items-inner--grid' : 'shop__items-inner'}>
                 {loading && <h1>Loading................</h1>}
                 {products?.map(product => <ProductCard product={product} key={product._id}/>)}
               </div>
-              <Pagination query={query} setQuery={setQuery} page={query.get('page')} prevPage={prevPage} nextPage={nextPage}
+              <Pagination query={query} setQuery={setQuery} page={query.get('page')} prevPage={prevPage}
+                          nextPage={nextPage}
                           totalPages={totalPages}/>
             </div>
           </div>

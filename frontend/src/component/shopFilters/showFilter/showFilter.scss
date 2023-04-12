@@ -1,0 +1,28 @@
+@import '../../../style/styles';
+
+.show {
+  display: inline-block;
+  .css-fa8h9z-control {
+    border-color: $border;
+    cursor: pointer;
+    &:hover {
+      border-color: $accent;
+    }
+  }
+  .css-t3ipsp-control {
+    border-color: $accent;
+    box-shadow: none;
+    &:hover {
+      border-color: $accent;
+    }
+  }
+  .css-1g0ciz2-singleValue {
+    @extend %quicksand-500;
+    color: $default;
+  }
+  .css-w0ujaq-control {
+    cursor: pointer;
+    box-shadow: none;
+    border-color: $border;
+  }
+}
