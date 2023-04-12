@@ -16,6 +16,9 @@
   &__items {
     width: 100%;
     max-width: 770px;
+
+    display: flex;
+    flex-direction: column;
   }
   &__items-inner {
     margin-bottom: 40px;
