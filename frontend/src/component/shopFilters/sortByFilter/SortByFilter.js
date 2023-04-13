@@ -1,19 +1,20 @@
 import {useState, useEffect} from 'react';
-import {useDispatch} from 'react-redux';
 import Select from 'react-select';
 
 import './sortByFilter.scss';
 
-import {productActions} from "../../../redux";
-
-const SortByFilter = ({options}) => {
-  const dispatch = useDispatch();
+const SortByFilter = ({query, setQuery, options}) => {
 
   const [selectedOption, setSelectedOption] = useState(null);
 
+  const search = {};
+  for (let entry of query.entries()) {
+    search[entry[0]] = entry[1];
+  }
+
   useEffect(() => {
     if (selectedOption) {
-
+      setQuery({...search, page: '1', sort: selectedOption.value});
     }
   }, [selectedOption]);
 

@@ -5,9 +5,28 @@ const productService = {
     return Product.create(productInfo);
   },
   findAllProducts: async (query) => {
-    const {limit = 6, page = 1, title, priceMin, priceMax, color, size, category, tags} = query;
+    const {limit = 6, page = 1, sort = 'default', title, priceMin, priceMax, color, size, category, tags} = query;
 
     let findObj = {};
+    let sortObg = {};
+
+    switch (sort) {
+      case 'default':
+        sortObg = {'createdAt': 1}
+        break;
+      case 'ratingDown':
+        sortObg = {'rating': -1}
+        break;
+      case 'ratingUp':
+        sortObg = {'rating': 1}
+        break;
+      case 'priceDown':
+        sortObg = {'price.current': -1}
+        break;
+      case 'priceUp':
+        sortObg = {'price.current': 1}
+        break;
+    }
 
     if (title) {
       const titleArr = title.split(' ');
@@ -51,7 +70,7 @@ const productService = {
     }
 
     const [products, count] = await Promise.all([
-        Product.find(findObj).limit(limit).skip((+page - 1) * limit).lean(),
+        Product.find(findObj).limit(limit).skip((+page - 1) * limit).sort(sortObg).lean(),
         Product.count(findObj),
     ]);
 
