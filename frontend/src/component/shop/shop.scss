@@ -29,7 +29,9 @@
     justify-content: space-between;
     border-bottom: 1px solid #efefef;
   }
-  &__items-inner {}
+  &__items-inner {
+    margin-bottom: 40px;
+  }
 
   &__items-filter {
     margin-bottom: 40px;

@@ -98,14 +98,14 @@ const Shop = () => {
                   </button>
                 </div>
                 <div className={'shop__items-filter-selects'}>
-                  <SortByFilter options={[
+                  <SortByFilter query={query} setQuery={setQuery} options={[
                     {value: 'default', label: 'Sort By Default'},
                     {value: 'ratingDown', label: 'Sort By Rating A-z'},
                     {value: 'ratingUp', label: 'Sort By Rating z-A'},
                     {value: 'priceDown', label: 'Sort By Price A-z'},
                     {value: 'priceUp', label: 'Sort By Price z-A'},
                   ]}/>
-                  <ShowFilter options={[
+                  <ShowFilter query={query} setQuery={setQuery} options={[
                     {value: 4, label: 'Show 4'},
                     {value: 6, label: 'Show 6'},
                     {value: 8, label: 'Show 8'},

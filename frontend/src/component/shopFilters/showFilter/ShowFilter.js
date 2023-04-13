@@ -3,19 +3,24 @@ import Select from 'react-select';
 
 import './showFilter.scss';
 
-const ShowFilter = ({options}) => {
+const ShowFilter = ({query, setQuery, options}) => {
   const [showValue, setShowValue] = useState(null);
+
+  const search = {};
+  for (let entry of query.entries()) {
+    search[entry[0]] = entry[1];
+  }
 
   useEffect(() => {
     if (showValue) {
-      console.log(showValue);
+      setQuery({...search, page: '1', limit: showValue.value});
     }
   }, [showValue]);
 
   return (
       <div className={'show'}>
         <Select
-            placeholder={'Show 4'}
+            placeholder={'Show 6'}
             options={options}
             onChange={setShowValue}
             theme={(theme) => ({
