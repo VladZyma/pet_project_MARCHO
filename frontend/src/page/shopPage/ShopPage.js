@@ -6,7 +6,7 @@ const ShopPage = () => {
 
   return (
       <div className={'shop-page'}>
-        <Top title={'Shop page'}/>
+        <Top title={'Shop'}/>
         <Shop/>
       </div>
   );
