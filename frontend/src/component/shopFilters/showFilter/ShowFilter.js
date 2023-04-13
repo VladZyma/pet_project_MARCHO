@@ -15,7 +15,6 @@ const ShowFilter = ({options}) => {
   return (
       <div className={'show'}>
         <Select
-            defaultMenuIsOpen={options[0]}
             placeholder={'Show 4'}
             options={options}
             onChange={setShowValue}

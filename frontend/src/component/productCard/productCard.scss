@@ -8,7 +8,6 @@
       transform: translate(-50%, 0%);
     }
   }
-
   &__img-wrapper {
     max-width: 370px;
     padding-top: 100%;
@@ -78,8 +77,11 @@
     margin: 0 auto;
   }
   &__price-old {
-    margin-left: 20px;
     @extend %roboto-400;
+    color: $title;
+  }
+  &__price-old.card__price-old--line-throw {
+    margin-left: 20px;
     text-decoration: line-through;
     color: #ccccce;
   }
@@ -87,4 +89,90 @@
     @extend %roboto-500;
     color: $title;
   }
+
+//if view list
+
+  &.card--list {
+    width: 100%;
+    max-width: 770px;
+    display: flex;
+    &:not(:last-child) {
+      margin-bottom: 40px;
+    }
+    .card__img-wrapper {
+      width: 100%;
+      max-width: 200px;
+      padding-top: 32.5%;
+    }
+    .card__img {
+      height: 100%;
+    }
+    .card__sale {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 0px 7px;
+      font-size: 14px;
+    }
+    .card__links--list {
+      bottom: 100px;
+      max-width: 115px;
+      justify-content: space-between;
+      background-color: transparent;
+      box-shadow: none;
+      border-radius: unset;
+    }
+    .card__link {
+      padding: 0;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #fff;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all .3s;
+      &:hover {
+        path {
+          fill: $accent;
+        }
+      }
+      &:nth-child(2) {
+        border: none;
+      }
+    }
+    .card__content {
+      padding: 25px 40px;
+      text-align: left;
+      border: 1px solid $border;
+      border-left: none;
+    }
+    .card__title {
+      @extend %roboto-500;
+    }
+    .card__content-inner {
+      display: inline-flex;
+    }
+    .card__price {
+      margin-right: 40px;
+    }
+    .card__content-text {
+      margin-bottom: 25px;
+    }
+    .card__content-button {
+      padding: 12px 40px;
+      border: none;
+      background-color: $title;
+      @extend %roboto-400;
+      color: #fff;
+      cursor: pointer;
+      transition: all .3s;
+      &:hover {
+        background-color: $accent;
+        box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);
+      }
+    }
+  }
+
 }
