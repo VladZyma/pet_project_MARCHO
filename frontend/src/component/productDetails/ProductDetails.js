@@ -53,6 +53,8 @@ const ProductDetails = () => {
       sku: product.sku,
       quantity: product.quantity,
     };
+
+    dispatch(productActions.addProductInCart(productObj));
   };
 
   return (
@@ -133,7 +135,7 @@ const ProductDetails = () => {
                     Categories
                   </span>
                   <span className={'product__content-info-text'}>
-                    {product.categories[0]}
+                    {product.categories && `${product.categories[0]}`}
                   </span>
                 </li>
                 <li className={'product__content-info-item'}>
