@@ -30,6 +30,7 @@ const getProductsByParams = createAsyncThunk(
 
 const initialState = {
   products: [],
+  productsInCart: [],
   product: {},
   loading: false,
   error: null,
@@ -43,6 +44,13 @@ const productSlice = createSlice({
       const productId = action.payload;
       const foundProduct = state.products.products.find(product => product._id === productId);
       state.product = foundProduct;
+    },
+    addProductInCart: (state, action) => {
+      state.productsInCart.push(action.payload);
+    },
+    deleteProductInCart: (state, action) => {
+      const productIndex = state.productsInCart.findIndex(product => product.id = action.payload);
+      state.productsInCart.splice(productIndex, 1);
     },
   },
   extraReducers: builder =>
@@ -72,12 +80,14 @@ const productSlice = createSlice({
           })
 });
 
-const {reducer: productReducer, actions: {getProductById}} = productSlice;
+const {reducer: productReducer, actions: {getProductById, addProductInCart, deleteProductInCart}} = productSlice;
 
 const productActions = {
   getAllProducts,
   getProductsByParams,
   getProductById,
+  addProductInCart,
+  deleteProductInCart,
 };
 
 export {
