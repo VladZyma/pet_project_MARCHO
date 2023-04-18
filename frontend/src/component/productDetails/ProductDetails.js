@@ -25,12 +25,34 @@ const ProductDetails = () => {
   const {product} = useSelector(state => state.productReducer);
   console.log('Product:', product);
 
+  let selectedSize = '';
+
   useEffect(() => {
     dispatch(productActions.getProductById(productId));
   }, []);
 
   const selectSize = (event) => {
     console.log(event.target.value);
+    selectedSize = event.target.value;
+  };
+
+  const addToCartHandler = () => {
+    let productPrice = product.price.current;
+
+    if (product.isSale) {
+      productPrice = product.price.sale;
+    }
+
+    const productObj = {
+      id: product._id,
+      title: product.title,
+      img: product.photo,
+      price: productPrice,
+      color: productColors[product.color],
+      size: selectedSize,
+      sku: product.sku,
+      quantity: product.quantity,
+    };
   };
 
   return (
@@ -127,7 +149,9 @@ const ProductDetails = () => {
                   </div>
                 </li>
               </ul>
-              <button className={'product__content-button'}>Add to cart</button>
+              <button className={'product__content-button'} onClick={addToCartHandler}>
+                Add to cart
+              </button>
             </div>
           </div>
         </div>
