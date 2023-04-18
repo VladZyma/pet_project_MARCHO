@@ -1,0 +1,140 @@
+@import '../../style/styles';
+
+.product {
+  padding: 92px;
+  &__inner {
+    display: flex;
+  }
+  &__slider-wrapper {
+    margin-right: 70px;
+  }
+  &__content {
+    width: 100%;
+    max-width: 370px;
+  }
+  &__content-title {
+    @extend %roboto-500;
+    font-size: 22px;
+    line-height: 34px;
+    color: $title;
+  }
+  &__content-inner {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__content-price {
+    display: flex;
+  }
+  &__content-price-current {
+    font-size: 18px;
+    line-height: 34px;
+    color: $title;
+  }
+  &__content-price-old--line-throw {
+    margin-left: 20px;
+    font-size: 18px;
+    line-height: 34px;
+    text-decoration: line-through;
+  }
+  &__content-stars {
+    display: flex;
+    align-items: center;
+    .star-ratings {
+      display: flex!important;
+      .star-container {
+        display: flex!important;
+        align-items: center;
+      }
+    }
+  }
+  &__content-stars-votes {
+    margin-left: 10px;
+    font-size: 18px;
+    line-height: 34px;
+    color: $title;
+  }
+  &__content-text {
+    margin-bottom: 40px;
+    text-align: justify;
+  }
+  &__content-subtitle {
+    display: block;
+    margin-bottom: 5px;
+    @extend %roboto-400;
+    font-size: 18px;
+    line-height: 26px;
+    color: $title;
+  }
+  &__content-color {
+    margin-bottom: 35px;
+  }
+  &__content-color-item {
+    width: 100px;
+    height: 30px;
+  }
+  &__content-size {
+    margin-bottom: 30px;
+  }
+  &__content-size-form {
+    display: flex;
+  }
+  &__content-size-form-label {
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+  &__content-size-form-input {
+    @extend %checkbox-hidden;
+    &:checked {
+      &+.product__content-size-form-checkbox {
+        border-color: $accent;
+      }
+    }
+  }
+  &__content-size-form-checkbox {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $border;
+    cursor: pointer;
+    transition: border-color .3s;
+    &:hover {
+      border-color: $accent;
+    }
+  }
+  &__content-info-list {
+    margin-bottom: 30px;
+  }
+  &__content-info-item {
+    margin-bottom: 10px;
+    display: flex;
+  }
+  &__content-info-title {
+    display: block;
+    width: 100px;
+  }
+  &__content-info-text-wrapper {
+    .product__content-info-text:not(:last-child) {
+      padding-right: 5px;
+      margin-right: 5px;
+      border-right: 1px solid $default;
+    }
+  }
+  &__content-button {
+    @extend %btn;
+    margin-top: -30px;
+    border: none;
+    cursor: pointer;
+    background-color: $title;
+    box-shadow: none;
+    transition: all .3s;
+    &:hover {
+      background-color: $accent;
+      box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);
+    }
+  }
+}

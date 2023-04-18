@@ -14,7 +14,7 @@ import {
   WishlistPage,
   AccountPage
 } from "./page";
-import {Header, Footer} from "./component";
+import {Header, Footer, Shop, ProductDetails} from "./component";
 
 function App() {
 
@@ -25,7 +25,13 @@ function App() {
           <Route path={'/'} element={<MainLayout/>}>
             <Route index element={<Navigate to={'/home'}/>}/>
             <Route path={'/home'} element={<HomePage/>}/>
-            <Route path={'/shop'} element={<ShopPage/>}/>
+
+            <Route path={'/shop'} element={<ShopPage/>}>
+              <Route index element={<Navigate to={'/shop/products'}/>}/>
+              <Route path={'/shop/products'} element={<Shop/>}/>
+              <Route path={'/shop/product/:productId'} element={<ProductDetails/>}/>
+            </Route>
+
             <Route path={'/blog'} element={<BlogPage/>}/>
             <Route path={'/contact'} element={<ContactPage/>}/>
             <Route path={'/login'} element={<LoginPage/>}/>

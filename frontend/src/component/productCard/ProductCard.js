@@ -1,11 +1,12 @@
-import {Link} from 'react-router-dom';
+import {Link, NavLink} from 'react-router-dom';
 
 import './productCard.scss';
 
 import {ProductStarRating} from "../productStarRating/ProductStarRating";
 
 const ProductCard = (props) => {
-  const {product: {title, rating, price, isSale, photo, review}, isGrid} = props;
+  const {product: {title, rating, price, isSale, photo, review, _id}, isGrid} = props;
+
 
   return (
       <div className={!isGrid ? 'card' : 'card card--list'}>
@@ -20,12 +21,12 @@ const ProductCard = (props) => {
             !isGrid
                 ?
                 <div className={'card__links'}>
-                  <Link className={'card__link'} href={'#'}>
+                  <NavLink className={'card__link'} to={`/shop/product/${_id}`}>
                     <svg width={20.03} height={20}>
                       <path fill="#29282d" fillRule="evenodd"
                             d="m19.89 18.7-5.81-5.81a7.944 7.944 0 1 0-1.18 1.178l5.81 5.81a.417.417 0 0 0 .59 0l.59-.589a.421.421 0 0 0 0-.589ZM7.93 14.167a6.25 6.25 0 1 1 6.25-6.25 6.254 6.254 0 0 1-6.25 6.246Z"/>
                     </svg>
-                  </Link>
+                  </NavLink>
                   <Link className={'card__link'} href={'#'}>
                     <svg width={16} height={20}>
                       <path fill="#29282d" fillRule="evenodd"

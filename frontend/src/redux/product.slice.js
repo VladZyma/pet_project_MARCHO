@@ -30,6 +30,7 @@ const getProductsByParams = createAsyncThunk(
 
 const initialState = {
   products: [],
+  product: {},
   loading: false,
   error: null,
 };
@@ -37,7 +38,13 @@ const initialState = {
 const productSlice = createSlice({
   name: 'productSlice',
   initialState,
-  reducers: {},
+  reducers: {
+    getProductById: (state, action) => {
+      const productId = action.payload;
+      const foundProduct = state.products.products.find(product => product._id === productId);
+      state.product = foundProduct;
+    },
+  },
   extraReducers: builder =>
       builder
           .addCase(getAllProducts.fulfilled, (state, action) => {
@@ -65,11 +72,12 @@ const productSlice = createSlice({
           })
 });
 
-const {reducer: productReducer, actions: {}} = productSlice;
+const {reducer: productReducer, actions: {getProductById}} = productSlice;
 
 const productActions = {
   getAllProducts,
   getProductsByParams,
+  getProductById,
 };
 
 export {
