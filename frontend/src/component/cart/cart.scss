@@ -1,0 +1,125 @@
+@import '../../style/styles';
+
+.cart {
+  padding: 120px;
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  &__product-info {
+    margin-bottom: 40px;
+    display: flex;
+  }
+  &__product-img-wrapper {
+    margin-right: 30px;
+    width: 270px;
+    height: 270px;
+  }
+  &__product-img {
+    width: 100%;
+    object-fit: cover;
+  }
+  &__product-content {
+    width: 242px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  &__product-inner {
+    margin-bottom: 20px;
+    display: flex;
+    @extend %roboto-400;
+    font-size: 18px;
+    color: $title;
+  }
+  &__product-title {
+    margin-bottom: 30px;
+    @extend %roboto-700;
+    font-size: 26px;
+    line-height: 26px;
+    text-align: center;
+    color: $title;
+  }
+  &__product-color {
+    width: 90px;
+    height: 26px;
+    margin: 0 10px;
+  }
+  &__product-text {
+    margin-left: 10px;
+    color: $default;
+  }
+  &__product-sku {
+    margin-right: 10px;
+  }
+  &__product-sku-text {
+    margin-left: 17px;
+    color: $default;
+  }
+  &__product-size-text {
+    margin-left: 17px;
+    color: $default;
+  }
+  &__product-buttons {
+    margin-right: 63px;
+    border: 1px solid $border;
+  }
+  &__product-button {
+    border: none;
+    background-color: inherit;
+    cursor: pointer;
+    padding: 0 16px;
+    font-size: 21px;
+    line-height: 28px;
+    &:hover {
+      color: $accent;
+    }
+  }
+  &__product-del-btn {
+    @extend %btn;
+    border: none;
+    box-shadow: none;
+    background-color: $title;
+    cursor: pointer;
+    letter-spacing: 2px;
+    transition: all .3s;
+    &:hover {
+      background-color: $accent;
+      box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);;
+    }
+  }
+  &__bottom-info {
+    margin: 10px auto 0;
+    padding: 6px 15px;
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $border;
+  }
+  &__bottom-content {
+    @extend %roboto-500;
+    font-size: 22px;
+    line-height: 22px;
+    color: $title;
+  }
+  &__bottom-text {
+    margin-left: 10px;
+    color: $default;
+  }
+  &__bottom-btn {
+    padding: 6px 18px;
+    border: none;
+    background-color: $title;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #fff;
+    cursor: pointer;
+    transition: all .3s;
+    &:hover {
+      background-color: $accent;
+      box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);
+    }
+  }
+}

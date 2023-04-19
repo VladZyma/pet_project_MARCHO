@@ -7,7 +7,7 @@ export * from './login/Login';
 export * from './loginForm/LoginForm';
 export * from './register/Register';
 export * from './registerForm/RegisterForm';
-export * from './cartList/CartList';
+export * from './cart/Cart';
 export * from './wishlistList/WishlistList';
 export * from './account/Account';
 export * from './top/Top';

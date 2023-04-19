@@ -7,7 +7,7 @@ import './productDetails.scss';
 import {ProductDetailsSlider} from "../productDetailsSlider/ProductDetailsSlider";
 import {ProductStarRating} from "../productStarRating/ProductStarRating";
 
-import {productActions} from "../../redux";
+import {productActions, cartActions} from "../../redux";
 
 const ProductDetails = () => {
   const productColors = {
@@ -55,6 +55,7 @@ const ProductDetails = () => {
     };
 
     dispatch(productActions.addProductInCart(productObj));
+    dispatch(cartActions.addProductToCart(productId));
   };
 
   return (
