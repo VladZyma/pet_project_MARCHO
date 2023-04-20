@@ -1,7 +1,7 @@
 import './cart.scss';
 
 const Cart = (props) => {
-  const {productsObj, productsQuantityObj} = props;
+  const {productsObj, productsQuantityObj, isProductsInCart} = props;
 
   return (
       <div className={'cart'}>
@@ -65,13 +65,17 @@ const Cart = (props) => {
               ))
             }
           </div>
-          <div className={'cart__bottom-info'}>
-            <div className={'cart__bottom-content'}>
-              Total price:
-              <span className={'cart__bottom-text'}>$</span>
+          {
+            isProductsInCart > 0
+              &&
+            <div className={'cart__bottom-info'}>
+              <div className={'cart__bottom-content'}>
+                Total price:
+                <span className={'cart__bottom-text'}>$</span>
+              </div>
+              <button className={'cart__bottom-btn'}>BUY</button>
             </div>
-            <button className={'cart__bottom-btn'}>BUY</button>
-          </div>
+          }
         </div>
       </div>
   );

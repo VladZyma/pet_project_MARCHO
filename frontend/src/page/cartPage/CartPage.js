@@ -12,11 +12,12 @@ const CartPage = () => {
     accum[product.id] = product;
     return accum;
   }, {});
+  let isProductsInCart = productsInCart.length;
 
   return (
       <section className={'cart-page'}>
         <Top title={'Cart'}/>
-        <Cart productsObj={productsObj} productsQuantityObj={value}/>
+        <Cart productsObj={productsObj} productsQuantityObj={value} isProductsInCart={isProductsInCart}/>
       </section>
   );
 };
