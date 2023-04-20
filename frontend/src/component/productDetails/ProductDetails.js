@@ -29,10 +29,9 @@ const ProductDetails = () => {
 
   useEffect(() => {
     dispatch(productActions.getProductById(productId));
-  }, []);
+  }, [dispatch, productId]);
 
   const selectSize = (event) => {
-    console.log(event.target.value);
     selectedSize = event.target.value;
   };
 
