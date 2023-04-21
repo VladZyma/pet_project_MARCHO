@@ -4,12 +4,14 @@ import {useDispatch, useSelector} from "react-redux";
 
 
 import './productDetails.scss';
+
 import {ProductDetailsSlider} from "../productDetailsSlider/ProductDetailsSlider";
 import {ProductStarRating} from "../productStarRating/ProductStarRating";
-
 import {productActions, cartActions} from "../../redux";
+import {useCreateProductObj} from "../../customHook";
 
 const ProductDetails = () => {
+
   const productColors = {
     blue: '#00aeef',
     red: '#f52574',
@@ -23,7 +25,6 @@ const ProductDetails = () => {
   const dispatch = useDispatch();
 
   const {product} = useSelector(state => state.productReducer);
-  console.log('Product:', product);
 
   let selectedSize = '';
 
@@ -35,24 +36,9 @@ const ProductDetails = () => {
     selectedSize = event.target.value;
   };
 
+  const productObj = useCreateProductObj(product, selectedSize);
+
   const addToCartHandler = () => {
-    let productPrice = product.price.current;
-
-    if (product.isSale) {
-      productPrice = product.price.sale;
-    }
-
-    const productObj = {
-      id: product._id,
-      title: product.title,
-      img: product.photo,
-      price: productPrice,
-      color: productColors[product.color],
-      size: selectedSize,
-      sku: product.sku,
-      quantity: product.quantity,
-    };
-
     dispatch(productActions.addProductInCart(productObj));
     dispatch(cartActions.addProductToCart(productId));
   };

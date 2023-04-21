@@ -7,7 +7,6 @@ const getAllProducts = createAsyncThunk(
     async ({page}, {rejectWithValue}) => {
       try {
         const {data} = await productService.getAllProducts(page);
-        console.log('DATA:', data);
         return data;
       } catch (e) {
         return rejectWithValue(e);
@@ -20,7 +19,6 @@ const getProductsByParams = createAsyncThunk(
     async ({page, values}, {rejectWithValue}) => {
       try {
         const {data} = await productService.getProductsByParams(page, values);
-        console.log('BYPARAMS:', data);
         return data;
       } catch (e) {
         return rejectWithValue(e);
@@ -49,8 +47,11 @@ const productSlice = createSlice({
       state.productsInCart.push(action.payload);
     },
     deleteProductInCart: (state, action) => {
-      const productIndex = state.productsInCart.findIndex(product => product.id = action.payload);
+      const productIndex = state.productsInCart.findIndex(product => product.id === action.payload);
       state.productsInCart.splice(productIndex, 1);
+    },
+    deleteAllProductsInCart: (state, action) => {
+      state.productsInCart.splice(0, state.productsInCart.length);
     },
   },
   extraReducers: builder =>
@@ -80,7 +81,15 @@ const productSlice = createSlice({
           })
 });
 
-const {reducer: productReducer, actions: {getProductById, addProductInCart, deleteProductInCart}} = productSlice;
+const {
+  reducer: productReducer,
+  actions: {
+    getProductById,
+    addProductInCart,
+    deleteProductInCart,
+    deleteAllProductsInCart
+  }
+} = productSlice;
 
 const productActions = {
   getAllProducts,
@@ -88,6 +97,7 @@ const productActions = {
   getProductById,
   addProductInCart,
   deleteProductInCart,
+  deleteAllProductsInCart,
 };
 
 export {

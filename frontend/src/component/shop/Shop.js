@@ -30,7 +30,6 @@ const Shop = () => {
       nextPage,
       totalPages,
       loading,
-      error
     }
   } = useSelector(state => state.productReducer);
 

@@ -1,0 +1,60 @@
+@import '../../style/styles';
+
+.size-pop-up,
+.size-pop-up-grid {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translate(-50%, 300%);
+  width: 100%;
+  max-width: 330px;
+  height: 50px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #fff;
+  box-shadow: 0px 5px 30px 0px rgba(152, 152, 152, 0.2);
+  border-radius: 23px;
+  z-index: 5;
+  &.size-pop-up--show {
+    transform: translate(-50%, 0%);
+  }
+  &__form {
+    display: flex;
+  }
+  &__form-label {
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+  &__form-input {
+    @extend %checkbox-hidden;
+    &:checked {
+      &+.product__content-size-form-checkbox {
+        border-color: $accent;
+      }
+    }
+  }
+  &__form-checkbox {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $border;
+    cursor: pointer;
+    transition: border-color .3s;
+    &:hover {
+      border-color: $accent;
+    }
+  }
+}
+
+.size-pop-up-grid {
+  border-radius: unset;
+  &.size-pop-up-grid--show {
+    transform: translate(-74%, 50%);
+  }
+}
+
+

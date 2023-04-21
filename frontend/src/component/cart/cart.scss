@@ -21,7 +21,7 @@
     object-fit: cover;
   }
   &__product-content {
-    width: 242px;
+    width: 252px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -74,6 +74,10 @@
     line-height: 28px;
     &:hover {
       color: $accent;
+    }
+    &:disabled {
+      cursor: default;
+      pointer-events: none;
     }
   }
   &__product-del-btn {

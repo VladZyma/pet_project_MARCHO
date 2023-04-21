@@ -26,6 +26,9 @@ const cartSlice = createSlice({
     deleteProductFromCart: (state, action) => {
       delete state.value[action.payload];
     },
+    deleteAllProductsFromCart: (state, action) => {
+      Object.keys(state.value).forEach(key => delete state.value[key]);
+    },
   },
 });
 
@@ -36,6 +39,7 @@ const {
   incrementProductQuantity,
   decrementProductQuantity,
   deleteProductFromCart,
+    deleteAllProductsFromCart,
   }
 } = cartSlice;
 const cartActions = {
@@ -43,6 +47,7 @@ const cartActions = {
   incrementProductQuantity,
   decrementProductQuantity,
   deleteProductFromCart,
+  deleteAllProductsFromCart
 };
 
 export {

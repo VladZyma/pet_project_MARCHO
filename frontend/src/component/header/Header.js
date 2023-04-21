@@ -14,6 +14,7 @@ const Header = () => {
   const [userName, setUserName] = useState('');
 
   const {isLoggedIn} = useSelector(state => state.oauthReducer);
+  const {productsInCart} = useSelector(state => state.productReducer);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -97,12 +98,16 @@ const Header = () => {
                 <span className={'user-nav__link-num'}>0</span>
               </NavLink>
               <NavLink className={'user-nav__link'} to={'/cart'}>
-                <svg width={22} height={20}>
+                <svg width={20} height={20}>
                   <path fill="#29282d"
                         d="M1527.44 65a2.724 2.724 0 1 1 2.74-2.724 2.738 2.738 0 0 1-2.74 2.724Zm0-3.814a1.09 1.09 0 1 0 1.09 1.09 1.094 1.094 0 0 0-1.09-1.093Zm1.75-2.806h-12.81a.823.823 0 0 1-.8-.628l-2.68-11.115h-2.06a.817.817 0 1 1 0-1.634h2.71a.824.824 0 0 1 .8.627l.74 3.078h16.1a.818.818 0 0 1 .8 1.014l-2 8.038a.822.822 0 0 1-.8.617Zm-12.16-1.635h11.52l1.59-6.4h-14.65Zm.45 8.255a2.724 2.724 0 1 1 2.74-2.724 2.738 2.738 0 0 1-2.74 2.724Zm0-3.814a1.09 1.09 0 1 0 1.09 1.09 1.094 1.094 0 0 0-1.09-1.093Z"
                         transform="translate(-1510 -45)"/>
                 </svg>
-                <span className={'user-nav__link-num'}>4</span>
+                {
+                  productsInCart.length > 0
+                    &&
+                  <span className={'user-nav__link-num'}>{productsInCart.length}</span>
+                }
               </NavLink>
             </div>
           </div>

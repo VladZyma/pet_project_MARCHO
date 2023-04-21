@@ -7,9 +7,11 @@ const CartPage = () => {
   const {value} = useSelector(state => state.cartReducer);
 
   const productsObj = productsInCart.reduce((accum, product) => {
+    console.log('productsObg');
     accum[product.id] = product;
     return accum;
   }, {});
+
   let isProductsInCart = productsInCart.length;
 
   return (
