@@ -26,6 +26,9 @@ const oauthService = {
   getUserName: () => {
     return localStorage.getItem(_userName);
   },
+  getUserId: () => {
+    return localStorage.getItem(_userId);
+  },
   deleteAccessTokens: () => {
     localStorage.removeItem(_accessTokenKey);
     localStorage.removeItem(_refreshTokenKey);
