@@ -8,7 +8,7 @@ import './productDetails.scss';
 import {ProductDetailsSlider} from "../productDetailsSlider/ProductDetailsSlider";
 import {ProductStarRating} from "../productStarRating/ProductStarRating";
 import {productActions, cartActions} from "../../redux";
-import {useCreateProductObj} from "../../customHook";
+import {createProductObj} from "../../helper";
 
 const ProductDetails = () => {
 
@@ -26,6 +26,8 @@ const ProductDetails = () => {
 
   const {product} = useSelector(state => state.productReducer);
 
+  console.log('ProductDetails:', product);
+
   let selectedSize = '';
 
   useEffect(() => {
@@ -36,11 +38,13 @@ const ProductDetails = () => {
     selectedSize = event.target.value;
   };
 
-  const productObj = useCreateProductObj(product, selectedSize);
-
   const addToCartHandler = () => {
+
+    const productObj = createProductObj(product, selectedSize);
+
     dispatch(productActions.addProductInCart(productObj));
     dispatch(cartActions.addProductToCart(productId));
+
   };
 
   return (
