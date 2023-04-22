@@ -12,7 +12,7 @@ const oauthController = {
 
       await oauthService.addAccessTokensToDB({_user_id: userInfo._id, ...tokensPair});
 
-      res.status(200).json({name: userInfo.name, ...tokensPair});
+      res.status(200).json({userId: userInfo._id, name: userInfo.name, ...tokensPair});
     } catch (e) {
       next(e);
     }
