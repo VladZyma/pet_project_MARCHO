@@ -1,13 +1,10 @@
 import axios from 'axios';
 import {createBrowserHistory} from "history";
-import {useDispatch} from 'react-redux';
 
 import {baseURL} from "../config";
 import {oauthService} from "./oauth.service";
-import {oauthActions} from "../redux";
 
 const history = createBrowserHistory();
-const dispatch = useDispatch();
 let isRefreshing = false;
 
 const axiosService = axios.create({baseURL});
@@ -35,7 +32,6 @@ axiosService.interceptors.response.use((config) => {
       oauthService.setAccessTokens(data);
     } catch (e) {
       oauthService.deleteAccessTokens();
-      dispatch(oauthActions.logIn(false));
       history.replace('/login?expSession=true');
     }
 
