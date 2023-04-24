@@ -33,6 +33,18 @@ const oauthController = {
       next(e);
     }
   },
+  logout: async (req, res, next) => {
+    try {
+      const tokenInfo = req.tokenInfo;
+
+      await oauthService.deleteAccessTokensById(tokenInfo._id);
+
+      res.sendStatus(204);
+    } catch (e) {
+      next(e);
+    }
+  },
+
 };
 
 module.exports = oauthController;

@@ -13,5 +13,10 @@ router.post(
     oauthMiddleware.checkToken('refreshToken'),
     oauthController.refresh,
 );
+router.post(
+    '/logout',
+    oauthMiddleware.checkToken('accessToken'),
+    oauthController.logout,
+);
 
 module.exports = router;
