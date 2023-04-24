@@ -9,7 +9,7 @@ const _userId = 'userId';
 const oauthService = {
   register: (user) => axiosService.post(urls.register, user),
   login: (user) => axiosService.post(urls.auth.login, user),
-  refresh: (refresh) => axiosService.post(urls.auth.refresh, {refresh}),
+  refresh: (refreshToken) => axiosService.post(urls.auth.refresh, {refreshToken}),
 
   setAccessTokens: ({accessToken, refreshToken, name, userId}) => {
     localStorage.setItem(_accessTokenKey, accessToken);
@@ -33,6 +33,7 @@ const oauthService = {
     localStorage.removeItem(_accessTokenKey);
     localStorage.removeItem(_refreshTokenKey);
     localStorage.removeItem(_userName);
+    localStorage.removeItem(_userId);
   },
 };
 
