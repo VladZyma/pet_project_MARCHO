@@ -17,6 +17,22 @@ const oauthController = {
       next(e);
     }
   },
+  refresh: async (req, res, next) => {
+    try {
+      const tokenInfo = req.tokenInfo;
+
+      const tokenPair = oauthService.generateAccessTokens({id: tokenInfo._user_id});
+
+      await Promise.all([
+          oauthService.deleteAccessTokensById(tokenInfo._id),
+          oauthService.addAccessTokensToDB({_user_id: tokenInfo._user_id, ...tokenPair}),
+      ]);
+
+      res.status(201).json(tokenPair);
+    } catch (e) {
+      next(e);
+    }
+  },
 };
 
 module.exports = oauthController;

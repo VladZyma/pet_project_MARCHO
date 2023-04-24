@@ -8,5 +8,10 @@ router.post(
     oauthMiddleware.isUserByEmailExists,
     oauthController.login,
 );
+router.post(
+    '/refresh',
+    oauthMiddleware.checkToken('refreshToken'),
+    oauthController.refresh,
+);
 
 module.exports = router;
