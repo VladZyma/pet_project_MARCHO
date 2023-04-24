@@ -5,15 +5,22 @@ import './productList.scss';
 
 import {ProductCard} from "../productCard/ProductCard";
 import {productActions} from "../../redux";
+import {oauthService} from "../../service";
 
 const ProductList = () => {
   const dispatch = useDispatch();
-  const {products} = useSelector(state => state.productReducer);
+  // const accessToken = oauthService.getAccessToken();
+  const {products, promoProducts} = useSelector(state => state.productReducer);
+  const {isLoggedIn} = useSelector(state => state.oauthReducer);
 
   useEffect(() => {
-    dispatch(productActions.getAllProducts({page: '1'}));
-  }, [dispatch]);
-  console.log(products);
+    if (!isLoggedIn) {
+      dispatch(productActions.getPromoProducts({page: '1'}));
+    } else {
+      dispatch(productActions.getAllProducts({page: '1'}));
+    }
+  }, [dispatch, isLoggedIn]);
+  console.log(promoProducts);
 
   return (
       <section className={'product-list'}>
@@ -26,7 +33,13 @@ const ProductList = () => {
             incididunt ut labore et dolore aliqua.
           </p>
           <div className={'product-list__inner'}>
-            {products.products?.map(product => <ProductCard product={product} key={product._id}/>)}
+            {
+              isLoggedIn
+                  ?
+                  products.products?.map(product => <ProductCard product={product} key={product._id}/>)
+                  :
+                  promoProducts.products?.map(product => <ProductCard product={product} key={product._id}/>)
+            }
           </div>
         </div>
       </section>

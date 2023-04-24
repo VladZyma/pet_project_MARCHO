@@ -1,7 +1,7 @@
 import {useDispatch} from "react-redux";
 
 import {productActions, cartActions} from "../../redux";
-import {useCreateProductObj} from "../../customHook";
+import {createProductObj} from "../../helper";
 
 import './sizePopUp.scss';
 
@@ -34,7 +34,7 @@ const ProductSizePopUp = (props) => {
     addToCartHandler();
   };
 
-  const productObj = useCreateProductObj(product, selectedSize);
+  const productObj = createProductObj(product, selectedSize);
 
   const addToCartHandler = () => {
     dispatch(productActions.addProductInCart(productObj));

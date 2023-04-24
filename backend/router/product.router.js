@@ -1,6 +1,6 @@
 const router = require('express').Router();
 
-const {productMiddleware, fileMiddleware} = require('../middleware');
+const {productMiddleware, fileMiddleware, oauthMiddleware} = require('../middleware');
 const {productController} = require('../controller');
 
 router.post(
@@ -9,6 +9,11 @@ router.post(
 );
 router.get(
     '/',
+    oauthMiddleware.checkToken('accessToken'),
+    productController.getAllProducts,
+);
+router.get(
+    '/promo',
     productController.getAllProducts,
 );
 router.patch(

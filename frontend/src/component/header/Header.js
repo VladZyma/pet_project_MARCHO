@@ -41,7 +41,8 @@ const Header = () => {
                   <NavLink className={'menu__list-link'} to="/home">HOME</NavLink>
                 </li>
                 <li className={'menu__list-item'}>
-                  <NavLink className={'menu__list-link'} to="/shop">SHOP</NavLink>
+                  {/*<NavLink className={'menu__list-link'} to="/shop">SHOP</NavLink>*/}
+                  <NavLink className={'menu__list-link'} to={isLoggedIn ? '/shop' : '/login'}>SHOP</NavLink>
                 </li>
                 <li className={'menu__list-item'}>
                   <NavLink className={'menu__list-link'} to="/blog">BLOG</NavLink>

@@ -9,7 +9,18 @@ const getAllProducts = createAsyncThunk(
         const {data} = await productService.getAllProducts(page);
         return data;
       } catch (e) {
-        return rejectWithValue(e);
+        return rejectWithValue(e.message);
+      }
+    }
+);
+const getPromoProducts = createAsyncThunk(
+    'productSlice/getPromoProducts',
+    async ({page}, {rejectWithValue}) => {
+      try {
+        const {data} = await productService.getPromoProducts(page);
+        return data;
+      } catch (e) {
+        return rejectWithValue(e.message);
       }
     }
 );
@@ -21,13 +32,14 @@ const getProductsByParams = createAsyncThunk(
         const {data} = await productService.getProductsByParams(page, values);
         return data;
       } catch (e) {
-        return rejectWithValue(e);
+        return rejectWithValue(e.message);
       }
     }
 );
 
 const initialState = {
   products: [],
+  promoProducts: [],
   productsInCart: [],
   product: {},
   loading: false,
@@ -39,9 +51,15 @@ const productSlice = createSlice({
   initialState,
   reducers: {
     getProductById: (state, action) => {
-      const productId = action.payload;
-      const foundProduct = state.products.products?.find(product => product._id === productId);
-      state.product = foundProduct;
+        const productId = action.payload;
+
+      if (state.products.products?.length > 0) {
+        const foundProduct = state.products.products?.find(product => product._id === productId);
+        state.product = foundProduct;
+      } else {
+        const foundProduct = state.promoProducts.products?.find(product => product._id === productId);
+        state.product = foundProduct;
+      }
     },
     addProductInCart: (state, action) => {
       state.productsInCart.push(action.payload);
@@ -64,6 +82,18 @@ const productSlice = createSlice({
             state.loading = true;
           })
           .addCase(getAllProducts.rejected, (state, action) => {
+            state.error = action.payload;
+            state.loading = false;
+          })
+
+          .addCase(getPromoProducts.fulfilled, (state, action) => {
+            state.promoProducts = action.payload;
+            state.loading = false;
+          })
+          .addCase(getPromoProducts.pending, (state, action) => {
+            state.loading = true;
+          })
+          .addCase(getPromoProducts.rejected, (state, action) => {
             state.error = action.payload;
             state.loading = false;
           })
@@ -93,6 +123,7 @@ const {
 
 const productActions = {
   getAllProducts,
+  getPromoProducts,
   getProductsByParams,
   getProductById,
   addProductInCart,

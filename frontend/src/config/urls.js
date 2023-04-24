@@ -7,7 +7,11 @@ const urls = {
         refresh: '/auth/refresh',
     },
     users: '/users',
-    products: '/products',
+    // products: '/products',
+    products: {
+        all: '/products',
+        promo: '/products/promo',
+    }
 };
 
 export {

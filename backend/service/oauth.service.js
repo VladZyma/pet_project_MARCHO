@@ -18,8 +18,8 @@ const oauthService = {
   },
 
   generateAccessTokens: (dataToSign) => {
-    const accessToken = jwt.sign(dataToSign, config.ACCESS_TOKEN_SECRET_WORD, {expiresIn: '10m'});
-    const refreshToken = jwt.sign(dataToSign, config.REFRESH_TOKEN_SECRET_WORD, {expiresIn: '20m'});
+    const accessToken = jwt.sign(dataToSign, config.ACCESS_TOKEN_SECRET_WORD, {expiresIn: '15s'});
+    const refreshToken = jwt.sign(dataToSign, config.REFRESH_TOKEN_SECRET_WORD, {expiresIn: '30s'});
 
     return {
       accessToken,
@@ -46,6 +46,12 @@ const oauthService = {
   },
   addAccessTokensToDB: async (tokenInfo) => {
     return OAuth.create(tokenInfo);
+  },
+  findAccessToken: async (tokenInfo) => {
+    return OAuth.findOne(tokenInfo);
+  },
+  deleteAccessTokensById: async (tokenId) => {
+    await OAuth.findByIdAndDelete(tokenId);
   },
 };
 
