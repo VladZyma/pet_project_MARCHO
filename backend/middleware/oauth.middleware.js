@@ -20,7 +20,11 @@ const oauthMiddleware = {
   },
   checkToken: (tokenType) => async (req, res, next) => {
     try {
-      const token = req.get('Authorization');
+      let token = req.get('Authorization');
+
+      if (tokenType === 'refreshToken') {
+        token = req.body.refreshToken;
+      }
 
       if (!token) {
         throw new ApiError('No access token', 401);
