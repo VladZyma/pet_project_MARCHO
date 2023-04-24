@@ -24,10 +24,15 @@ const Header = () => {
   }, [isLoggedIn]);
 
 
-  const logoutHandler = () => {
-    oauthService.deleteAccessTokens();
-    setUserName('');
-    dispatch(oauthActions.logIn(false));
+  const logoutHandler = async () => {
+    try {
+      await oauthService.logout();
+      oauthService.deleteAccessTokens();
+      setUserName('');
+      dispatch(oauthActions.logIn(false));
+    } catch (e) {
+      console.log('logoutHandler:',e);
+    }
   };
 
   return (

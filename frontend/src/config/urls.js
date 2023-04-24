@@ -5,6 +5,7 @@ const urls = {
     auth: {
         login: '/auth/login',
         refresh: '/auth/refresh',
+        logout: '/auth/logout',
     },
     users: '/users',
     products: {

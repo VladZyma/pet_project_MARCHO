@@ -10,6 +10,7 @@ const oauthService = {
   register: (user) => axiosService.post(urls.register, user),
   login: (user) => axiosService.post(urls.auth.login, user),
   refresh: (refreshToken) => axiosService.post(urls.auth.refresh, {refreshToken}),
+  logout: () => axiosService.post(urls.auth.logout),
 
   setAccessTokens: ({accessToken, refreshToken, name, userId}) => {
     localStorage.setItem(_accessTokenKey, accessToken);
