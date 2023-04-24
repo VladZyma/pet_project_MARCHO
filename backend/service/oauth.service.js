@@ -18,8 +18,8 @@ const oauthService = {
   },
 
   generateAccessTokens: (dataToSign) => {
-    const accessToken = jwt.sign(dataToSign, config.ACCESS_TOKEN_SECRET_WORD, {expiresIn: '15s'});
-    const refreshToken = jwt.sign(dataToSign, config.REFRESH_TOKEN_SECRET_WORD, {expiresIn: '30s'});
+    const accessToken = jwt.sign(dataToSign, config.ACCESS_TOKEN_SECRET_WORD, {expiresIn: '30m'});
+    const refreshToken = jwt.sign(dataToSign, config.REFRESH_TOKEN_SECRET_WORD, {expiresIn: '60m'});
 
     return {
       accessToken,
