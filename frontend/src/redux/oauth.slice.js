@@ -14,10 +14,9 @@ const oauthSlice = createSlice({
   }
 });
 
-const {reducer: oauthReducer, actions: {logIn, logOut}} = oauthSlice;
+const {reducer: oauthReducer, actions: {logIn}} = oauthSlice;
 const oauthActions = {
   logIn,
-  logOut,
 };
 
 export {
