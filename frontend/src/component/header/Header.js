@@ -15,6 +15,7 @@ const Header = () => {
 
   const {isLoggedIn} = useSelector(state => state.oauthReducer);
   const {productsInCart} = useSelector(state => state.productReducer);
+  const {user} = useSelector(state => state.userReducer);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -46,7 +47,6 @@ const Header = () => {
                   <NavLink className={'menu__list-link'} to="/home">HOME</NavLink>
                 </li>
                 <li className={'menu__list-item'}>
-                  {/*<NavLink className={'menu__list-link'} to="/shop">SHOP</NavLink>*/}
                   <NavLink className={'menu__list-link'} to={isLoggedIn ? '/shop' : '/login'}>SHOP</NavLink>
                 </li>
                 <li className={'menu__list-item'}>
@@ -98,7 +98,11 @@ const Header = () => {
                         d="M1484.78 49.589a6.683 6.683 0 0 0-4.17-4.371c-1.71-.595-3.75 0-5.58 1.611-1.83-1.569-3.88-2.122-5.58-1.569a6.884 6.884 0 0 0-4.17 4.371c-.47 1.57-.51 4.117 1.95 7.215 1.11 1.4 2.82 3.4 4.22 4.965 2.68 3.014 3.11 3.183 3.49 3.183h.17c.39 0 .77-.168 3.45-3.224a224.86 224.86 0 0 0 4.22-4.966c2.47-3.098 2.47-5.645 2-7.215Zm-3.28 6.2c-1.96 2.462-5.32 6.324-6.47 7.385-1.15-1.061-4.52-4.924-6.48-7.385-1.61-1.994-2.21-3.947-1.7-5.687a4.986 4.986 0 0 1 3.11-3.225c1.23-.467 2.9.169 4.43 1.655a.84.84 0 0 0 1.06.126.447.447 0 0 0 .22-.17c1.53-1.443 3.19-2.079 4.42-1.655a5.168 5.168 0 0 1 3.11 3.268c.51 1.699-.08 3.689-1.7 5.683Z"
                         transform="translate(-1465.03 -45)"/>
                 </svg>
-                <span className={'user-nav__link-num'}>0</span>
+                {
+                  user.wishlist?.length > 0 && isLoggedIn
+                    &&
+                  <span className={'user-nav__link-num'}>{user.wishlist?.length}</span>
+                }
               </NavLink>
               <NavLink className={'user-nav__link'} to={`${isLoggedIn ? '/cart' : '/login'}`}>
                 <svg width={20} height={20}>

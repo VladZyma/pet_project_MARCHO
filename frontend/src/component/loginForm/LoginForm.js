@@ -8,7 +8,7 @@ import './loginForm.scss';
 
 import {userValidator} from "../../validator";
 import {oauthService} from "../../service";
-import {oauthActions} from "../../redux";
+import {oauthActions, userActions} from "../../redux";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -24,10 +24,12 @@ const LoginForm = () => {
   const submitHandler = async (user) => {
     try {
       const {data} = await oauthService.login(user);
-      console.log('DATA:',data)
+
       oauthService.setAccessTokens(data);
 
       dispatch(oauthActions.logIn(true));
+
+      dispatch(userActions.getUserById({userId: data.userId}));
 
       navigate('/home');
     } catch (e) {

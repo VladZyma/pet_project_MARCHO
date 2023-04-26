@@ -38,6 +38,17 @@ const productController = {
       next(e);
     }
   },
+  getProductsFromWishlist: async (req, res, next) => {
+    try {
+      const productsIdArr = req.body;
+
+      const products = await productService.findProductsFromWishlist(productsIdArr);
+
+      res.status(200).json(products);
+    } catch (e) {
+      next(e);
+    }
+  },
 };
 
 

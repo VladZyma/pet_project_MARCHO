@@ -14,7 +14,7 @@ const ProductSizePopUp = (props) => {
     setShowSizePopUp,
     showSizePopUp,
     showSizePopUpGrid,
-    setShowSizePopUpGrid
+    setShowSizePopUpGrid,
   } = props;
 
   const dispatch = useDispatch();

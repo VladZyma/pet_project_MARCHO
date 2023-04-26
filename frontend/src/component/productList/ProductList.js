@@ -9,7 +9,7 @@ import {oauthService} from "../../service";
 
 const ProductList = () => {
   const dispatch = useDispatch();
-  // const accessToken = oauthService.getAccessToken();
+
   const {products, promoProducts} = useSelector(state => state.productReducer);
   const {isLoggedIn} = useSelector(state => state.oauthReducer);
 
@@ -20,7 +20,6 @@ const ProductList = () => {
       dispatch(productActions.getAllProducts({page: '1'}));
     }
   }, [dispatch, isLoggedIn]);
-  console.log(promoProducts);
 
   return (
       <section className={'product-list'}>

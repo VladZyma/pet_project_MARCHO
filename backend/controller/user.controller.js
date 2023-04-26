@@ -32,6 +32,49 @@ const userController = {
       next(e);
     }
   },
+  getUserById: async (req, res, next) => {
+    try {
+      const userId = req.userId;
+
+      const user = await userService.findUserById(userId);
+
+      if (!user) {
+        throw new ApiError('User not found!!!', 404);
+      }
+
+      res.status(200).json(user);
+    } catch (e) {
+      next(e);
+    }
+  },
+  updateUserWishListById: async (req, res, next) => {
+    try {
+      const userId = req.userId;
+      const {productId} = req.body;
+
+      const updatedUser = await userService.findUpdateUserWishListById(userId, productId);
+
+      if (!updatedUser) {
+        throw new ApiError('User not found!!!', 404);
+      }
+
+      res.status(201).json(updatedUser);
+    } catch (e) {
+      next(e);
+    }
+  },
+  deleteProductFromUserWishListById: async (req, res, next) => {
+    try {
+      const {userId} = req.params;
+      const {productId} = req.body;
+
+      const userInfo = await userService.findDeleteProductFromUserWishListById(userId, productId);
+
+      res.status(200).json(userInfo);
+    } catch (e) {
+      next(e);
+    }
+  },
 };
 
 module.exports = userController;

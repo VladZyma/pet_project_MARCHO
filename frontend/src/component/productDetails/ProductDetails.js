@@ -1,4 +1,4 @@
-import {useParams} from "react-router-dom";
+import {useParams, useNavigate} from "react-router-dom";
 import {useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 
@@ -23,8 +23,10 @@ const ProductDetails = () => {
 
   const {productId} = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const {product} = useSelector(state => state.productReducer);
+  const {isLoggedIn} = useSelector(state => state.oauthReducer);
 
   console.log('ProductDetails:', product);
 
@@ -40,10 +42,14 @@ const ProductDetails = () => {
 
   const addToCartHandler = () => {
 
-    const productObj = createProductObj(product, selectedSize);
+    if (!isLoggedIn) {
+      navigate('/login');
+    } else {
+      const productObj = createProductObj(product, selectedSize);
 
-    dispatch(productActions.addProductInCart(productObj));
-    dispatch(cartActions.addProductToCart(productId));
+      dispatch(productActions.addProductInCart(productObj));
+      dispatch(cartActions.addProductToCart(productId));
+    }
 
   };
 

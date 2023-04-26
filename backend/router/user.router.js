@@ -13,5 +13,19 @@ router.get(
     '/',
     userController.getAllUsers,
 );
+router.get(
+    '/:userId',
+    userMiddleware.isUserIdValid,
+    userController.getUserById,
+);
+router.post(
+    '/wishList/:userId',
+    userMiddleware.isUserIdValid,
+    userController.updateUserWishListById,
+);
+router.post(
+    '/wishList/remove/:userId',
+    userController.deleteProductFromUserWishListById,
+);
 
 module.exports = router;

@@ -1,0 +1,84 @@
+@import '../../style/styles';
+
+.wishlist {
+  padding: 120px 0 100px;
+  &__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  &__product-wrapper {
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 480px;
+    display: flex;
+    position: relative;
+    overflow: hidden;
+  }
+  &__product-img-wrapper {
+    margin-right: 40px;
+    width: 280px;
+  }
+  &__product-img {
+    width: 100%;
+    object-fit: cover;
+  }
+  &__product-title {
+    margin-bottom: 10px;
+    @extend %roboto-500;
+    font-size: 22px;
+    color: $title;
+  }
+  &__product-price-text {
+    display: block;
+    @extend %roboto-400;
+    color: $title;
+  }
+  &__product-price {
+    margin-bottom: 10px;
+    display: flex;
+  }
+  &__product-price-old {
+    @extend %roboto-400;
+    color: $title;
+  }
+  &__product-price-old.wishlist__product-price-old--line-throw {
+    margin-left: 20px;
+    text-decoration: line-through;
+    color: #ccccce;
+  }
+  &__product-price-current {
+    @extend %roboto-500;
+    color: $title;
+  }
+  &__product-color-wrapper {
+    margin-bottom: 20px;
+    @extend %roboto-400;
+    color: $title;
+  }
+  &__product-color {
+    width: 100px;
+    height: 30px;
+  }
+  &__product-buttons-wrapper {
+    //display: flex;
+  }
+  &__product-button {
+    display: block;
+    padding: 5px 10px;
+    border: none;
+    background-color: $title;
+    @extend %roboto-400;
+    color: #fff;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all .3s;
+    &:first-child {
+      margin-bottom: 7px;
+    }
+    &:hover {
+      background-color: $accent;
+      box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);
+    }
+  }
+}
