@@ -111,7 +111,7 @@ const Header = () => {
                         transform="translate(-1510 -45)"/>
                 </svg>
                 {
-                  productsInCart.length > 0
+                  productsInCart.length > 0 && isLoggedIn
                     &&
                   <span className={'user-nav__link-num'}>{productsInCart.length}</span>
                 }
