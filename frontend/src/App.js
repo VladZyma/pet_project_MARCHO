@@ -1,4 +1,6 @@
 import {Routes, Route, Navigate} from 'react-router-dom';
+import {useState} from "react";
+
 
 import './App.scss';
 
@@ -17,10 +19,11 @@ import {
 import {Header, Footer, Shop, ProductDetails} from "./component";
 
 function App() {
+  const [sticky, setSticky] = useState({isSticky: false, offset: 0});
 
   return (
-      <div className="App">
-        <Header/>
+      <div className="App" style={{marginTop: sticky.offset}}>
+        <Header sticky={sticky} setSticky={setSticky}/>
         <Routes>
           <Route path={'/'} element={<MainLayout/>}>
             <Route index element={<Navigate to={'/home'}/>}/>

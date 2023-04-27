@@ -2,11 +2,33 @@
 
 .header {
   padding: 40px 0;
+  background-color: #fff;
+  //position: sticky;
+  //top: 0;
+  //z-index: 999;
 
   &__inner {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  &.sticky {
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    width: 100%;
+    transition: all 0.5s ease;
+    animation: smoothScroll 1s forwards;
+  }
+  @keyframes smoothScroll {
+    0% {
+      transform: translateY(-142px);
+    }
+
+    100% {
+      transform: translateY(0px);
+    }
   }
 }
 

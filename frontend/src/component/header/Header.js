@@ -1,5 +1,5 @@
 import {NavLink} from 'react-router-dom';
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import {useSelector, useDispatch} from "react-redux";
 
 import './header.scss';
@@ -8,7 +8,8 @@ import logo from '../../image/logo.png';
 import {oauthService} from "../../service";
 import {oauthActions} from "../../redux";
 
-const Header = () => {
+const Header = ({sticky, setSticky}) => {
+
   const dispatch = useDispatch();
 
   const [userName, setUserName] = useState('');
@@ -36,8 +37,34 @@ const Header = () => {
     }
   };
 
+  //Sticky header============
+  // const [sticky, setSticky] = useState({isSticky: false, offset: 0});
+  const headerRef = useRef(null);
+
+  const handleScroll = (elTopOffset, elHeight) => {
+    if(window.scrollY > (elTopOffset + elHeight)) {
+      setSticky({isSticky: true, offset: elHeight});
+    } else {
+      setSticky({isSticky: false, offset: 0});
+    }
+  };
+
+  useEffect(() => {
+    let header = headerRef.current.getBoundingClientRect();
+    const handleScrollEvent = () => {
+      handleScroll(header.top, header.height);
+    };
+
+    window.addEventListener('scroll', handleScrollEvent);
+
+    return () => {
+      window.removeEventListener('scroll', handleScrollEvent);
+    }
+  }, []);
+  //=========================
+
   return (
-      <header className={'header'}>
+      <header className={`header${sticky.isSticky ? ' sticky' : ''}`} ref={headerRef}>
         <div className={'container'}>
           <div className={'header__inner'}>
             <img className={'logo'} src={logo} alt="logo"/>
