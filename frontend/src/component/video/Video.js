@@ -1,5 +1,6 @@
 import {Link} from 'react-router-dom';
 import {useSelector} from "react-redux";
+import {useState} from "react";
 import {DefaultPlayer} from 'react-html5video';
 
 
@@ -12,13 +13,15 @@ const Video = () => {
 
   const {isLoggedIn} = useSelector(state => state.oauthReducer);
 
+  const [isShowVideo, setIsShowVideo] = useState(false);
+
   return (
       <section className={'video'}>
         <div className={'container'}>
           <div className={'video__inner'}>
             <div className={'video__img-wrapper'}>
               <img className={'video__img'} src={videoImg} alt="video"/>
-              <Link className={'video__play-button'} to={'#'}>
+              <Link className={'video__play-button'} to={'#'} onClick={() => setIsShowVideo(true)}>
                 <svg width={130} height={130}>
                   <circle cx={65} cy={65} r={65} style={{opacity: 0.2, fill: "#fe3e57",}}/>
                   <circle cx={65} cy={65} r={55} style={{opacity: 0.6, fill: "#fe3e57",}}/>
@@ -29,9 +32,20 @@ const Video = () => {
                   />
                 </svg>
               </Link>
-              {/*<DefaultPlayer autoPlay loop>*/}
-              {/*  <source src={video} type={'video/webm'}/>*/}
-              {/*</DefaultPlayer>*/}
+              <div className={'video__player-wrapper'} >
+                <span className={isShowVideo ? 'video__player-close--show' : 'video__player-close'}
+                      onClick={() => setIsShowVideo(false)}
+                >
+                   <svg viewBox="0 0 384 512">
+                    <path fill="#fff" width="30px" height="30px"
+                      d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3l105.4 105.3c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256l105.3-105.4z"
+                    />
+                   </svg>
+                </span>
+                <DefaultPlayer className={isShowVideo ? 'video__player--show' : 'video__player'} autoPlay>
+                  <source src={video} type={'video/webm'}/>
+                </DefaultPlayer>
+              </div>
             </div>
             <div className={'video__content'}>
               <p className={'video__subtitle'}>
