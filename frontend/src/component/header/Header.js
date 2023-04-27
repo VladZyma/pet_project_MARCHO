@@ -38,7 +38,6 @@ const Header = ({sticky, setSticky}) => {
   };
 
   //Sticky header============
-  // const [sticky, setSticky] = useState({isSticky: false, offset: 0});
   const headerRef = useRef(null);
 
   const handleScroll = (elTopOffset, elHeight) => {
