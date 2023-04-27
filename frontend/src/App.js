@@ -19,11 +19,13 @@ import {
 import {Header, Footer, Shop, ProductDetails} from "./component";
 
 function App() {
+
+  const [userName, setUserName] = useState('');
   const [sticky, setSticky] = useState({isSticky: false, offset: 0});
 
   return (
       <div className="App" style={{marginTop: sticky.offset}}>
-        <Header sticky={sticky} setSticky={setSticky}/>
+        <Header sticky={sticky} setSticky={setSticky} userName={userName} setUserName={setUserName}/>
         <Routes>
           <Route path={'/'} element={<MainLayout/>}>
             <Route index element={<Navigate to={'/home'}/>}/>
@@ -44,7 +46,7 @@ function App() {
             <Route path={'/cart'} element={<CartPage/>}/>
           </Route>
         </Routes>
-        <Footer/>
+        <Footer  setUserName={setUserName}/>
       </div>
   );
 }

@@ -10,6 +10,8 @@
   }
 
   &.sticky {
+    border-bottom: 1px solid $border;
+    box-shadow: 0 -6px 7px 0px $border inset;
     position: fixed;
     top: 0;
     z-index: 999;
@@ -53,6 +55,16 @@
       @extend %roboto-700;
       color: $accent;
       border-bottom: 1px solid $accent;
+    }
+    &.login.active {
+      @extend %roboto-400;
+      color: $title;
+      border-bottom: none;
+      &:hover {
+        @extend %roboto-700;
+        color: $accent;
+        border-bottom: 1px solid $accent;
+      }
     }
   }
 }

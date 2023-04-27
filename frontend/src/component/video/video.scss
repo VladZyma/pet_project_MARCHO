@@ -38,7 +38,7 @@
     color: $accent;
   }
   &__title {
-    text-align: left;
+    text-align: left !important;
     margin-bottom: 40px;
   }
   &__text {

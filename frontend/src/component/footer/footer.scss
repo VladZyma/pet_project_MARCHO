@@ -81,6 +81,10 @@
     &:hover {
       color: $accent;
     }
+    &.footer__top-link--inactive {
+      pointer-events: none;
+      cursor: default;
+    }
   }
 
   &__top-item-text {

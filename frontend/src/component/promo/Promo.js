@@ -1,9 +1,12 @@
 import {Link} from "react-router-dom";
 import {useState, useEffect} from "react";
+import {useSelector} from "react-redux";
 
 import './promo.scss';
 
 const Promo = () => {
+
+  const {isLoggedIn} = useSelector(state => state.oauthReducer);
 
   const [timerSeconds, setTimerSeconds] = useState('');
   const [timerMinutes, setTimerMinutes] = useState('');
@@ -76,7 +79,7 @@ const Promo = () => {
                 <span className={'promo__timer-text'}>Seconds</span>
               </div>
             </div>
-            <Link className={'promo__link'} href={'#'}>
+            <Link className={'promo__link'} to={isLoggedIn ? '/shop' : '/login'}>
               shop now
             </Link>
           </div>

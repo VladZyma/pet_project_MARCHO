@@ -8,11 +8,11 @@ import logo from '../../image/logo.png';
 import {oauthService} from "../../service";
 import {oauthActions} from "../../redux";
 
-const Header = ({sticky, setSticky}) => {
+const Header = ({sticky, setSticky, userName, setUserName}) => {
 
   const dispatch = useDispatch();
 
-  const [userName, setUserName] = useState('');
+  // const [userName, setUserName] = useState('');
 
   const {isLoggedIn} = useSelector(state => state.oauthReducer);
   const {productsInCart} = useSelector(state => state.productReducer);
@@ -73,13 +73,19 @@ const Header = ({sticky, setSticky}) => {
                   <NavLink className={'menu__list-link'} to="/home">HOME</NavLink>
                 </li>
                 <li className={'menu__list-item'}>
-                  <NavLink className={'menu__list-link'} to={isLoggedIn ? '/shop' : '/login'}>SHOP</NavLink>
+                  <NavLink className={isLoggedIn ? 'menu__list-link' : 'menu__list-link login'} to={isLoggedIn ? '/shop' : '/login'}>
+                    SHOP
+                  </NavLink>
                 </li>
                 <li className={'menu__list-item'}>
-                  <NavLink className={'menu__list-link'} to="/blog">BLOG</NavLink>
+                  <NavLink className={'menu__list-link'} to="/blog">
+                    BLOG
+                  </NavLink>
                 </li>
                 <li className={'menu__list-item'}>
-                  <NavLink className={'menu__list-link'} to="/contact">CONTACT</NavLink>
+                  <NavLink className={'menu__list-link'} to="/contact">
+                    CONTACT
+                  </NavLink>
                 </li>
                 {userName
                     ?
@@ -90,13 +96,17 @@ const Header = ({sticky, setSticky}) => {
                     </li>
                     :
                     <li className={'menu__list-item'}>
-                      <NavLink className={'menu__list-link'} to="/login">LOG IN</NavLink>
+                      <NavLink className={'menu__list-link'} to="/login">
+                        LOG IN
+                      </NavLink>
                     </li>
                 }
                 {!userName
                     &&
                     <li className={'menu__list-item'}>
-                      <NavLink className={'menu__list-link'} to="/register">REGISTER</NavLink>
+                      <NavLink className={'menu__list-link'} to="/register">
+                        REGISTER
+                      </NavLink>
                     </li>
                 }
 

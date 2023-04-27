@@ -1,8 +1,11 @@
 import {Link} from 'react-router-dom';
+import {useSelector} from "react-redux";
 
 import './categoriesInfo.scss';
 
 const CategoriesInfo = () => {
+
+  const {isLoggedIn} = useSelector(state => state.oauthReducer);
 
   return (
       <section className={'categories-info'}>
@@ -67,7 +70,7 @@ const CategoriesInfo = () => {
                   <h5 className={'categories__item-title'}>
                     Shoes & Jewellry
                   </h5>
-                  <Link className={'categories__item-link'} href={'#'}>
+                  <Link className={'categories__item-link'} to={isLoggedIn ? '/shop' : '/login'}>
                     EXPLORE MORE
                   </Link>
                 </div>
@@ -78,7 +81,7 @@ const CategoriesInfo = () => {
                   <h5 className={'categories__item-title'}>
                     Clothes & Accessories
                   </h5>
-                  <Link className={'categories__item-link'} href={'#'}>
+                  <Link className={'categories__item-link'} to={isLoggedIn ? '/shop' : '/login'}>
                     EXPLORE MORE
                   </Link>
                 </div>
@@ -89,7 +92,7 @@ const CategoriesInfo = () => {
                   <h5 className={'categories__item-title'}>
                     Men’s Fashion
                   </h5>
-                  <Link className={'categories__item-link'} href={'#'}>
+                  <Link className={'categories__item-link'} to={isLoggedIn ? '/shop' : '/login'}>
                     EXPLORE MORE
                   </Link>
                 </div>
@@ -100,7 +103,7 @@ const CategoriesInfo = () => {
                   <h5 className={'categories__item-title'}>
                     Girl’s Fashion
                   </h5>
-                  <Link className={'categories__item-link'} href={'#'}>
+                  <Link className={'categories__item-link'} to={isLoggedIn ? '/shop' : '/login'}>
                     EXPLORE MORE
                   </Link>
                 </div>

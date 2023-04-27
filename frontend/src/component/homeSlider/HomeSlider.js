@@ -1,13 +1,13 @@
-import {NavLink} from 'react-router-dom';
+import {Link} from 'react-router-dom';
+import {useSelector} from "react-redux";
 import Slider from 'react-slick';
 
 import './homeSlider.scss';
-// import "~slick-carousel/slick/slick.css";
-// import "~slick-carousel/slick/slick-theme.css";
 
 import sliderImg from '../../image/home-slider-model.png';
 
 const HomeSlider = () => {
+
   const settings = {
     arrows: false,
     dots: true,
@@ -15,6 +15,9 @@ const HomeSlider = () => {
     autoplay: true,
     autoplaySpeed: 3000,
   };
+
+  const {isLoggedIn} = useSelector(state => state.oauthReducer);
+
   return (
       <section className={'home-slider'}>
         <div className={'home-slider__container'}>
@@ -29,9 +32,9 @@ const HomeSlider = () => {
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                     et dolore magna aliqua. Ipsum.
                   </p>
-                  <NavLink className={'home-slider__link'}>
+                  <Link className={'home-slider__link'} to={isLoggedIn ? '/shop' : '/login'}>
                     buy now
-                  </NavLink>
+                  </Link>
                 </div>
                 <div className={'home-slider__img-wrapper'}>
                   <img className={'home-slider__img'} src={sliderImg} alt="slider model"/>
@@ -47,9 +50,9 @@ const HomeSlider = () => {
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                     et dolore magna aliqua. Ipsum.
                   </p>
-                  <NavLink className={'home-slider__link'}>
+                  <Link className={'home-slider__link'} to={isLoggedIn ? '/shop' : '/login'}>
                     buy now
-                  </NavLink>
+                  </Link>
                 </div>
                 <div className={'home-slider__img-wrapper'}>
                   <img className={'home-slider__img'} src={sliderImg} alt="slider model"/>
@@ -65,9 +68,9 @@ const HomeSlider = () => {
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                     et dolore magna aliqua. Ipsum.
                   </p>
-                  <NavLink className={'home-slider__link'}>
+                  <Link className={'home-slider__link'} to={isLoggedIn ? '/shop' : '/login'}>
                     buy now
-                  </NavLink>
+                  </Link>
                 </div>
                 <div className={'home-slider__img-wrapper'}>
                   <img className={'home-slider__img'} src={sliderImg} alt="slider model"/>
@@ -83,9 +86,9 @@ const HomeSlider = () => {
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                     et dolore magna aliqua. Ipsum.
                   </p>
-                  <NavLink className={'home-slider__link'}>
+                  <Link className={'home-slider__link'} to={isLoggedIn ? '/shop' : '/login'}>
                     buy now
-                  </NavLink>
+                  </Link>
                 </div>
                 <div className={'home-slider__img-wrapper'}>
                   <img className={'home-slider__img'} src={sliderImg} alt="slider model"/>
