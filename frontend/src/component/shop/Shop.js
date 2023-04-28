@@ -124,15 +124,18 @@ const Shop = () => {
                 {loading && <h1>Loading................</h1>}
                 {products?.map(product => <ProductCard product={product} isGrid={isGrid} key={product._id}/>)}
               </div>
-              <Pagination
-                  query={query}
-                  setQuery={setQuery}
-                  page={query.get('page')}
-                  prevPage={prevPage}
-                  nextPage={nextPage}
-                  totalPages={totalPages}
-                  scrollHere={scrollHere}
-              />
+              { products?.length > 0
+                  &&
+                <Pagination
+                    query={query}
+                    setQuery={setQuery}
+                    page={query.get('page')}
+                    prevPage={prevPage}
+                    nextPage={nextPage}
+                    totalPages={totalPages}
+                    scrollHere={scrollHere}
+                />
+              }
             </div>
           </div>
         </div>
