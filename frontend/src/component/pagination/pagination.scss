@@ -2,24 +2,33 @@
 
 .pagination {
   text-align: center;
-  margin-top: auto;
   &__inner {
     display: inline-flex;
   }
-
   &__prev-button,
-  &__next-button,
-  &__nums-button {
-    padding: 0 16px;
-    border: none;
+  &__next-button {
+    padding: 0 16px 0 32px;
+    border: 1px solid $border;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 5px 18px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    border-radius: 15px;
     background-color: transparent;
     cursor: pointer;
     text-transform: uppercase;
+    letter-spacing: 1px;
     color: $default;
     position: relative;
+    transition: box-shadow .3s;
+    &:hover {
+      box-shadow: rgba(254, 62, 87, 0.16) 0px 5px 18px 0px, rgba(254, 62, 87, 0.1) 0px 0px 0px 1px;
+      transition: box-shadow .3s;
+    }
+    &:disabled {
+      box-shadow: none;
+      cursor: default;
+    }
   }
-  &__nums-button.active {
-    color: $accent;
+  &__next-button {
+    padding: 0 32px 0 16px;
   }
   &__prev-button::before,
   &__next-button::after {
@@ -32,15 +41,30 @@
   }
 
   &__prev-button::before {
-    left: 0;
+    left: 16px;
     background-image: url('../../image/icons/prev-btn-arrow.svg');
   }
   &__next-button::after {
-    right: 0;
+    right: 16px;
     background-image: url('../../image/icons/next-btn-arrow.svg');
   }
 
   &__nums {
     margin: 0 18px;
+    padding: 0 16px;
+    border: 1px solid $border;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 5px 18px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    border-radius: 15px;
+  }
+  &__nums-current {
+    color: $accent;
+    font-size: 18px;
+  }
+  &__nums-text {
+    padding: 0 5px;
+  }
+  &__nums-total {
+    color: $title;
+    font-size: 18px;
   }
 }

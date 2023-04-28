@@ -1,12 +1,8 @@
-import {useState} from 'react';
-
-
 import './pagination.scss';
 
 const Pagination = (props) => {
-  const {query, setQuery, page, prevPage, nextPage, totalPages, onPageChange} = props;
 
-  const [currentPage, setCurrentPage] = useState(page);
+  const {query, setQuery, page, prevPage, nextPage, totalPages, scrollHere} = props;
 
   const search = {};
   for (let entry of query.entries()) {
@@ -14,12 +10,14 @@ const Pagination = (props) => {
   }
 
   const prevPageHandler = () => {
-    setCurrentPage(page - 1);
     setQuery(prevQuery => ({...search, page: +prevQuery.get('page') - 1}));
+
+    scrollHere.current.scrollIntoView({behavior: "smooth"});
   };
   const nextPageHandler = () => {
-    setCurrentPage(page + 1);
     setQuery(prevQuery => ({...search, page: +prevQuery.get('page') + 1}));
+
+    scrollHere.current.scrollIntoView({behavior: "smooth"});
   };
 
   return (
@@ -29,21 +27,15 @@ const Pagination = (props) => {
             previous
           </button>
           <div className={'pagination__nums'}>
-            <button className={`pagination__nums-button ${currentPage === page ? 'active' : ''}`}>
-              1
-            </button>
-            <button className={`pagination__nums-button ${currentPage === page ? 'active' : ''}`} disabled={(+page + 1) > totalPages}>
-              2
-            </button>
-            <button className={`pagination__nums-button ${currentPage === page ? 'active' : ''}`} disabled={(+page + 2) >= totalPages}>
-              3
-            </button>
-            <button className={'pagination__nums-button'}>
-              ....
-            </button>
-            <button className={'pagination__nums-button'}>
+            <span className={'pagination__nums-current'}>
+              {page}
+            </span>
+            <span className={'pagination__nums-text'}>
+              of
+            </span>
+            <span className={'pagination__nums-total'}>
               {totalPages}
-            </button>
+            </span>
           </div>
           <button className={'pagination__next-button'} disabled={!nextPage} onClick={nextPageHandler}>
             next

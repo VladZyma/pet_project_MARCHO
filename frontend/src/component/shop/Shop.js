@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useState, useRef} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useSearchParams} from 'react-router-dom';
 
@@ -19,7 +19,10 @@ import {
 import {productActions} from "../../redux";
 
 const Shop = () => {
+
   const dispatch = useDispatch();
+
+  const scrollHere = useRef();
 
   const [isGrid, setIsGrid] = useState(false);
 
@@ -53,7 +56,7 @@ const Shop = () => {
 
 
   return (
-      <section className={'shop'}>
+      <section className={'shop'} ref={scrollHere}>
         <div className={'container'}>
           <div className={'shop__inner'}>
             <div className={'shop__filters'}>
@@ -116,9 +119,15 @@ const Shop = () => {
                 {loading && <h1>Loading................</h1>}
                 {products?.map(product => <ProductCard product={product} isGrid={isGrid} key={product._id}/>)}
               </div>
-              <Pagination query={query} setQuery={setQuery} page={query.get('page')} prevPage={prevPage}
-                          nextPage={nextPage}
-                          totalPages={totalPages}/>
+              <Pagination
+                  query={query}
+                  setQuery={setQuery}
+                  page={query.get('page')}
+                  prevPage={prevPage}
+                  nextPage={nextPage}
+                  totalPages={totalPages}
+                  scrollHere={scrollHere}
+              />
             </div>
           </div>
         </div>
