@@ -1,4 +1,4 @@
-import {useEffect, useState, useRef} from 'react';
+import {useEffect, useState, useRef, useMemo} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useSearchParams} from 'react-router-dom';
 
@@ -38,14 +38,19 @@ const Shop = () => {
 
   const [query, setQuery] = useSearchParams({page: '1'});
 
-  const search = {};
-  for (let entry of query.entries()) {
-    search[entry[0]] = entry[1];
-  }
+  const search = useMemo(() => {
+    let searchTemp = {};
+
+    for (let entry of query.entries()) {
+      searchTemp[entry[0]] = entry[1];
+    }
+
+    return searchTemp;
+  }, [query]);
 
   useEffect(() => {
     dispatch(productActions.getProductsByParams({page: query.get('page'), values: search}));
-  }, [dispatch, query]);
+  }, [dispatch, query, search]);
 
   const setListProductsView = () => {
     setIsGrid(true);
