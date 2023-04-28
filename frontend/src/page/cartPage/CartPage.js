@@ -1,4 +1,5 @@
 import {useSelector} from "react-redux";
+import {useEffect} from "react";
 
 import {Cart, Top} from "../../component";
 
@@ -12,6 +13,10 @@ const CartPage = () => {
   }, {});
 
   let isProductsInCart = productsInCart.length;
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
       <section className={'cart-page'}>

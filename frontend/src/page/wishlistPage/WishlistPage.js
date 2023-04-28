@@ -15,6 +15,10 @@ const WishlistPage = () => {
     dispatch(userActions.addProductsToWishlist({productsIdArr: user.wishlist}));
   }, [dispatch, user.wishlist]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
       <section className={'wishlist-page'}>
         <Top title={'Wishlist'}/>
