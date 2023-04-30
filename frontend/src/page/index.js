@@ -7,3 +7,4 @@ export * from './registerPage/RegisterPage';
 export * from './cartPage/CartPage';
 export * from './wishlistPage/WishlistPage';
 export * from './accountPage/AccountPage';
+export * from './error404Page/Error404Page';

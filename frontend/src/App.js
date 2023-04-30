@@ -14,7 +14,8 @@ import {
   RegisterPage,
   CartPage,
   WishlistPage,
-  AccountPage
+  AccountPage,
+  Error404Page,
 } from "./page";
 import {Header, Footer, Shop, ProductDetails} from "./component";
 
@@ -27,6 +28,7 @@ function App() {
       <div className="App" style={{marginTop: sticky.offset}}>
         <Header sticky={sticky} setSticky={setSticky} userName={userName} setUserName={setUserName}/>
         <Routes>
+
           <Route path={'/'} element={<MainLayout/>}>
             <Route index element={<Navigate to={'/home'}/>}/>
             <Route path={'/home'} element={<HomePage/>}/>
@@ -45,6 +47,9 @@ function App() {
             <Route path={'/wishlist'} element={<WishlistPage/>}/>
             <Route path={'/cart'} element={<CartPage/>}/>
           </Route>
+
+          <Route path={'/*'} element={<Error404Page/>}/>
+
         </Routes>
         <Footer  setUserName={setUserName}/>
       </div>

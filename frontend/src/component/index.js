@@ -21,3 +21,4 @@ export * from './blogList/BlogList';
 export * from './pagination/Pagination';
 export * from './shopFilters';
 export * from './productDetails/ProductDetails';
+export * from './error404/Error404';
