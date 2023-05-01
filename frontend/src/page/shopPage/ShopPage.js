@@ -2,7 +2,7 @@ import {Outlet} from 'react-router-dom';
 
 import './shopPage.scss';
 
-import {Shop, Top} from "../../component";
+import {Top} from "../../component";
 
 const ShopPage = () => {
 
