@@ -1,0 +1,37 @@
+@import '../../style/styles';
+
+.blog {
+  padding: 120px 0 90px;
+  &__main-img-wrapper {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  &__main-img {
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+  }
+  &__title {
+    margin-bottom: 30px;
+    @extend %roboto-500;
+    font-size: 22px;
+    color: $title;
+  }
+  &__text {
+    margin-bottom: 30px;
+  }
+  &__blockquote {
+    margin-bottom: 30px;
+    padding: 40px;
+    border-left: 3px solid $accent;
+    background-color: $bg;
+    @extend %roboto-400;
+    font-size: 22px;
+    line-height: 32px;
+    color: $title;
+  }
+  &__small-img {
+    margin: 0 30px 0px 0;
+    float: left;
+  }
+}

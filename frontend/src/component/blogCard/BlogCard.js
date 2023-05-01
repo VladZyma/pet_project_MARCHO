@@ -17,7 +17,7 @@ const BlogCard = ({cardImg}) => {
           <h4 className={'blog-card__title'}>
             Our Apps User Use Mobile On His Mobile
           </h4>
-          <Link className={'blog-card__link'} href={'#'}>
+          <Link className={'blog-card__link'} to={'/blog'}>
             <span>
               Read More
             </span>
