@@ -1,0 +1,94 @@
+@import '../../style/styles';
+
+.contact {
+  padding: 120px 0;
+  &__map-wrapper {
+    margin-bottom: 120px;
+  }
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__content {
+    max-width: 370px;
+    margin-right: 30px;
+  }
+  &__title.title {
+    margin-bottom: 20px;
+    text-align: left;
+    text-transform: unset;
+    line-height: 58px;
+  }
+  &__text {
+    margin-bottom: 60px;
+  }
+  &__item {
+    display: flex;
+    align-items: center;
+    &:not(:last-child) {
+      margin-bottom: 40px;
+    }
+  }
+  &__item-text-wrapper {
+    margin-left: 20px;
+    max-width: 220px;
+  }
+  &__item-text {
+    display: block;
+    @extend %quicksand-500;
+    font-size: 16px;
+    font-style: normal;
+    line-height: 26px;
+    cursor: pointer;
+    color: #292929;
+    transition: all .3s;
+    &:hover {
+      color: $accent;
+      transition: all .3s;
+    }
+  }
+  &__form-wrapper {
+    width: 100%;
+    max-width: 770px;
+    padding: 60px 40px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 10px 40px 0px rgba(172, 172, 172, 0.3);
+  }
+  &__form-title.title {
+    margin-bottom: 10px;
+    font-size: 22px;
+    text-transform: unset;
+    text-align: left;
+  }
+  &__form-inner {
+    display: flex;
+    justify-content: space-between;
+    input {
+      width: 330px;
+    }
+  }
+  &__form-input,
+  &__form-textarea {
+    margin-bottom: 30px;
+    padding: 17px 25px;
+    display: block;
+    width: 100%;
+    background-color: $bg;
+    border: none;
+    outline-color: $accent;
+    &::placeholder {
+      color: $default;
+    }
+  }
+  &__form-textarea {
+    resize: none;
+    height: 200px;
+  }
+  &__form-button {
+    @extend %btn;
+    padding: 17px 40px;
+    border: none;
+    letter-spacing: 2px;
+  }
+}
+

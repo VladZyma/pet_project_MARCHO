@@ -1,11 +1,12 @@
-import {Contact} from "../../component";
+import {Contact, Top} from "../../component";
 
 const ContactPage = () => {
 
   return (
-      <div>
+      <section className={'contact-page'}>
+        <Top title={'contact'}/>
         <Contact/>
-      </div>
+      </section>
   );
 };
 
