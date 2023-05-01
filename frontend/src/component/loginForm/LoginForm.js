@@ -52,11 +52,21 @@ const LoginForm = () => {
           <form className={'modal__form'} onSubmit={handleSubmit(submitHandler)}>
             <label className={'modal__label'}>
               Email address*
-              <input className={'modal__input'} type={'email'} {...register('email')}></input>
+              <input
+                  className={'modal__input'}
+                  type={'email'}
+                  {...register('email')}
+                  placeholder={'your E-mail or guest@test.com'}
+              />
             </label>
             <label className={'modal__label'}>
               Password*
-              <input className={'modal__input'} type={'password'} {...register('password')}/>
+              <input
+                  className={'modal__input'}
+                  type={'password'}
+                  {...register('password')}
+                  placeholder={'your password or Guest1!'}
+              />
             </label>
 
             <label className={'modal__terms-label'}>
