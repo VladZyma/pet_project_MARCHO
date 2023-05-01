@@ -1,4 +1,4 @@
-import {useEffect, useState, useRef, useMemo} from 'react';
+import {useEffect, useRef, useMemo} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useSearchParams} from 'react-router-dom';
 
@@ -16,7 +16,7 @@ import {
   SortByFilter,
   ShowFilter,
 } from '../shopFilters';
-import {productActions} from "../../redux";
+import {productActions, shopViewActions} from "../../redux";
 
 const Shop = () => {
 
@@ -24,7 +24,7 @@ const Shop = () => {
 
   const scrollHere = useRef();
 
-  const [isGrid, setIsGrid] = useState(false);
+  const {isGrid} = useSelector(state => state.shopViewReducer);
 
   const {
     products: {
@@ -53,10 +53,10 @@ const Shop = () => {
   }, [dispatch, query, search]);
 
   const setListProductsView = () => {
-    setIsGrid(true);
+    dispatch(shopViewActions.setIsGrid(true));
   }
   const setGridProductsView = () => {
-    setIsGrid(false);
+    dispatch(shopViewActions.setIsGrid(false));
   }
 
 
