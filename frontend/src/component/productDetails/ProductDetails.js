@@ -28,8 +28,6 @@ const ProductDetails = () => {
   const {product} = useSelector(state => state.productReducer);
   const {isLoggedIn} = useSelector(state => state.oauthReducer);
 
-  console.log('ProductDetails:', product);
-
   let selectedSize = '';
 
   useEffect(() => {
