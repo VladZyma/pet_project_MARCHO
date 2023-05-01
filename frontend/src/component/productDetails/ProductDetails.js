@@ -31,6 +31,10 @@ const ProductDetails = () => {
   let selectedSize = '';
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     dispatch(productActions.getProductById(productId));
   }, [dispatch, productId]);
 
