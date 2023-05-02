@@ -6,11 +6,11 @@ const HomePage = () => {
       <div className={'home-page'}>
         <HomeSlider/>
         <CategoriesInfo/>
-        <Video/>
-        <ProductList/>
-        <Promo/>
-        <Partners/>
-        <BlogList/>
+        {/*<Video/>*/}
+        {/*<ProductList/>*/}
+        {/*<Promo/>*/}
+        {/*<Partners/>*/}
+        {/*<BlogList/>*/}
       </div>
   );
 };

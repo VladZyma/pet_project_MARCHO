@@ -5,6 +5,7 @@ import {useSelector, useDispatch} from "react-redux";
 import './header.scss';
 import logo from '../../image/logo.png';
 
+import {HeaderMobileMenuBtn} from "../headerMobileMenuBtn/HeaderMobileMenuBtn";
 import {oauthService} from "../../service";
 import {oauthActions} from "../../redux";
 
@@ -12,7 +13,7 @@ const Header = ({sticky, setSticky, userName, setUserName}) => {
 
   const dispatch = useDispatch();
 
-  // const [userName, setUserName] = useState('');
+  const [isMobileMenu, setIsMobileMenu] = useState(false);
 
   const {isLoggedIn} = useSelector(state => state.oauthReducer);
   const {productsInCart} = useSelector(state => state.productReducer);
@@ -68,7 +69,8 @@ const Header = ({sticky, setSticky, userName, setUserName}) => {
           <div className={'header__inner'}>
             <img className={'logo'} src={logo} alt="logo"/>
             <nav className={'menu'}>
-              <ul className={'menu__list'}>
+              <HeaderMobileMenuBtn isMobileMenu={isMobileMenu} setIsMobileMenu={setIsMobileMenu}/>
+              <ul className={!isMobileMenu ? 'menu__list' : 'menu__list menu__list--mobile'}>
                 <li className={'menu__list-item'}>
                   <NavLink className={'menu__list-link'} to="/home">HOME</NavLink>
                 </li>
@@ -112,7 +114,7 @@ const Header = ({sticky, setSticky, userName, setUserName}) => {
 
               </ul>
             </nav>
-            <div className={'user-nav'}>
+            <div className={!isMobileMenu ? 'user-nav' : 'user-nav user-nav--mobile'}>
               {userName
                   ?
                   <NavLink className={'user-nav__link user-nav__link-name'} to={'/account'}>

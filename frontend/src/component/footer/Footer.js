@@ -151,7 +151,7 @@ const Footer = ({setUserName}) => {
                             </li>
                         </ul>
                     </div>
-                    <div className={'footer__top-item'}>
+                    <div className={'footer__top-item footer__top-item-form'}>
                         <h5 className={'footer__top-item-title'}>
                             Subscribe Our Newsletter
                         </h5>
