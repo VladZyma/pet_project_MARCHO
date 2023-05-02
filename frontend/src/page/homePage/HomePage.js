@@ -6,8 +6,8 @@ const HomePage = () => {
       <div className={'home-page'}>
         <HomeSlider/>
         <CategoriesInfo/>
-        {/*<Video/>*/}
-        {/*<ProductList/>*/}
+        <Video/>
+        <ProductList/>
         {/*<Promo/>*/}
         {/*<Partners/>*/}
         {/*<BlogList/>*/}

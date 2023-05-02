@@ -6,7 +6,6 @@
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
-  &__inner {}
 }
 
 .info {
@@ -120,4 +119,118 @@
   }
 }
 
+@media(max-width: 1235px) {
+  .info {
+    padding: 0 30px;
+    justify-content: space-between;
+    &::before {
+      left: -10px;
+    }
+    &::after {
+      right: 6px;
+    }
+    &__item {
+      padding: 40px 20px;
+    }
+  }
+}
+@media(max-width: 1200px) {
+  .categories {
+    &__items {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: auto;
+    }
+    &__item {
+      background-position: center top;
+    }
+    &__item:nth-child(1) {
+      grid-row: auto;
+    }
+    &__item:nth-child(2) {
+      grid-column: auto;
+      background-position: center right;
+      justify-content: flex-start;
+    }
+  }
+}
+@media(max-width: 1050px) {
+  .info {
+    &__item {
+      padding: 30px 18px;
+    }
+    &__item-title {
+      margin: 30px 0 10px;
+      font-size: 20px;
+    }
+  }
+}
+@media(max-width: 960px) {
+  .categories-info {
+    padding: 90px 0;
+  }
+  .info {
+    margin-bottom: 90px;
+    flex-direction: column;
+    &__item {
+      max-width: 100%;
+    }
+    &__item-title {
+      font-size: 22px;
+    }
+  }
+}
+@media(max-width: 760px) {
+  .categories {
+    &__item {
+      background-size: contain;
+      background-position: right top;
+    }
+    &__items {
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+    }
+    &__item:nth-child(1) {
+      background-color: #F4DFF0;
+    }
+    &__item:nth-child(2) {
+      background-color: #D7EFEF;
+    }
+    &__item:nth-child(3) {
+      background-color: #FFF6A7;
+    }
+    &__item:nth-child(4) {
+      background-color: #EDEDED;
+    }
+  }
+}
+@media(max-width: 500px) {
+  .categories {
+    &__item-title {
+      font-size: 18px;
+    }
+    &__item-subtitle,
+    &__item-link {
+      font-size: 16px;
+    }
+  }
+}
+@media(max-width: 420px) {
+  .info {
+    &__item-title {
+      font-size: 18px;
+      margin: 15px 0 10px;
+    }
+    &__item-text {
+      text-align: justify;
+    }
+  }
+  .categories {
+    &__item {
+      padding: 20px;
+    }
+    &__text {
+      text-align: justify;
+    }
+  }
+}
 

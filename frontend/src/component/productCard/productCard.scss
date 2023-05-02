@@ -183,3 +183,12 @@
   }
 
 }
+
+@media(max-width: 560px) {
+  .card {
+    margin: 0 auto;
+    &__content {
+      padding: 15px 0 10px;
+    }
+  }
+}

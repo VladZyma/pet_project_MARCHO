@@ -27,19 +27,15 @@
   color: $title;
 }
 
-//button[disabled].modal__button {
-//  background-color: #bb9191;
-//  cursor: default;
-//}
-
-//body {
-//  margin: 0;
-//  height: 100%;
-//  @extend %quicksand-500;
-//  font-size: 16px;
-//  line-height: 26px;
-//  color: $default;
-//}
-
-
-
+@media(max-width: 1085px) {
+  .title {
+    font-size: 41px;
+    line-height: 41px;
+  }
+}
+@media(max-width: 960px) {
+  .title {
+    font-size: 29px;
+    line-height: 29px;
+  }
+}

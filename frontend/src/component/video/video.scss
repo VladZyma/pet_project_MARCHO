@@ -90,3 +90,45 @@
   }
 }
 
+@media(max-width: 1200px) {
+  .video {
+    &__subtitle {
+      margin-bottom: 15px;
+    }
+    &__title {
+      margin-bottom: 15px;
+    }
+    &__text {
+      margin-bottom: 20px;
+    }
+  }
+}
+@media(max-width: 960px) {
+  .video {
+    padding: 60px 0;
+    &__inner {
+      flex-wrap: wrap;
+    }
+    &__img-wrapper {
+      margin-right: 0;
+      margin-bottom: 30px;
+      max-width: 100%;
+      max-height: 480px;
+    }
+    &__img {
+      width: 100%;
+      max-height: 480px;
+    }
+  }
+}
+@media(max-width: 420px) {
+  .video {
+    &__subtitle {
+      font-size: 19px;
+    }
+    &__text {
+      text-align: justify;
+    }
+  }
+}
+

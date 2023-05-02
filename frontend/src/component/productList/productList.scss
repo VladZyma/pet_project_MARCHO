@@ -17,3 +17,32 @@
     grid-gap: 30px;
   }
 }
+
+@media(max-width: 960px) {
+  .product-list {
+    padding: 60px 0;
+  }
+}
+@media(max-width: 760px) {
+  .product-list {
+    &__inner {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+}
+@media(max-width: 560px) {
+  .product-list {
+    &__title.title {
+      margin-bottom: 15px;
+      font-size: 28px;
+    }
+    &__text {
+      margin: 0 auto 30px;
+      text-align: justify;
+    }
+    &__inner {
+      grid-template-columns: repeat(1, 1fr);
+      grid-gap: 15px;
+    }
+  }
+}
