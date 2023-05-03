@@ -137,6 +137,8 @@
   .menu {
     &__list-item:not(:last-child) {
       margin-right: 0;
+    }
+    &__list-item {
       margin-bottom: 20px;
     }
     &__list {
