@@ -8,7 +8,7 @@ const HomePage = () => {
         <CategoriesInfo/>
         <Video/>
         <ProductList/>
-        {/*<Promo/>*/}
+        <Promo/>
         {/*<Partners/>*/}
         {/*<BlogList/>*/}
       </div>
