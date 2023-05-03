@@ -89,3 +89,9 @@ button[disabled].modal__button-register {
   background-color: #bb9191;
   cursor: default;
 }
+
+@media(max-width: 960px) {
+  .modal {
+    padding: 60px 0;
+  }
+}

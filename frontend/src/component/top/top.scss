@@ -53,3 +53,12 @@
     }
   }
 }
+
+@media(max-width: 960px) {
+  .top {
+    &__title {
+      font-size: 32px;
+      line-height: 32px;
+    }
+  }
+}

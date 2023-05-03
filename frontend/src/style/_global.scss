@@ -12,6 +12,9 @@
   margin: 0 auto;
   text-align: center;
   background-image: url('../image/top-bg.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .modal__form-error {
@@ -32,10 +35,23 @@
     font-size: 41px;
     line-height: 41px;
   }
+  .top-container {
+    padding: 100px 0 110px;
+    background-size: contain;
+  }
 }
 @media(max-width: 960px) {
   .title {
     font-size: 29px;
     line-height: 29px;
+  }
+  .top-container {
+    padding: 60px 0 70px;
+    background-size: cover;
+  }
+}
+@media(max-width: 560px) {
+  .top-container {
+    background-size: auto;
   }
 }
