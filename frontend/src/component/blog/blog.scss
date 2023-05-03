@@ -35,3 +35,33 @@
     float: left;
   }
 }
+
+@media(max-width: 1085px) {
+  .blog {
+    padding: 50px 0 60px;
+    &__main-img {
+      max-height: 550px;
+    }
+  }
+}
+@media(max-width: 1085px) {
+  .blog {
+    &__small-img {
+      max-width: 270px;
+    }
+  }
+}
+@media(max-width: 500px) {
+  .blog {
+    &__small-img {
+      max-width: 100%;
+      float: unset;
+      margin-bottom: 30px;
+    }
+    &__blockquote {
+      padding: 15px;
+      font-size: 20px;
+      line-height: 30px;
+    }
+  }
+}
