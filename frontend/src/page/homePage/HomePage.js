@@ -10,7 +10,7 @@ const HomePage = () => {
         <ProductList/>
         <Promo/>
         <Partners/>
-        {/*<BlogList/>*/}
+        <BlogList/>
       </div>
   );
 };

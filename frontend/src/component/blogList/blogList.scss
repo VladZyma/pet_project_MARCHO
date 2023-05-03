@@ -38,11 +38,39 @@
       content: "";
       position: absolute;
       top: -30px;
-      right: -27px;
+      right: -25px;
       width: 126px;
       height: 53px;
       background-image: url('../../image/decor/blog-cards.svg');
       z-index: -1;
+    }
+  }
+}
+
+@media(max-width: 1240px) {
+  .blog-list {
+    &__cards {
+      margin: 0 25px;
+    }
+    &::before {
+      left: 1%;
+    }
+  }
+}
+@media(max-width: 960px) {
+  .blog-list {
+    padding-bottom: 100px;
+    &__cards {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 30px
+    }
+  }
+}
+@media(max-width: 600px) {
+  .blog-list {
+    &__cards {
+      grid-template-columns: repeat(1, 1fr);
     }
   }
 }
