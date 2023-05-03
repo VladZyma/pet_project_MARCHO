@@ -6,3 +6,34 @@
     align-items: center;
   }
 }
+
+@media(max-width: 960px) {
+  .partners {
+    padding: 90px 0;
+  }
+}
+@media(max-width: 560px) {
+  .partners {
+    padding: 30px 0;
+    &__inner {
+      flex-wrap: wrap;
+    }
+    &__img {
+      margin: 15px 30px;
+    }
+  }
+}
+@media(max-width: 500px) {
+  .partners {
+    &__img {
+      margin: 15px 21px;
+    }
+  }
+}
+@media(max-width: 420px) {
+  .partners {
+    &__img {
+      margin: 15px 11px;
+    }
+  }
+}

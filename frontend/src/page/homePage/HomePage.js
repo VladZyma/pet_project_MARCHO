@@ -9,7 +9,7 @@ const HomePage = () => {
         <Video/>
         <ProductList/>
         <Promo/>
-        {/*<Partners/>*/}
+        <Partners/>
         {/*<BlogList/>*/}
       </div>
   );
