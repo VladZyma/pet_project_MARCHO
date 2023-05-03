@@ -40,3 +40,14 @@
     }
   }
 }
+
+@media(max-width: 600px) {
+  .wishlistSizePopUp {
+    bottom: 0;
+    right: 0;
+    transform: translateX(100%);
+    &.wishlistSizePopUp--show {
+      transform: translateX(0%);
+    }
+  }
+}

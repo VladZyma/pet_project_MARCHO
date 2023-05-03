@@ -60,9 +60,6 @@
     width: 100px;
     height: 30px;
   }
-  &__product-buttons-wrapper {
-    //display: flex;
-  }
   &__product-button {
     display: block;
     padding: 5px 10px;
@@ -79,6 +76,38 @@
     &:hover {
       background-color: $accent;
       box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);
+    }
+  }
+}
+
+@media(max-width: 600px) {
+  .wishlist {
+    padding: 60px 0 40px;
+    &__product-img-wrapper {
+      margin-right: 0;
+      margin-bottom: 30px;
+    }
+    &__product-wrapper {
+      display: block;
+      max-width: 280px;
+    }
+    &__product-price-text {
+      display: inline-block;
+      margin: 0 10px;
+    }
+    &__product-price {
+      display: inline-flex;
+    }
+    &__product-color-wrapper {
+      display: flex;
+      align-items: center;
+    }
+    &__product-color {
+      margin-left: 20px;
+    }
+    &__product-button {
+      display: inline-block;
+      margin-right: 20px;
     }
   }
 }

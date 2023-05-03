@@ -150,22 +150,23 @@
       height: auto;
     }
     &__list.menu__list--mobile {
+      margin-top: 20px;
       transform: translateX(0%) translateY(141px);
       background-color: #fff;
     }
   }
   .user-nav {
-    padding: 5px 0;
+    padding: 15px 20px;
     position: absolute;
     left: 0;
     right: 0;
     z-index: 20;
-    transform: translateX(-300%) translateY(71px);
+    transform: translateX(-300%) translateY(81px);
     transition: transform 1s;
     background-color: #fff;
     &.user-nav--mobile {
-      transform: translateX(0%) translateY(71px);
-      justify-content: center;
+      transform: translateX(0%) translateY(81px);
+      justify-content: flex-end;
       .user-nav__link:last-child {
         margin-right: 0;
       }

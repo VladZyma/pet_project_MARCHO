@@ -1,7 +1,7 @@
 @import '../../style/styles';
 
 .cart {
-  padding: 120px;
+  padding: 120px 0;
   &__inner {
     display: flex;
     flex-wrap: wrap;
@@ -124,6 +124,31 @@
     &:hover {
       background-color: $accent;
       box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);
+    }
+  }
+}
+
+@media(max-width: 1200px) {
+  .cart {
+    &__inner {
+      flex-direction: column;
+    }
+  }
+}
+@media(max-width: 1200px) {
+  .cart {
+    padding: 90px 0;
+  }
+}
+@media(max-width: 1200px) {
+  .cart {
+    padding: 60px 0;
+    &__product-img-wrapper {
+      margin-bottom: 30px;
+    }
+    &__product-info {
+      margin-left: 2px;
+      flex-wrap: wrap;
     }
   }
 }
