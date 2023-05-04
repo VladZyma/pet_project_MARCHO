@@ -1,4 +1,4 @@
-import {useEffect, useRef, useMemo} from 'react';
+import {useEffect, useRef, useMemo, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useSearchParams} from 'react-router-dom';
 
@@ -25,6 +25,7 @@ const Shop = () => {
   const scrollHere = useRef();
 
   const {isGrid} = useSelector(state => state.shopViewReducer);
+  const [isShowMobileFilters, setIsShowMobileFilters] = useState(false);
 
   const {
     products: {
@@ -59,12 +60,15 @@ const Shop = () => {
     dispatch(shopViewActions.setIsGrid(false));
   }
 
+  const showMobileFilters = () => {
+    setIsShowMobileFilters(!isShowMobileFilters);
+  };
 
   return (
       <section className={'shop'} ref={scrollHere}>
         <div className={'container'}>
           <div className={'shop__inner'}>
-            <div className={'shop__filters'}>
+            <div className={!isShowMobileFilters ? 'shop__filters' : 'shop__filters shop__filters--mobile'}>
               <div className={'shop__filters-item'}>
                 <SearchFilter query={query} setQuery={setQuery}/>
               </div>
@@ -120,7 +124,11 @@ const Shop = () => {
                   ]}/>
                 </div>
               </div>
+              <button className={'shop__items-filters-all'} onClick={showMobileFilters}>
+                filters
+              </button>
               <div className={!isGrid? 'shop__items-inner--grid' : 'shop__items-inner'}>
+                <div className={!isShowMobileFilters ? 'shop__items-inner-bg' : 'shop__items-inner-bg shop__items-inner-bg--show'}></div>
                 {loading && <h1>Loading................</h1>}
                 {products?.map(product => <ProductCard product={product} isGrid={isGrid} key={product._id}/>)}
               </div>

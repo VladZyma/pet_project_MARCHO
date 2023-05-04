@@ -34,3 +34,28 @@
     }
   }
 }
+
+@media(max-width: 860px) {
+  .tags {
+    padding: 20px 15px;
+    &__header {
+      margin-bottom: 20px;
+    }
+    &__form {
+      justify-content: flex-start;
+    }
+    &__form-label:not(:last-child) {
+      margin: 0 30px 0 0;
+    }
+  }
+}
+@media(max-width: 500px) {
+  .tags {
+    &__form {
+      justify-content: space-between;
+    }
+    &__form-label:not(:last-child) {
+      margin: 0 0 20px;
+    }
+  }
+}

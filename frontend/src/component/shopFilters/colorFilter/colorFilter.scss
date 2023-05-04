@@ -56,3 +56,21 @@
     background-color: #923899;
   }
 }
+
+@media(max-width: 860px) {
+  .color {
+    padding: 20px 15px;
+    &__header {
+      margin-bottom: 0;
+    }
+    &__form {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+    &__form-label:last-child {
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ececec;
+    }
+  }
+}
