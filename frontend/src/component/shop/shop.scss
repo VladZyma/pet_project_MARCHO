@@ -234,11 +234,12 @@
     padding: 60px 0;
 
     &__items-inner--grid {
+      flex-direction: column;
       justify-content: space-evenly;
       .card {
-        max-width: 200px;
+        max-width: 250px;
         &__img-wrapper {
-          max-width: 200px;
+          max-width: 250px;
         }
       }
     }
@@ -264,17 +265,6 @@
 
 @media(max-width: 500px) {
   .shop {
-
-    &__items-inner--grid {
-      flex-direction: column;
-      justify-content: space-evenly;
-      .card {
-        max-width: 250px;
-        &__img-wrapper {
-          max-width: 250px;
-        }
-      }
-    }
 
     &__items-inner {
       .card {

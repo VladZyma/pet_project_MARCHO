@@ -57,4 +57,15 @@
   }
 }
 
-
+@media(max-width: 860px) {
+  .size-pop-up,
+  .size-pop-up-grid {
+    max-width: 230px;
+    height: 50px;
+    &__form-checkbox {
+      width: 25px;
+      height: 25px;
+      font-size: 12px;
+    }
+  }
+}
