@@ -5,16 +5,12 @@ import './contact.scss';
 import {ContactIcon} from "../contactIcon/ContactIcon";
 import {GoogleMap} from "../googleMap/GoogleMap";
 
-import mapImg from '../../image/map-image.jpg';
-
-
 const Contact = () => {
 
   return (
       <div className={'contact'}>
         <div className={'container'}>
           <div className={'contact__map-wrapper'}>
-            {/*<img className={'contact__map-img'} src={mapImg} alt={'map'}/>*/}
             <GoogleMap/>
           </div>
           <div className={'contact__inner'}>
