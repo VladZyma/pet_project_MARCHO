@@ -124,7 +124,7 @@
       left: 0;
       right: 0;
       transform: translateX(-300%) translateY(100px);
-      transition: all 1.5s;
+      transition: all 1s;
     }
     &__list.menu__list--mobile {
       justify-content: center;
@@ -146,7 +146,7 @@
       align-items: center;
       justify-content: center;
       transform: translateX(-300%) translateY(141px);
-      transition: all 1.5s;
+      transition: all 1s;
       height: auto;
     }
     &__list.menu__list--mobile {
@@ -162,7 +162,7 @@
     right: 0;
     z-index: 20;
     transform: translateX(-300%) translateY(81px);
-    transition: transform 1s;
+    transition: transform .8s;
     background-color: #fff;
     &.user-nav--mobile {
       transform: translateX(0%) translateY(81px);
