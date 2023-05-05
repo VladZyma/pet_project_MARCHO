@@ -138,3 +138,48 @@
     }
   }
 }
+
+@media(max-width: 1240px) {
+  .product {
+    &__inner {
+      display: block;
+    }
+    &__slider-wrapper {
+      margin: 0 auto;
+    }
+    &__content {
+      margin: 0 auto;
+      max-width: 730px;
+    }
+    &__content-inner {
+      margin-bottom: 10px;
+    }
+    &__content-text {
+      margin-bottom: 10px;
+    }
+    &__content-color {
+      margin-bottom: 10px;
+    }
+    &__content-size {
+      margin-bottom: 10px;
+    }
+    &__content-info-item {
+      margin-bottom: 5px;
+    }
+  }
+}
+@media(max-width: 960px) {
+  .product {
+    padding: 60px 0;
+  }
+}
+
+@media(max-width: 377px) {
+  .product {
+    &__content-size-form {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-row-gap: 30px;
+    }
+  }
+}
