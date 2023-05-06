@@ -13,6 +13,9 @@ const userService = {
   findUserById: async (userId) => {
     return User.findById(userId).lean();
   },
+  findUpdateUserById: async (userId, userInfo) => {
+    return User.findByIdAndUpdate(userId, userInfo, {new: true}).lean();
+  },
   findUpdateUserWishListById: async (userId, productId) => {
     return User.findByIdAndUpdate(userId, {$push: {wishlist: productId}}, {new: true}).lean();
   },

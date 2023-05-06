@@ -1,6 +1,7 @@
-const {userService, oauthService} = require('../service');
+const {userService, oauthService, emailService} = require('../service');
 const {ApiError} = require('../customError');
 const {userNameNormalizer} = require('../helper');
+const {emailActionEnum} = require('../config');
 
 const userController = {
   registerNewUser: async (req, res, next) => {
@@ -12,7 +13,10 @@ const userController = {
 
       userInfo = {...userInfo, name: userName, password: hashedPassword, wishlist: []};
 
-      const user = await userService.register(userInfo);
+      const [user] = await Promise.allSettled([
+        userService.register(userInfo),
+        emailService.sendEmail(userInfo.email, emailActionEnum.WELCOME, {userName: userInfo.name, userPassword: req.userInfo.password}),
+      ]);
 
       res.status(201).json(user);
     } catch (e) {

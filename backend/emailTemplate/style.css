@@ -1,0 +1,13 @@
+.header {
+    padding: 40px 0;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(254,62,87,1) 50%, rgba(0,212,255,1) 100%);
+    text-align: center;
+}
+.main {
+    padding: 30px 0;
+}
+.footer {
+    padding: 30px 0;
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(141,141,141,1) 50%, rgba(0,212,255,1) 100%);
+    text-align: center;
+}

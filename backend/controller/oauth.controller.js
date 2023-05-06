@@ -1,4 +1,5 @@
-const {oauthService} = require('../service');
+const {oauthService, emailService, userService} = require('../service');
+const {tokenActionsEnum,emailActionEnum ,config} = require('../config');
 
 const oauthController = {
   login: async (req, res, next) => {
@@ -40,6 +41,41 @@ const oauthController = {
       await oauthService.deleteAccessTokensById(tokenInfo._id);
 
       res.sendStatus(204);
+    } catch (e) {
+      next(e);
+    }
+  },
+  forgotPassword: async (req, res, next) => {
+    try {
+      const userInfo = req.userInfo;
+
+      const actionToken = oauthService.generateActionToken(tokenActionsEnum.FORGOT_PASSWORD, {email: userInfo.email});
+
+      const forgotPassUrl = `${config.FRONTEND_URL}/password/new?token=${actionToken}`;
+
+      await Promise.allSettled([
+          oauthService.addActionTokenToDB({_user_id: userInfo._id, tokenType: tokenActionsEnum.FORGOT_PASSWORD, actionToken}),
+          emailService.sendEmail(userInfo.email, emailActionEnum.FORGOT_PASSWORD, {url: forgotPassUrl, userName: userInfo.name}),
+      ]);
+
+      res.sendStatus(201);
+    } catch (e) {
+      next(e);
+    }
+  },
+  setNewPassword: async (req, res, next) => {
+    try {
+      const actionTokenInfo = req.actionTokenInfo;
+      const {newPassword} = req.body;
+
+      const hashedPassword = await oauthService.hashPassword(newPassword);
+
+      const [updatedUser] = await Promise.allSettled([
+        oauthService.deleteActionTokenById(actionTokenInfo._id),
+        userService.findUpdateUserById(actionTokenInfo._user_id, {password: hashedPassword}),
+      ]);
+
+      res.status(201).json(updatedUser);
     } catch (e) {
       next(e);
     }

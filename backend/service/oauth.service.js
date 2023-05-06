@@ -2,8 +2,8 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
 const {ApiError} = require('../customError');
-const {OAuth} = require('../dataBase');
-const {config} = require('../config');
+const {OAuth, ActionToken} = require('../dataBase');
+const {config, tokenActionsEnum} = require('../config');
 
 const oauthService = {
   hashPassword: async (password) => {
@@ -53,6 +53,45 @@ const oauthService = {
   deleteAccessTokensById: async (tokenId) => {
     await OAuth.findByIdAndDelete(tokenId);
   },
+
+  generateActionToken: (actionType, dataToSign) => {
+    let secret = '';
+
+    switch (actionType) {
+      case tokenActionsEnum.FORGOT_PASSWORD:
+        secret = config.FORGOT_PASSWORD_TOKEN_SECRET;
+        break;
+    }
+
+    const actionToken = jwt.sign(dataToSign, secret, {expiresIn: '3h'});
+
+    return actionToken;
+  },
+  checkActionToken: (token, actionType) => {
+   try {
+     let secret = '';
+
+     switch (actionType) {
+       case tokenActionsEnum.FORGOT_PASSWORD:
+         secret = config.FORGOT_PASSWORD_TOKEN_SECRET;
+         break;
+     }
+
+     return jwt.verify(token, secret);
+   } catch (e) {
+     return new ApiError('Wrong action token', 401);
+   }
+  },
+  addActionTokenToDB: async (token) => {
+    return ActionToken.create(token);
+  },
+  findActionToken: async (tokenInfo) => {
+    return ActionToken.findOne(tokenInfo).lean();
+  },
+  deleteActionTokenById: async (tokenId) => {
+    await ActionToken.findByIdAndDelete(tokenId);
+  },
+
 };
 
 module.exports = oauthService;

@@ -44,6 +44,28 @@ const oauthMiddleware = {
       next(e);
     }
   },
+  checkActionToken: (actionType) => async (req, res, next) => {
+    try {
+      const actionToken = req.get('Authorization');
+
+      if(!actionToken) {
+        throw new ApiError('No action token', 404);
+      }
+
+      oauthService.checkActionToken(actionToken, actionType);
+
+      const actionTokenInfo = await oauthService.findActionToken({actionToken});
+
+      if (!actionTokenInfo) {
+        throw new ApiError('Wrong action token', 401);
+      }
+
+      req.actionTokenInfo = actionTokenInfo;
+      next();
+    } catch (e) {
+      next(e);
+    }
+  },
 };
 
 module.exports = oauthMiddleware;
