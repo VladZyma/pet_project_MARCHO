@@ -11,9 +11,12 @@ const axiosService = axios.create({baseURL});
 
 axiosService.interceptors.request.use((config) => {
   const accessToken = oauthService.getAccessToken();
+  const actionToken = oauthService.getActionToken();
 
   if (accessToken) {
     config.headers.Authorization = accessToken;
+  } else if (actionToken) {
+    config.headers.Authorization = actionToken;
   }
 
   return config;

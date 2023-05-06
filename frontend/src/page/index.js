@@ -4,6 +4,7 @@ export * from './blogPage/BlogPage';
 export * from './contactPage/ContactPage';
 export * from './loginPage/LoginPage';
 export * from './registerPage/RegisterPage';
+export * from './restorePasswordPage/RestorePasswordPage';
 export * from './cartPage/CartPage';
 export * from './wishlistPage/WishlistPage';
 export * from './accountPage/AccountPage';

@@ -6,6 +6,7 @@ import {useDispatch} from 'react-redux';
 
 import './loginForm.scss';
 
+import {LostPasswordPopUp} from "../lostPasswordPopUp/LostPasswordPopUp";
 import {userValidator} from "../../validator";
 import {oauthService} from "../../service";
 import {oauthActions, userActions} from "../../redux";
@@ -15,6 +16,7 @@ const LoginForm = () => {
   const dispatch = useDispatch();
 
   const [loginError, setLoginError] = useState(null);
+  const [isLostPassword, setIsLostPassword] = useState(false);
 
   const {register, handleSubmit, formState: {isValid, errors}} = useForm({
     mode: 'all',
@@ -49,6 +51,9 @@ const LoginForm = () => {
               login
             </NavLink>
           </div>
+
+          {isLostPassword && <LostPasswordPopUp setIsLostPassword={setIsLostPassword}/>}
+
           <form className={'modal__form'} onSubmit={handleSubmit(submitHandler)}>
             <label className={'modal__label'}>
               Email address*
@@ -84,9 +89,9 @@ const LoginForm = () => {
                 (loginError && <span className={'modal__form-error'}>{loginError}</span>)
             }
             <button className={'modal__button modal__button-login'} disabled={!isValid} type={'submit'}>login</button>
-            <NavLink className={'modal__lost-password-link'} to={'#'}>
+            <span className={'modal__lost-password-link'} onClick={() => setIsLostPassword(true)}>
               Lost your password?
-            </NavLink>
+            </span>
           </form>
         </div>
       </section>

@@ -5,6 +5,7 @@
   &__lost-password-link {
     margin-top: 20px;
     color: $default;
+    cursor: pointer;
     &:hover {
       color: $accent;
     }

@@ -5,12 +5,15 @@ const _accessTokenKey = 'accessToken';
 const _refreshTokenKey = 'refreshToken';
 const _userName = 'userName';
 const _userId = 'userId';
+const _actionToken = 'actionToken';
 
 const oauthService = {
   register: (user) => axiosService.post(urls.register, user),
   login: (user) => axiosService.post(urls.auth.login, user),
   refresh: (refreshToken) => axiosService.post(urls.auth.refresh, {refreshToken}),
   logout: () => axiosService.post(urls.auth.logout),
+  forgotPassword: (email) => axiosService.post(urls.auth.forgotPassword, email),
+  setNewPassword: (info) => axiosService.put(urls.auth.forgotPassword, info),
 
   setAccessTokens: ({accessToken, refreshToken, name, userId}) => {
     localStorage.setItem(_accessTokenKey, accessToken);
@@ -35,6 +38,16 @@ const oauthService = {
     localStorage.removeItem(_refreshTokenKey);
     localStorage.removeItem(_userName);
     localStorage.removeItem(_userId);
+  },
+
+  setActionToken: (token) => {
+    localStorage.setItem(_actionToken, token);
+  },
+  getActionToken: () => {
+    return localStorage.getItem(_actionToken);
+  },
+  deleteActionToken: () => {
+    localStorage.removeItem(_actionToken);
   },
 };
 

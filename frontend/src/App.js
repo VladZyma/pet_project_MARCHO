@@ -12,6 +12,7 @@ import {
   ContactPage,
   LoginPage,
   RegisterPage,
+  RestorePasswordPage,
   CartPage,
   WishlistPage,
   AccountPage,
@@ -46,6 +47,7 @@ function App() {
             <Route path={'/account'} element={<AccountPage/>}/>
             <Route path={'/wishlist'} element={<WishlistPage/>}/>
             <Route path={'/cart'} element={<CartPage/>}/>
+            <Route path={'/password/new'} element={<RestorePasswordPage/>}/>
           </Route>
 
           <Route path={'/*'} element={<Error404Page/>}/>
