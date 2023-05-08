@@ -1,4 +1,4 @@
-const baseURL = 'http://localhost:5000';
+const baseURL = process.env.REACT_APP_API;
 
 const urls = {
     register: '/users',
