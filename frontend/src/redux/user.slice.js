@@ -117,8 +117,9 @@ const userSlice = createSlice({
           })
 });
 
-const {reducer: userReducer, actions: {}} = userSlice;
+const {reducer: userReducer, actions} = userSlice;
 const userActions = {
+    ...actions,
   updateUserWishList,
   getUserById,
   addProductsToWishlist,

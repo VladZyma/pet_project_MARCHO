@@ -30,12 +30,26 @@ app.use((error, req, res, next) => {
   });
 });
 
-app.listen(config.PORT, async () => {
+const start = async () => {
   try {
+    let connecting = false;
+
+      while(!connecting) {
+        console.log('Connecting to database.....');
+        try {
+          await mongoose.connect(`${config.MONGO_DB_URL}`, {useNewUrlParser: true, useUnifiedTopology: true});
+          connecting = true;
+          console.log('Database available');
+        } catch (e) {
+          console.log('Database unavailable, wait 3sec');
+          await new Promise(resolve => setTimeout(resolve, 3000));
+        }
+    }
+
+    await app.listen(config.PORT, process.env.HOST);
     console.log(`LISTENING PORT: ${config.PORT}`);
-    // await mongoose.connect(`${config.MONGO_DB_URI}/marcho`);
-    await mongoose.connect(`${config.MONGO_DB_URL}`, {useNewUrlParser: true, useUnifiedTopology: true});
   } catch (e) {
     console.log(e);
   }
-});
+};
+start();
