@@ -18,6 +18,12 @@ router.get(
     userMiddleware.isUserIdValid,
     userController.getUserById,
 );
+router.delete(
+    '/:userId',
+    userMiddleware.isUserIdValid,
+    userMiddleware.isUserByIdExists,
+    userController.deleteUserById,
+);
 router.post(
     '/wishList/:userId',
     userMiddleware.isUserIdValid,

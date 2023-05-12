@@ -9,7 +9,7 @@ const oauthMiddleware = {
       const user = await userService.findUserByEmail(email);
 
       if (!user) {
-        throw new ApiError('Wrong e-mail or password!!!', 404);
+        throw new ApiError('Your authentication information is incorrect!!!', 401);
       }
 
       req.userInfo = user;

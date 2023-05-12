@@ -13,6 +13,9 @@ const userService = {
   findUserById: async (userId) => {
     return User.findById(userId).lean();
   },
+  findDeleteUserById: async (userId) => {
+    return User.findByIdAndDelete(userId);
+  },
   findUpdateUserById: async (userId, userInfo) => {
     return User.findByIdAndUpdate(userId, userInfo, {new: true}).lean();
   },

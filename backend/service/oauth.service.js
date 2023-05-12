@@ -13,7 +13,7 @@ const oauthService = {
     const isPasswordsSame = await bcrypt.compare(password, hashedPassword);
 
     if (!isPasswordsSame) {
-      throw new ApiError('Wrong e-mail or password', 400);
+      throw new ApiError('Your authentication information is incorrect!!!', 401);
     }
   },
 

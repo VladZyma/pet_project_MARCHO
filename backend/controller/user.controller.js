@@ -1,6 +1,7 @@
 const {userService, oauthService, emailService} = require('../service');
 const {ApiError} = require('../customError');
 const {userNameNormalizer} = require('../helper');
+const {userPresenter} = require('../presenter');
 const {emailActionEnum} = require('../config');
 
 const userController = {
@@ -15,7 +16,10 @@ const userController = {
 
       const [user] = await Promise.allSettled([
         userService.register(userInfo),
-        emailService.sendEmail(userInfo.email, emailActionEnum.WELCOME, {userName: userInfo.name, userPassword: req.userInfo.password}),
+        emailService.sendEmail(userInfo.email, emailActionEnum.WELCOME, {
+          userName: userInfo.name,
+          userPassword: req.userInfo.password
+        }),
       ]);
 
       res.status(201).json(user);
@@ -31,7 +35,9 @@ const userController = {
         throw new ApiError('Users not found!!!', 404);
       }
 
-      res.status(200).json(users);
+      const usersInfo = userPresenter.normalizeAll(users);
+
+      res.status(200).json(usersInfo);
     } catch (e) {
       next(e);
     }
@@ -46,7 +52,20 @@ const userController = {
         throw new ApiError('User not found!!!', 404);
       }
 
-      res.status(200).json(user);
+      const userInfo = userPresenter.normalize(user);
+
+      res.status(200).json(userInfo);
+    } catch (e) {
+      next(e);
+    }
+  },
+  deleteUserById: async (req, res, next) => {
+    try {
+      const user = req.user;
+
+      await userService.findDeleteUserById(user._id);
+
+      res.status(204).json();
     } catch (e) {
       next(e);
     }
