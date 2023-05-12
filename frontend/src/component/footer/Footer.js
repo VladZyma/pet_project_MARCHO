@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 import {useForm} from 'react-hook-form';
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 
 import './footer.scss';
 import logo from '../../image/logo.png';
@@ -8,13 +8,11 @@ import masterCard from '../../image/icons/master-card.png';
 import visa from '../../image/icons/visa.png';
 import payPal from '../../image/icons/pay-pal.png';
 import {oauthService} from "../../service";
-import {oauthActions} from "../../redux";
 
 const Footer = ({setUserName}) => {
 
     const {register, handleSubmit} = useForm();
 
-    const dispatch = useDispatch();
 
     const {isLoggedIn} = useSelector(state => state.oauthReducer);
 
@@ -25,7 +23,6 @@ const Footer = ({setUserName}) => {
             await oauthService.logout();
             oauthService.deleteAccessTokens();
             setUserName('');
-            dispatch(oauthActions.logIn(false));
         } catch (e) {
             console.log('logoutHandler:',e);
         }
@@ -146,7 +143,7 @@ const Footer = ({setUserName}) => {
                             </li>
                             <li className={'footer__top-info-item'}>
                                 <Link className={'footer__top-link'} to={'login'} onClick={logoutHandler}>
-                                    Check Out
+                                    Log Out
                                 </Link>
                             </li>
                         </ul>

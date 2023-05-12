@@ -7,7 +7,7 @@ import logo from '../../image/logo.png';
 
 import {HeaderMobileMenuBtn} from "../headerMobileMenuBtn/HeaderMobileMenuBtn";
 import {oauthService} from "../../service";
-import {oauthActions} from "../../redux";
+import {userActions} from "../../redux";
 
 const Header = ({sticky, setSticky, userName, setUserName}) => {
 
@@ -15,16 +15,22 @@ const Header = ({sticky, setSticky, userName, setUserName}) => {
 
   const [isMobileMenu, setIsMobileMenu] = useState(false);
 
-  const {isLoggedIn} = useSelector(state => state.oauthReducer);
+  const isLoggedIn = oauthService.getIsLoggedIn();
+  const userId = oauthService.getUserId();
+
   const {productsInCart} = useSelector(state => state.productReducer);
   const {user} = useSelector(state => state.userReducer);
 
   useEffect(() => {
     if (isLoggedIn) {
+      console.log('useEffect');
       const name = oauthService.getUserName();
       setUserName(name);
+      dispatch(userActions.getUserById({userId}))
+    } else {
+      setUserName('');
     }
-  }, [isLoggedIn]);
+  }, [dispatch, isLoggedIn]);
 
 
   const logoutHandler = async () => {
@@ -32,7 +38,6 @@ const Header = ({sticky, setSticky, userName, setUserName}) => {
       await oauthService.logout();
       oauthService.deleteAccessTokens();
       setUserName('');
-      dispatch(oauthActions.logIn(false));
     } catch (e) {
       console.log('logoutHandler:',e);
     }

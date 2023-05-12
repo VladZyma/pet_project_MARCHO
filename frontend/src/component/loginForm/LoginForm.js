@@ -2,18 +2,15 @@ import {useForm} from 'react-hook-form';
 import {NavLink, useNavigate} from "react-router-dom";
 import {joiResolver} from '@hookform/resolvers/joi';
 import {useState} from 'react';
-import {useDispatch} from 'react-redux';
 
 import './loginForm.scss';
 
 import {LostPasswordPopUp} from "../lostPasswordPopUp/LostPasswordPopUp";
 import {userValidator} from "../../validator";
 import {oauthService} from "../../service";
-import {oauthActions, userActions} from "../../redux";
 
 const LoginForm = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const [loginError, setLoginError] = useState(null);
   const [isLostPassword, setIsLostPassword] = useState(false);
@@ -27,15 +24,10 @@ const LoginForm = () => {
     try {
       const {data} = await oauthService.login(user);
 
-      oauthService.setAccessTokens(data);
-
-      dispatch(oauthActions.logIn(true));
-
-      dispatch(userActions.getUserById({userId: data.userId}));
+      oauthService.setAccessTokens({...data, isLoggedIn: true});
 
       navigate('/home');
     } catch (e) {
-      console.log(e);
       setLoginError(e.response.data?.message);
     }
   };
@@ -74,13 +66,6 @@ const LoginForm = () => {
               />
             </label>
 
-            <label className={'modal__terms-label'}>
-              <div className={'modal__terms-box'}>
-                <input className={'modal__terms-input'} type={'checkbox'}/>
-                <span className={'modal__terms-checkbox'}></span>
-              </div>
-              <span className={'modal__terms-text'}>Remember me</span>
-            </label>
             {
                 (errors.email && <span className={'modal__form-error'}>{errors.email.message}</span>)
                 ||

@@ -14,6 +14,18 @@ const getUserById = createAsyncThunk(
     }
 );
 
+const deleteUserById = createAsyncThunk(
+    'userSlice/deleteUserById',
+    async ({userId}, {rejectWithValue}) => {
+        try {
+            await userService.deleteUserById(userId);
+        } catch (e) {
+            console.log('deleteUserById', e);
+            return rejectWithValue(e.response.data?.message);
+        }
+    }
+);
+
 const addProductsToWishlist = createAsyncThunk(
     'userSlice/getProductsFromWishlist',
     async ({productsIdArr}, {rejectWithValue}) => {
@@ -115,6 +127,19 @@ const userSlice = createSlice({
             state.error = action.payload;
             state.loading = false;
           })
+
+          .addCase(deleteUserById.fulfilled, (state, action) => {
+              state.user = {};
+              state.wishlist = [];
+              state.loading = false;
+          })
+          .addCase(deleteUserById.pending, (state, action) => {
+              state.loading = true;
+          })
+          .addCase(deleteUserById.rejected, (state, action) => {
+              state.error = action.payload;
+              state.loading = false;
+          })
 });
 
 const {reducer: userReducer, actions} = userSlice;
@@ -122,6 +147,7 @@ const userActions = {
     ...actions,
   updateUserWishList,
   getUserById,
+    deleteUserById,
   addProductsToWishlist,
   deleteProductFromUserWishListById,
 };

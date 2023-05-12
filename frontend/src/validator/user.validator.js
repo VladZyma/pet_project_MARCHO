@@ -18,14 +18,16 @@ const userValidator = {
       'string.pattern.base': 'terms message'
     }),
   }),
+
   login: Joi.object({
-    email: Joi.string().regex(userRegExp.EMAIL).required().messages({
-      'string.pattern.base': 'Wrong e-mail or password!!!'
+    email: Joi.string().required().messages({
+      'string.pattern.base': 'You must provide an E-mail!!!'
     }),
-    password: Joi.string().regex(userRegExp.PASSWORD).required().messages({
-      'string.pattern.base': 'Wrong e-mail or password!!!'
+    password: Joi.string().required().messages({
+      'string.pattern.base': 'You must provide a password!!!'
     }),
   }),
+
 };
 
 export {userValidator}

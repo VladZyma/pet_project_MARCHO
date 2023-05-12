@@ -19,7 +19,7 @@ const ProductCard = (props) => {
   const userId = oauthService.getUserId();
 
 
-  const {isLoggedIn} = useSelector(state => state.oauthReducer);
+  const isLoggedIn = oauthService.getIsLoggedIn();
   const {user} = useSelector(state => state.userReducer);
 
   const [showSizePopUp, setShowSizePopUp] = useState(false);

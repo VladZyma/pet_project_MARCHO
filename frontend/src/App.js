@@ -1,7 +1,6 @@
 import {Routes, Route, Navigate} from 'react-router-dom';
 import {useState} from "react";
 
-
 import './App.scss';
 
 import {MainLayout} from "./mainLayout";

@@ -3,9 +3,9 @@ import {Account} from "../../component";
 const AccountPage = () => {
 
   return (
-      <div>
+      <section className={'account-page'}>
         <Account/>
-      </div>
+      </section>
   );
 };
 

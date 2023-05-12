@@ -8,6 +8,7 @@ import './productDetails.scss';
 import {ProductDetailsSlider} from "../productDetailsSlider/ProductDetailsSlider";
 import {ProductStarRating} from "../productStarRating/ProductStarRating";
 import {productActions, cartActions} from "../../redux";
+import {oauthService} from "../../service";
 import {createProductObj} from "../../helper";
 
 const ProductDetails = () => {
@@ -26,7 +27,7 @@ const ProductDetails = () => {
   const navigate = useNavigate();
 
   const {product} = useSelector(state => state.productReducer);
-  const {isLoggedIn} = useSelector(state => state.oauthReducer);
+  const isLoggedIn = oauthService.getIsLoggedIn();
 
   let selectedSize = '';
 

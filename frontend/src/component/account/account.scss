@@ -1,0 +1,45 @@
+@import '../../style/styles';
+
+.account {
+  padding: 60px 0;
+  &__inner {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 40px 30px;
+    border: 1px solid $border;
+    box-shadow: 0px 5px 30px 0px rgba(152, 152, 152, 0.2);
+  }
+  &__text {
+    @extend %roboto-400;
+    color: $default;
+    span {
+      text-transform: uppercase;
+      color: $accent;
+    }
+  }
+  &__form {}
+  &__form-input {
+    display: block;
+    margin: 10px 0;
+    padding: 0 15px;
+    width: 100%;
+    height: 60px;
+    border: none;
+    background-color: $bg;
+    outline-color: $accent;
+  }
+  &__form-btn {
+    margin-top: 20px;
+    @extend %btn;
+    border: none;
+    background-color: $title;
+    box-shadow: none;
+    transition: all .3s;
+    &:hover {
+      background-color: $accent;
+      box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);
+    }
+  }
+
+}
