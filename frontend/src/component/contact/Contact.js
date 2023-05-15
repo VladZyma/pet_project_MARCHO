@@ -1,4 +1,7 @@
 import {Link} from 'react-router-dom';
+import {useSelector} from "react-redux";
+import {useForm} from "react-hook-form";
+import {useState} from "react";
 
 import './contact.scss';
 
@@ -6,6 +9,17 @@ import {ContactIcon} from "../contactIcon/ContactIcon";
 import {GoogleMap} from "../googleMap/GoogleMap";
 
 const Contact = () => {
+
+  const {register, handleSubmit, reset} = useForm();
+
+  const [isFormPopUp, setIsFormPopUp] = useState(false);
+
+  const {user} = useSelector(state => state.userReducer);
+
+  const onSubmit = (email) => {
+      reset();
+      setIsFormPopUp(true);
+  };
 
   return (
       <div className={'contact'}>
@@ -75,14 +89,45 @@ const Contact = () => {
               <h5 className={'contact__form-title title'}>
                 Contact Form
               </h5>
-              <form className={'contact__form'}>
+              <form className={'contact__form'} onSubmit={handleSubmit(onSubmit)}>
                 <div className={'contact__form-inner'}>
-                  <input className={'contact__form-input'} type={'text'} placeholder={'Your Name'}/>
-                  <input className={'contact__form-input'} type={'text'} placeholder={'Your E-mail Address'}/>
+                  <input
+                    className={'contact__form-input'}
+                    type={'text'}
+                    placeholder={'Your Name'}
+                    required={true}
+                    {...register('name')}
+                  />
+                  <input
+                    className={'contact__form-input'}
+                    type={'text'}
+                    defaultValue={user.email}
+                    {...register('email')}
+                  />
                 </div>
-                <input className={'contact__form-input'} type={'text'} placeholder={'Subject'}/>
-                <textarea className={'contact__form-textarea'} placeholder={'Message here'}></textarea>
+                <input
+                  className={'contact__form-input'}
+                  type={'text'}
+                  placeholder={'Subject'}
+                  required={true}
+                  {...register('subject')}
+                />
+                <textarea
+                  className={'contact__form-textarea'}
+                  placeholder={'Message here'}
+                  required={true}
+                  {...register('message')}
+                >
+                </textarea>
                 <button className={'contact__form-button'} type={'submit'}>send message</button>
+                <div className={isFormPopUp ? 'contact__form-popup active' : 'contact__form-popup'}>
+                  <span className={'contact__form-popup-text'}>
+                    Thank You for your letter! We will answer as soon as possible!
+                  </span>
+                  <button className={'contact__form-popup-btn'} type={'button'} onClick={() => setIsFormPopUp(false)}>
+                    ok
+                  </button>
+                </div>
               </form>
             </div>
           </div>

@@ -53,6 +53,8 @@
     padding: 60px 40px;
     background-color: rgb(255, 255, 255);
     box-shadow: 0px 10px 40px 0px rgba(172, 172, 172, 0.3);
+    position: relative;
+    overflow: hidden;
   }
   &__form-title.title {
     margin-bottom: 10px;
@@ -89,6 +91,44 @@
     padding: 17px 40px;
     border: none;
     letter-spacing: 2px;
+  }
+  &__form-popup {
+    padding: 10px 15px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateX(-105%);
+    z-index: 3;
+    background-color: $default;
+    transition: transform .3s ease-in-out;
+    &.active {
+      transform: translateX(0);
+    }
+  }
+  &__form-popup-text {
+    margin-right: 5px;
+    @extend %roboto-500;
+    font-size: 16px;
+    line-height: 22px;
+    color: $title;
+  }
+  &__form-popup-btn {
+    padding: 6px 18px;
+    border: none;
+    background-color: $title;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #fff;
+    cursor: pointer;
+    transition: all .3s;
+    &:hover {
+      background-color: $accent;
+      box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);
+    }
   }
 }
 
