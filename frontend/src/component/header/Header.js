@@ -19,7 +19,6 @@ const Header = ({sticky, setSticky, userName, setUserName}) => {
   const userId = oauthService.getUserId();
 
   const {user} = useSelector(state => state.userReducer);
-  // console.log('USER', user);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -36,7 +35,6 @@ const Header = ({sticky, setSticky, userName, setUserName}) => {
 
   useEffect(() => {
     if (user) {
-      console.log('useEffect', user);
       user.cart?.products.forEach(productId => dispatch(cartActions.addProductToCart(productId)));
     }
   }, [user._id]);
