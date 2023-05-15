@@ -1,27 +1,29 @@
-import {useSelector} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 import {useEffect} from "react";
 
 import {Cart, Top} from "../../component";
+import {userActions, cartActions} from "../../redux";
 
 const CartPage = () => {
-  const {productsInCart} = useSelector(state => state.productReducer);
+
+  const dispatch = useDispatch();
+
   const {value} = useSelector(state => state.cartReducer);
-
-  const productsObj = productsInCart.reduce((accum, product) => {
-    accum[product.id] = product;
-    return accum;
-  }, {});
-
-  let isProductsInCart = productsInCart.length;
+  const {user, cart} = useSelector(state => state.userReducer);
+  // console.log('USER', user);
+  // console.log('CART', cart);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+    dispatch(userActions.getProductsFromUserCart({productsIdArr: user.cart?.products}));
+  }, [dispatch, user.cart?.products]);
+
+  let isProductsInCart = user.cart?.products.length;
 
   return (
       <section className={'cart-page'}>
         <Top title={'Cart'}/>
-        <Cart productsObj={productsObj} productsQuantityObj={value} isProductsInCart={isProductsInCart}/>
+        <Cart cart={cart} user={user} productsQuantityObj={value} isProductsInCart={isProductsInCart}/>
       </section>
   );
 };

@@ -13,12 +13,17 @@ const urls = {
         wishList: {
             add: '/users/wishList',
             remove: '/users/wishList/remove',
-        }
+        },
+        cart: {
+            add: '/users/cart',
+            remove: '/users/cart/remove',
+        },
     },
     products: {
         all: '/products',
         promo: '/products/promo',
         wishlist: '/products/wishlist',
+        cart: '/products/cart',
     }
 };
 

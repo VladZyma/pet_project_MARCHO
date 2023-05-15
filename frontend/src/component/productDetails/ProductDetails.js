@@ -7,7 +7,7 @@ import './productDetails.scss';
 
 import {ProductDetailsSlider} from "../productDetailsSlider/ProductDetailsSlider";
 import {ProductStarRating} from "../productStarRating/ProductStarRating";
-import {productActions, cartActions} from "../../redux";
+import {productActions, cartActions, userActions} from "../../redux";
 import {oauthService} from "../../service";
 import {createProductObj} from "../../helper";
 
@@ -22,12 +22,14 @@ const ProductDetails = () => {
     purple: '#923899',
   };
 
-  const {productId} = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+
   const {product} = useSelector(state => state.productReducer);
+  const {productId} = useParams();
   const isLoggedIn = oauthService.getIsLoggedIn();
+  const userId = oauthService.getUserId();
 
   let selectedSize = '';
 
@@ -50,7 +52,8 @@ const ProductDetails = () => {
     } else {
       const productObj = createProductObj(product, selectedSize);
 
-      dispatch(productActions.addProductInCart(productObj));
+      // dispatch(productActions.addProductInCart(productObj));
+      dispatch(userActions.addProductToUserCart({userId, productId}));
       dispatch(cartActions.addProductToCart(productId));
     }
 

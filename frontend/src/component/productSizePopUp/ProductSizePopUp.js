@@ -1,6 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 
-import {productActions, cartActions} from "../../redux";
+import {productActions, cartActions, userActions} from "../../redux";
+import {oauthService} from "../../service";
 import {createProductObj} from "../../helper";
 
 import './sizePopUp.scss';
@@ -20,6 +21,7 @@ const ProductSizePopUp = (props) => {
   const dispatch = useDispatch();
 
   const {value} = useSelector(state => state.cartReducer);
+  const userId = oauthService.getUserId();
 
   let selectedSize = '';
 
@@ -38,13 +40,14 @@ const ProductSizePopUp = (props) => {
 
   const productObj = createProductObj(product, selectedSize);
 
-  const addToCartHandler = (id) => {
+  const addToCartHandler = (productId) => {
 
     const products = Object.keys(value);
-    const isProductExists = products.some(product => product === id);
+    const isProductExists = products.some(product => product === productId);
 
     if (!isProductExists) {
-      dispatch(productActions.addProductInCart(productObj));
+      // dispatch(productActions.addProductInCart(productObj));
+      dispatch(userActions.addProductToUserCart({userId, productId, selectedSize}));
       dispatch(cartActions.addProductToCart(product._id));
     } else {
       return;

@@ -14,6 +14,12 @@ const userService = {
   deleteProductFromUserWishListById: (userId, productId) =>
       axiosService.post(`${urls.users.wishList.remove}/${userId}`, {productId}),
 
+  updateUserCartById: (userId, productId, selectedSize) =>
+    axiosService.post(`${urls.users.cart.add}/${userId}`, {productId, selectedSize}),
+
+  deleteProductFromUserCartById: (userId, productId) =>
+    axiosService.post(`${urls.users.cart.remove}/${userId}`, {productId}),
+
 };
 
 export {userService}

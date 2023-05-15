@@ -2,13 +2,16 @@ import {useDispatch} from 'react-redux';
 
 import './wishlistSizePopUp.scss';
 import {createProductObj} from "../../helper";
-import {productActions, cartActions} from "../../redux";
+import {productActions, cartActions, userActions} from "../../redux";
+import {oauthService} from "../../service";
 
 const WishlistSizePopUp = (props) => {
 
   const {product, isShowWishlistSizePopUp, setIsShowWishlistSizePopUp} = props;
 
   const dispatch = useDispatch();
+
+  const userId = oauthService.getUserId();
 
   const selectSize = (event) => {
     const selectedSize = event.target.value;
@@ -17,12 +20,13 @@ const WishlistSizePopUp = (props) => {
     setIsShowWishlistSizePopUp(false);
     event.target.checked = false;
 
-    addToCartHandler(productObj, product._id);
+    addToCartHandler(productObj, product._id, selectedSize);
   };
 
-  const addToCartHandler = (obj, id) => {
-    dispatch(productActions.addProductInCart(obj));
+  const addToCartHandler = (obj, id, selectedSize) => {
+    // dispatch(productActions.addProductInCart(obj));
     dispatch(cartActions.addProductToCart(id));
+    dispatch(userActions.addProductToUserCart({userId, productId: id, selectedSize}));
   };
 
   return (

@@ -9,10 +9,16 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addProductToCart: (state, action) => {
-      if (!state.value[action.payload]) {
-        state.value[action.payload] = 0;
+      const productsIdArr = Object.keys(state.value);
+      const isProductExists = productsIdArr.some(productId => productId === action.payload);
+      if (!isProductExists) {
+        if (!state.value[action.payload]) {
+          state.value[action.payload] = 0;
+        }
+        state.value[action.payload]++;
+      } else {
+        return;
       }
-      state.value[action.payload]++;
     },
     incrementProductQuantity: (state, action) => {
       state.value[action.payload]++;

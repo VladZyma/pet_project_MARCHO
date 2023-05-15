@@ -6,6 +6,7 @@ const productService = {
   getPromoProducts: (page = 1) => axiosService.get(urls.products.promo, {params: {page}}),
   getProductsByParams: (page = 1,values) => axiosService.get(urls.products.all, {params: {page, ...values}}),
   getProductsFromWishlist: (productsIdArr) => axiosService.post(urls.products.wishlist, productsIdArr),
+  getProductsFromCart: (productsIdArr) => axiosService.post(urls.products.cart, productsIdArr),
 };
 
 export {productService}

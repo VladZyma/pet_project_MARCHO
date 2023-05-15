@@ -7,7 +7,7 @@ import logo from '../../image/logo.png';
 
 import {HeaderMobileMenuBtn} from "../headerMobileMenuBtn/HeaderMobileMenuBtn";
 import {oauthService} from "../../service";
-import {userActions} from "../../redux";
+import {userActions, cartActions} from "../../redux";
 
 const Header = ({sticky, setSticky, userName, setUserName}) => {
 
@@ -18,25 +18,36 @@ const Header = ({sticky, setSticky, userName, setUserName}) => {
   const isLoggedIn = oauthService.getIsLoggedIn();
   const userId = oauthService.getUserId();
 
-  const {productsInCart} = useSelector(state => state.productReducer);
   const {user} = useSelector(state => state.userReducer);
+  // console.log('USER', user);
 
   useEffect(() => {
     if (isLoggedIn) {
-      console.log('useEffect');
       const name = oauthService.getUserName();
       setUserName(name);
-      dispatch(userActions.getUserById({userId}))
+      dispatch(userActions.getUserById({userId}));
+
     } else {
       setUserName('');
     }
+
   }, [dispatch, isLoggedIn]);
+
+
+  useEffect(() => {
+    if (user) {
+      console.log('useEffect', user);
+      user.cart?.products.forEach(productId => dispatch(cartActions.addProductToCart(productId)));
+    }
+  }, [user._id]);
 
 
   const logoutHandler = async () => {
     try {
       await oauthService.logout();
       oauthService.deleteAccessTokens();
+      dispatch(userActions.clearUserInfoOnLogOut());
+      dispatch(cartActions.deleteAllProductsFromCart());
       setUserName('');
     } catch (e) {
       console.log('logoutHandler:',e);
@@ -154,9 +165,9 @@ const Header = ({sticky, setSticky, userName, setUserName}) => {
                         transform="translate(-1510 -45)"/>
                 </svg>
                 {
-                  productsInCart.length > 0 && isLoggedIn
+                  user.cart?.products.length > 0 && isLoggedIn
                     &&
-                  <span className={'user-nav__link-num'}>{productsInCart.length}</span>
+                  <span className={'user-nav__link-num'}>{user.cart?.products.length}</span>
                 }
               </NavLink>
             </div>

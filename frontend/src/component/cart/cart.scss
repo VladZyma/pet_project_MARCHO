@@ -101,8 +101,11 @@
     justify-content: space-between;
     align-items: center;
     background-color: $border;
+    position: relative;
+    overflow: hidden;
   }
-  &__bottom-content {
+  &__bottom-content,
+  &__bottom-info-success-text {
     @extend %roboto-500;
     font-size: 22px;
     line-height: 22px;
@@ -112,7 +115,8 @@
     margin-left: 10px;
     color: $default;
   }
-  &__bottom-btn {
+  &__bottom-btn,
+  &__bottom-info-success-btn {
     padding: 6px 18px;
     border: none;
     background-color: $title;
@@ -124,6 +128,26 @@
     &:hover {
       background-color: $accent;
       box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);
+    }
+  }
+  &__bottom-info-success-text {
+    color: #24d4ac;
+  }
+  &__bottom-info-success {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-120%);
+    z-index: 3;
+    padding: 6px 15px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $border;
+    transition: transform .3s ease-in;
+    &.active {
+      transform: translateX(0);
     }
   }
 }
