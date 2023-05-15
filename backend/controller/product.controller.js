@@ -38,11 +38,11 @@ const productController = {
       next(e);
     }
   },
-  getProductsFromWishlist: async (req, res, next) => {
+  getUserProducts: async (req, res, next) => {
     try {
       const productsIdArr = req.body;
 
-      const products = await productService.findProductsFromWishlist(productsIdArr);
+      const products = await productService.findUserProductsById(productsIdArr);
 
       res.status(200).json(products);
     } catch (e) {

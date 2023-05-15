@@ -27,11 +27,20 @@ router.delete(
 router.post(
     '/wishList/:userId',
     userMiddleware.isUserIdValid,
-    userController.updateUserWishListById,
+    userController.updateUserProductById('wishlist'),
 );
 router.post(
     '/wishList/remove/:userId',
-    userController.deleteProductFromUserWishListById,
+    userController.deleteUserProductById('wishlist'),
+);
+router.post(
+  '/cart/:userId',
+  userMiddleware.isUserIdValid,
+  userController.updateUserProductById('cart'),
+);
+router.post(
+  '/cart/remove/:userId',
+  userController.deleteUserProductById('cart'),
 );
 
 module.exports = router;

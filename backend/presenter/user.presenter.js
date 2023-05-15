@@ -4,6 +4,7 @@ const normalize = (user) => {
         name: user.name,
         email: user.email,
         wishlist: user.wishlist,
+        cart: user.cart,
         terms: user.terms,
     }
 };

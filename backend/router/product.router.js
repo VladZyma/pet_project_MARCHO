@@ -15,7 +15,12 @@ router.get(
 router.post(
     '/wishlist',
     oauthMiddleware.checkToken('accessToken'),
-    productController.getProductsFromWishlist,
+    productController.getUserProducts,
+);
+router.post(
+    '/cart',
+    oauthMiddleware.checkToken('accessToken'),
+    productController.getUserProducts,
 );
 router.get(
     '/promo',

@@ -103,7 +103,7 @@ const productService = {
   findUpdateProductById: async (productId, productInfo) => {
     return Product.findByIdAndUpdate(productId, productInfo, {new: true}).lean();
   },
-  findProductsFromWishlist: async (productIdArr) => {
+  findUserProductsById: async (productIdArr) => {
     return Product.find({_id: {$in: productIdArr}}).lean();
   },
 };

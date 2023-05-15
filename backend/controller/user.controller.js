@@ -70,12 +70,12 @@ const userController = {
       next(e);
     }
   },
-  updateUserWishListById: async (req, res, next) => {
+  updateUserProductById: (key) => async (req, res, next) => {
     try {
       const userId = req.userId;
-      const {productId} = req.body;
+      const {productId, selectedSize} = req.body;
 
-      const updatedUser = await userService.findUpdateUserWishListById(userId, productId);
+      const updatedUser = await userService.findUpdateUserProductById(userId, productId, key, selectedSize);
 
       if (!updatedUser) {
         throw new ApiError('User not found!!!', 404);
@@ -86,12 +86,12 @@ const userController = {
       next(e);
     }
   },
-  deleteProductFromUserWishListById: async (req, res, next) => {
+  deleteUserProductById: (key) => async (req, res, next) => {
     try {
       const {userId} = req.params;
       const {productId} = req.body;
 
-      const userInfo = await userService.findDeleteProductFromUserWishListById(userId, productId);
+      const userInfo = await userService.findDeleteUserProductById(userId, productId, key);
 
       res.status(200).json(userInfo);
     } catch (e) {

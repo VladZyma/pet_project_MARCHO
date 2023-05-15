@@ -19,11 +19,21 @@ const userService = {
   findUpdateUserById: async (userId, userInfo) => {
     return User.findByIdAndUpdate(userId, userInfo, {new: true}).lean();
   },
-  findUpdateUserWishListById: async (userId, productId) => {
-    return User.findByIdAndUpdate(userId, {$push: {wishlist: productId}}, {new: true}).lean();
+  findUpdateUserProductById: async (userId, productId, key, selectedSize) => {
+    if (key === 'wishlist') {
+      return User.findByIdAndUpdate(userId, {$push: {[key]: productId}}, {new: true}).lean();
+    }
+    if (key === 'cart') {
+      return User.findByIdAndUpdate(userId, { $push: {"cart.products": productId, "cart.sizes": {"productId": productId, "size": selectedSize}} }, {new: true}).lean();
+    }
   },
-  findDeleteProductFromUserWishListById: async (userId, productId) => {
-    return User.updateOne({_id: userId}, {$pull: {wishlist: productId}}, {new: true}).lean();
+  findDeleteUserProductById: async (userId, productId, key) => {
+    if (key === 'wishlist') {
+      return User.updateOne({_id: userId}, { $pull: {[key]: productId} }, {new: true}).lean();
+    }
+    if (key === 'cart') {
+      return User.updateOne({_id: userId}, { $pull: {"cart.products": productId, "cart.sizes": {"productId": productId}} });
+    }
   },
 };
 
