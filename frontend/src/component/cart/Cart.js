@@ -58,9 +58,6 @@ const Cart = (props) => {
       navigate('/shop');
     }
   };
-  const buyButtonHandler = () => {
-    navigate('/shop');
-  };
 
   return (
     <div className={'cart'}>
