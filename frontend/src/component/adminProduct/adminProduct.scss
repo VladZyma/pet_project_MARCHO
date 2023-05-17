@@ -1,0 +1,128 @@
+@import '../../style/styles';
+
+.admin-product {
+  padding: 40px 0;
+  &__top {
+    margin-bottom: 30px;
+    padding: 30px 15px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $border;
+  }
+  &__top-total {
+    margin-right: 30px;
+  }
+  &__top-total-text {
+    @extend %roboto-500;
+    font-size: 22px;
+  }
+  &__top-btn {
+    @extend %btn;
+    letter-spacing: 2px;
+    box-shadow: none;
+    background-color: $title;
+    transition: all .3s;
+    &:hover {
+      background-color: $accent;
+      box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);
+    }
+  }
+  &__inner {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+  }
+  &__img-box {
+    margin-right: 30px;
+    width: 100%;
+    max-width: 370px;
+  }
+  &__img-wrapper {
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 370px;
+    padding-top: 100%;
+    position: relative;
+  }
+  &__img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    object-fit: cover;
+  }
+  &__img-label {
+    display: block;
+    margin-bottom: 20px;
+    width: 100%;
+    max-width: 370px;
+    padding-top: 100%;
+    background-color: $bg;
+    position: relative;
+  }
+  &__img-input {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -1;
+    opacity: 0;
+  }
+  &__img-input + span {
+    display: block;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%);
+    cursor: pointer;
+    transition: all .3s;
+    &:hover {
+      path {
+        fill: $accent;
+      }
+    }
+  }
+  &__btn {
+    margin-bottom: 10px;
+    width: 100%;
+    @extend %btn;
+    border: none;
+    display: block;
+    letter-spacing: 2px;
+    background-color: $title;
+    box-shadow: none;
+    transition: all .3s;
+    &:hover {
+      background-color: $accent;
+      box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);
+    }
+  }
+  &__content {
+    width: 100%;
+    max-width: 770px;
+  }
+  &__title {
+    margin-bottom: 15px;
+    @extend %quicksand-500;
+    font-size: 22px;
+    color: $title;
+  }
+  &__content-box {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+  }
+  &__content-box-inner {
+    @extend %roboto-400;
+    font-size: 16px;
+    color: $default;
+  }
+  &__text {
+    margin-right: 15px;
+    @extend %roboto-500;
+    font-size: 18px;
+    color: $title;
+  }
+}

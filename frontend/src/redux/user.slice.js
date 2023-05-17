@@ -82,7 +82,6 @@ const getProductsFromUserCart = createAsyncThunk(
     if (productsIdArr) {
       try {
         const {data} = await productService.getProductsFromCart(productsIdArr);
-        console.log('getProductsFromUserCart', data);
         return data;
       } catch (e) {
         console.log('getProductsFromUserCart', e);
@@ -118,7 +117,9 @@ const userSlice = createSlice({
   initialState,
   reducers: {
     clearUserInfoOnLogOut: (state, action) => {
-      Object.assign(state.user, {});
+      state.user = {};
+      state.wishlist = [];
+      state.cart = [];
     },
   },
   extraReducers: builder =>

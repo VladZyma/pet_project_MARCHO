@@ -5,6 +5,7 @@ import {productReducer} from "./product.slice";
 import {cartReducer} from "./cart.slice";
 import {userReducer} from "./user.slice";
 import {shopViewReducer} from "./shopView.slice";
+import {adminReducer} from "./admin.slice";
 
 const rootReducer = combineReducers({
   oauthReducer,
@@ -12,10 +13,12 @@ const rootReducer = combineReducers({
   cartReducer,
   userReducer,
   shopViewReducer,
+  adminReducer,
 });
 
 const store = configureStore({
-  reducer: rootReducer
+  reducer: rootReducer,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({serializableCheck: false}),
 });
 
 export {store}

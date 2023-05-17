@@ -15,9 +15,10 @@ import {
   CartPage,
   WishlistPage,
   AccountPage,
+  AdminPage,
   Error404Page,
 } from "./page";
-import {Header, Footer, Shop, ProductDetails} from "./component";
+import {Header, Footer, Shop, ProductDetails, AdminAddProduct, AdminProduct} from "./component";
 
 function App() {
 
@@ -46,6 +47,13 @@ function App() {
             <Route path={'/account'} element={<AccountPage/>}/>
             <Route path={'/wishlist'} element={<WishlistPage/>}/>
             <Route path={'/cart'} element={<CartPage/>}/>
+
+            <Route path={'/admin'} element={<AdminPage/>}>
+              <Route index element={<Navigate to={'/admin/products'}/>}/>
+              <Route path={'/admin/products'} element={<AdminProduct/>}/>
+              <Route path={'/admin/product/add'} element={<AdminAddProduct/>}/>
+            </Route>
+
             <Route path={'/password/new'} element={<RestorePasswordPage/>}/>
           </Route>
 

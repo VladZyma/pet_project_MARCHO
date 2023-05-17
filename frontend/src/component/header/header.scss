@@ -99,6 +99,18 @@
       }
     }
   }
+  &__link-admin {
+    margin-right: 10px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    transition: all .3s;
+    &:hover {
+      path {
+        fill: $accent;
+      }
+    }
+  }
   &__link-num {
     position: absolute;
     top: -8px;
