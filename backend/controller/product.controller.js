@@ -25,6 +25,18 @@ const productController = {
       next(e);
     }
   },
+  updateProductById: async (req, res, next) => {
+    try {
+      const productId = req.productId;
+      const productInfo = req.body;
+
+      const product = await productService.findUpdateProductById(productId, productInfo);
+
+      res.status(200).json(product);
+    } catch (e) {
+      next(e);
+    }
+  },
   uploadPhoto: async (req, res, next) => {
     try {
       const productId = req.productId;
@@ -36,6 +48,17 @@ const productController = {
       res.status(201).json(productInfo);
     } catch (e) {
       next(e);
+    }
+  },
+  deleteProductById: async (req, res, next) => {
+    try {
+      const productId = req.productId;
+
+      await productService.findDeleteProductById(productId);
+
+      res.sendStatus(204);
+    } catch (e) {
+
     }
   },
   getUserProducts: async (req, res, next) => {

@@ -6,6 +6,7 @@ const normalize = (user) => {
         wishlist: user.wishlist,
         cart: user.cart,
         terms: user.terms,
+        isAdmin: user.isAdmin || false,
     }
 };
 

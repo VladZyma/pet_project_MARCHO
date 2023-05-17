@@ -26,12 +26,21 @@ router.get(
     '/promo',
     productController.getAllProducts,
 );
+router.put(
+  '/:productId',
+  productMiddleware.isProductIdValid,
+  productController.updateProductById,
+);
 router.patch(
     '/:productId/photo',
     productMiddleware.isProductIdValid,
     fileMiddleware.checkUploadImage,
     productController.uploadPhoto,
-
+);
+router.delete(
+  '/:productId',
+  productMiddleware.isProductIdValid,
+  productController.deleteProductById,
 );
 
 module.exports = router;
