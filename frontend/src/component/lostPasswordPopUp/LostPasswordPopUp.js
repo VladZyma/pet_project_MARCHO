@@ -5,16 +5,17 @@ import './lostPasswordPopUp.scss';
 
 import {oauthService} from "../../service";
 
-const LostPasswordPopUp = ({setIsLostPassword}) => {
+const LostPasswordPopUp = ({domain, setIsLostPassword}) => {
 
   const {register, handleSubmit} = useForm();
 
   const [isEnterEmail, setIsEnterEmail] = useState(true);
 
-  const submitHandler = async (email) => {
+  const submitHandler = async (info) => {
+    const data = {email: info.email, domain: domain};
     try {
       setIsEnterEmail(false)
-      await oauthService.forgotPassword(email);
+      await oauthService.forgotPassword(data);
     } catch (e) {
       console.log('LostPasswordPopUp',e);
     }

@@ -33,8 +33,8 @@ const Shop = () => {
       prevPage,
       nextPage,
       totalPages,
-      loading,
-    }
+    },
+    loading,
   } = useSelector(state => state.productReducer);
 
   const [query, setQuery] = useSearchParams({page: '1'});
@@ -52,6 +52,7 @@ const Shop = () => {
   useEffect(() => {
     dispatch(productActions.getProductsByParams({page: query.get('page'), values: search}));
   }, [dispatch, query, search]);
+
 
   const setListProductsView = () => {
     dispatch(shopViewActions.setIsGrid(true));

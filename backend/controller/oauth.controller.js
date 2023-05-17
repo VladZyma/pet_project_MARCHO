@@ -48,10 +48,12 @@ const oauthController = {
   forgotPassword: async (req, res, next) => {
     try {
       const userInfo = req.userInfo;
+      const {domain} = req.body;
 
       const actionToken = oauthService.generateActionToken(tokenActionsEnum.FORGOT_PASSWORD, {email: userInfo.email});
 
-      const forgotPassUrl = `${config.FRONTEND_URL}/password/new?token=${actionToken}`;
+      // const forgotPassUrl = `${config.FRONTEND_URL}/password/new?token=${actionToken}`;
+      const forgotPassUrl = `http://${domain}/password/new?token=${actionToken}`;
 
       await Promise.allSettled([
           oauthService.addActionTokenToDB({_user_id: userInfo._id, tokenType: tokenActionsEnum.FORGOT_PASSWORD, actionToken}),

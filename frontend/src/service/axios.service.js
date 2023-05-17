@@ -27,12 +27,15 @@ axiosService.interceptors.response.use((config) => {
 }, async (error) => {
   const refreshToken = oauthService.getRefreshToken();
 
+  const userId = oauthService.getUserId();
+  const isLoggedIn = oauthService.getIsLoggedIn();
+
   if (error.response?.status === 401 && refreshToken && !isRefreshing) {
     isRefreshing = true;
 
     try {
       const {data} = await oauthService.refresh(refreshToken);
-      oauthService.setAccessTokens(data);
+      oauthService.setAccessTokens({...data, userId, isLoggedIn});
     } catch (e) {
       oauthService.deleteAccessTokens();
       history.replace('/login?expSession=true');

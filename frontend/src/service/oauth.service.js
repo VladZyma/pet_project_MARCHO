@@ -13,7 +13,7 @@ const oauthService = {
   login: (user) => axiosService.post(urls.auth.login, user),
   refresh: (refreshToken) => axiosService.post(urls.auth.refresh, {refreshToken}),
   logout: () => axiosService.post(urls.auth.logout),
-  forgotPassword: (email) => axiosService.post(urls.auth.forgotPassword, email),
+  forgotPassword: (data) => axiosService.post(urls.auth.forgotPassword, data),
   setNewPassword: (info) => axiosService.put(urls.auth.forgotPassword, info),
 
   setAccessTokens: ({accessToken, refreshToken, name, userId, isLoggedIn}) => {

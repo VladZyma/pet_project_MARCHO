@@ -1,6 +1,6 @@
 import {useEffect} from "react";
 import {useNavigate} from 'react-router-dom';
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 
 import './account.scss';
 
@@ -9,8 +9,7 @@ import {userActions} from "../../redux";
 
 const Account = () => {
 
-  const userId = oauthService.getUserId();
-  const userName = oauthService.getUserName();
+  const {user} = useSelector(state => state.userReducer);
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -21,7 +20,7 @@ const Account = () => {
 
   const deleteAccountHandler = () => {
     try {
-      dispatch(userActions.deleteUserById({userId}));
+      dispatch(userActions.deleteUserById({userId: user._id}));
       oauthService.deleteAccessTokens();
       navigate('/home');
     } catch (e) {
@@ -34,7 +33,7 @@ const Account = () => {
       <div className={'container'}>
         <div className={'account__inner'}>
           <p className={'account__text'}>
-            Dear {userName}, on this page you can delete your account
+            Dear {user.name}, on this page you can delete your account
             and <span>ALL</span> information about you!
           </p>
           <p className={'account__text'}>

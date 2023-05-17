@@ -1,16 +1,22 @@
 import {useForm} from 'react-hook-form';
 import {NavLink, useNavigate} from "react-router-dom";
 import {joiResolver} from '@hookform/resolvers/joi';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
+import {useDispatch} from "react-redux";
 
 import './loginForm.scss';
 
 import {LostPasswordPopUp} from "../lostPasswordPopUp/LostPasswordPopUp";
 import {userValidator} from "../../validator";
 import {oauthService} from "../../service";
+import {userActions} from "../../redux";
 
 const LoginForm = () => {
+
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  let host = window.location.host;
 
   const [loginError, setLoginError] = useState(null);
   const [isLostPassword, setIsLostPassword] = useState(false);
@@ -19,6 +25,10 @@ const LoginForm = () => {
     mode: 'all',
     resolver: joiResolver(userValidator.login),
   });
+
+  useEffect(() => {
+    dispatch(userActions.clearUserInfoOnLogOut());
+  }, [dispatch]);
 
   const submitHandler = async (user) => {
     try {
@@ -44,7 +54,7 @@ const LoginForm = () => {
             </NavLink>
           </div>
 
-          {isLostPassword && <LostPasswordPopUp setIsLostPassword={setIsLostPassword}/>}
+          {isLostPassword && <LostPasswordPopUp domain={host} setIsLostPassword={setIsLostPassword}/>}
 
           <form className={'modal__form'} onSubmit={handleSubmit(submitHandler)}>
             <label className={'modal__label'}>

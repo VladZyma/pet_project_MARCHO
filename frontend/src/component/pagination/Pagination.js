@@ -12,12 +12,12 @@ const Pagination = (props) => {
   const prevPageHandler = () => {
     setQuery(prevQuery => ({...search, page: +prevQuery.get('page') - 1}));
 
-    scrollHere.current.scrollIntoView({behavior: "smooth"});
+    scrollHere.current.scrollIntoView();
   };
   const nextPageHandler = () => {
     setQuery(prevQuery => ({...search, page: +prevQuery.get('page') + 1}));
 
-    scrollHere.current.scrollIntoView({behavior: "smooth"});
+    scrollHere.current.scrollIntoView();
   };
 
   return (

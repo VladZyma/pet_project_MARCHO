@@ -22,8 +22,8 @@ const Header = ({sticky, setSticky, userName, setUserName}) => {
 
   useEffect(() => {
     if (isLoggedIn) {
-      const name = oauthService.getUserName();
-      setUserName(name);
+      // const name = oauthService.getUserName();
+      // setUserName(name);
       dispatch(userActions.getUserById({userId}));
 
     } else {
@@ -37,7 +37,7 @@ const Header = ({sticky, setSticky, userName, setUserName}) => {
     if (user) {
       user.cart?.products.forEach(productId => dispatch(cartActions.addProductToCart(productId)));
     }
-  }, [user._id]);
+  }, [dispatch, user._id, user.name]);
 
 
   const logoutHandler = async () => {
@@ -103,7 +103,7 @@ const Header = ({sticky, setSticky, userName, setUserName}) => {
                     CONTACT
                   </NavLink>
                 </li>
-                {userName
+                {user.name
                     ?
                     <li className={'menu__list-item'}>
                       <NavLink className={'menu__list-link'} to="/login" onClick={logoutHandler}>
@@ -117,7 +117,7 @@ const Header = ({sticky, setSticky, userName, setUserName}) => {
                       </NavLink>
                     </li>
                 }
-                {!userName
+                {!user.name
                     &&
                     <li className={'menu__list-item'}>
                       <NavLink className={'menu__list-link'} to="/register">
@@ -140,10 +140,10 @@ const Header = ({sticky, setSticky, userName, setUserName}) => {
                   </svg>
                 </NavLink>
               }
-              {userName
+              {user.name
                   ?
                   <NavLink className={'user-nav__link user-nav__link-name'} to={'/account'}>
-                    {userName}
+                    {user.name}
                   </NavLink>
                   :
                   <NavLink className={'user-nav__link'} to={`${isLoggedIn ? '/account' : '/login'}`}>

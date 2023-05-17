@@ -1,6 +1,6 @@
 import {Link} from 'react-router-dom';
 import {useForm} from 'react-hook-form';
-import {useSelector} from "react-redux";
+import {useSelector, useDispatch} from "react-redux";
 
 import './footer.scss';
 import logo from '../../image/logo.png';
@@ -8,8 +8,11 @@ import masterCard from '../../image/icons/master-card.png';
 import visa from '../../image/icons/visa.png';
 import payPal from '../../image/icons/pay-pal.png';
 import {oauthService} from "../../service";
+import {cartActions, userActions} from "../../redux";
 
 const Footer = ({setUserName}) => {
+
+    const dispatch = useDispatch();
 
     const {register, handleSubmit} = useForm();
 
@@ -22,6 +25,8 @@ const Footer = ({setUserName}) => {
         try {
             await oauthService.logout();
             oauthService.deleteAccessTokens();
+            dispatch(userActions.clearUserInfoOnLogOut());
+            dispatch(cartActions.deleteAllProductsFromCart());
             setUserName('');
         } catch (e) {
             console.log('logoutHandler:',e);
@@ -122,7 +127,7 @@ const Footer = ({setUserName}) => {
                         </h5>
                         <ul className={'footer__top-info-list'}>
                             <li className={'footer__top-info-item'}>
-                                <Link className={'footer__top-link footer__top-link--inactive'} to={'#'}>
+                                <Link className={'footer__top-link'} to={'/account'}>
                                     My Account
                                 </Link>
                             </li>
