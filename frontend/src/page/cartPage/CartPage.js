@@ -2,7 +2,7 @@ import {useSelector, useDispatch} from "react-redux";
 import {useEffect} from "react";
 
 import {Cart, Top} from "../../component";
-import {userActions, cartActions} from "../../redux";
+import {userActions} from "../../redux";
 
 const CartPage = () => {
 
@@ -10,8 +10,6 @@ const CartPage = () => {
 
   const {value} = useSelector(state => state.cartReducer);
   const {user, cart} = useSelector(state => state.userReducer);
-  // console.log('USER', user);
-  // console.log('CART', cart);
 
   useEffect(() => {
     window.scrollTo(0, 0);

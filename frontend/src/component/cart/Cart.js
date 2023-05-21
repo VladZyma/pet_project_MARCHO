@@ -5,6 +5,7 @@ import {useState} from "react";
 import './cart.scss';
 
 import {cartActions, userActions} from "../../redux";
+import {OrderForm} from "../orderForm/OrderForm";
 
 const Cart = (props) => {
 
@@ -23,6 +24,7 @@ const Cart = (props) => {
   const navigate = useNavigate();
 
   const [isSuccessInfo, setIsSuccessInfo] = useState(false);
+  const [showOrderForm, setShowOrderForm] = useState(false);
 
   const sizesObj = user.cart?.sizes.reduce((accum, size) => {
     accum[size.productId] = size;
@@ -163,11 +165,19 @@ const Cart = (props) => {
               Total price:
               <span className={'cart__bottom-text'}>${totalPrice}</span>
             </div>
-            <button className={'cart__bottom-btn'} onClick={() => setIsSuccessInfo(true)}>
-              BUY
+            <button className={'cart__bottom-btn'} onClick={() => setShowOrderForm(true)}>
+              MAKE AN ORDER
             </button>
           </div>
         }
+      </div>
+      <div className={showOrderForm ? 'order-form-wrapper active' : 'order-form-wrapper'}>
+        <OrderForm
+          setShowOrderForm={setShowOrderForm}
+          user={user} cart={cart}
+          productsQuantityObj={productsQuantityObj}
+          sizesObj={sizesObj}
+        />
       </div>
     </div>
   );
