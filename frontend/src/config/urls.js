@@ -24,7 +24,8 @@ const urls = {
         promo: '/products/promo',
         wishlist: '/products/wishlist',
         cart: '/products/cart',
-    }
+    },
+    orders: '/orders',
 };
 
 export {

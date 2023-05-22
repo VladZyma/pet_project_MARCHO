@@ -43,6 +43,12 @@ const AdminProduct = () => {
           <NavLink className={'admin-product__top-btn'} to={'/admin/product/add'}>
             add new product
           </NavLink>
+          <NavLink className={'admin-product__top-btn'} to={'/admin/orders'}>
+            orders
+          </NavLink>
+          <NavLink className={'admin-product__top-btn'} to={'/admin/statistics'}>
+            statistics
+          </NavLink>
         </div>
 
         {products.products?.map(product =>

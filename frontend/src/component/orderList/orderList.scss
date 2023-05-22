@@ -1,0 +1,14 @@
+@import '../../style/styles';
+
+.order-list {
+  padding: 40px 0;
+  &__info {
+    margin-bottom: 30px;
+  }
+  &__info-item {
+    margin-right: 30px;
+    @extend %roboto-500;
+    font-size: 22px;
+    color: $title;
+  }
+}

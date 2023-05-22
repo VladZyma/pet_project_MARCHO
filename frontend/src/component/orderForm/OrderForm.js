@@ -1,15 +1,21 @@
 import {useForm} from "react-hook-form";
+import {useDispatch} from "react-redux";
 
 import './orderForm.scss';
 
+import {orderActions} from "../../redux";
+
 const OrderForm = (props) => {
 
-  const {setShowOrderForm, user, cart, productsQuantityObj, sizesObj} = props;
+  const dispatch = useDispatch();
+
+  const {setShowOrderForm, setIsSuccessInfo, user, cart, productsQuantityObj, sizesObj} = props;
 
   const {register, handleSubmit, reset} = useForm();
 
+
   const onSubmit = (info) => {
-    setShowOrderForm(false);
+
     const productsInfo = cart.map(product => {
 
       let price = product.price.current;
@@ -30,14 +36,12 @@ const OrderForm = (props) => {
     });
 
     const data = {...info, productsInfo, status: 'processing'};
-    console.log("DATA", data);
-    reset();
-  };
 
-  // console.log('User', user);
-  // console.log('Cart', cart);
-  // console.log('productsQuantityObj', productsQuantityObj);
-  // console.log('sizesObj', sizesObj);
+    dispatch(orderActions.addOrder({data}));
+    reset();
+    setShowOrderForm(false);
+    setIsSuccessInfo(true);
+  };
 
   return (
     <form className={'order-form'} onSubmit={handleSubmit(onSubmit)}>
@@ -71,7 +75,7 @@ const OrderForm = (props) => {
                type={'text'}
                placeholder={'postal code'}
                required={true}
-               {...register('postal_code')}
+               {...register('postalCode')}
         />
       </div>
       <input className={'order-form__input'}

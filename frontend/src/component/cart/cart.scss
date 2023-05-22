@@ -132,24 +132,30 @@
       box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);
     }
   }
+  &__bottom-info-title {
+    margin-bottom: 10px;
+    @extend %roboto-500;
+    font-size: 22px;
+    color: $title;
+  }
   &__bottom-info-success-text {
+    margin-bottom: 15px;
+    display: block;
     color: #24d4ac;
   }
   &__bottom-info-success {
     position: absolute;
-    top: 0;
-    left: 0;
-    transform: translateX(-120%);
-    z-index: 3;
-    padding: 6px 15px;
     width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    max-width: 400px;
+    bottom: 120px;
+    left: 50%;
+    transform: translate(-50%, 200%);
+    z-index: 4;
+    padding: 30px 15px;
     background-color: $border;
-    transition: transform .3s ease-in;
+    transition: transform .5s ease-in;
     &.active {
-      transform: translateX(0);
+      transform: translate(-50%, 0);
     }
   }
   .order-form-wrapper {

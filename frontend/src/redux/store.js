@@ -6,6 +6,7 @@ import {cartReducer} from "./cart.slice";
 import {userReducer} from "./user.slice";
 import {shopViewReducer} from "./shopView.slice";
 import {adminReducer} from "./admin.slice";
+import {orderReducer} from "./order.slice";
 
 const rootReducer = combineReducers({
   oauthReducer,
@@ -14,6 +15,7 @@ const rootReducer = combineReducers({
   userReducer,
   shopViewReducer,
   adminReducer,
+  orderReducer,
 });
 
 const store = configureStore({

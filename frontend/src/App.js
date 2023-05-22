@@ -18,7 +18,16 @@ import {
   AdminPage,
   Error404Page,
 } from "./page";
-import {Header, Footer, Shop, ProductDetails, AdminAddProduct, AdminProduct} from "./component";
+import {
+  Header,
+  Footer,
+  Shop,
+  ProductDetails,
+  AdminAddProduct,
+  AdminProduct,
+  OrderList,
+  Statistics,
+} from "./component";
 
 function App() {
 
@@ -52,6 +61,8 @@ function App() {
               <Route index element={<Navigate to={'/admin/products'}/>}/>
               <Route path={'/admin/products'} element={<AdminProduct/>}/>
               <Route path={'/admin/product/add'} element={<AdminAddProduct/>}/>
+              <Route path={'/admin/orders'} element={<OrderList/>}/>
+              <Route path={'/admin/statistics'} element={<Statistics/>}/>
             </Route>
 
             <Route path={'/password/new'} element={<RestorePasswordPage/>}/>

@@ -153,14 +153,6 @@ const Cart = (props) => {
           isProductsInCart > 0
           &&
           <div className={'cart__bottom-info'}>
-            <div className={isSuccessInfo ? 'cart__bottom-info-success active' : 'cart__bottom-info-success'}>
-              <span className={'cart__bottom-info-success-text'}>
-                Success!!!
-              </span>
-              <button className={'cart__bottom-info-success-btn'} onClick={() => setIsSuccessInfo(false)}>
-                ok
-              </button>
-            </div>
             <div className={'cart__bottom-content'}>
               Total price:
               <span className={'cart__bottom-text'}>${totalPrice}</span>
@@ -174,10 +166,22 @@ const Cart = (props) => {
       <div className={showOrderForm ? 'order-form-wrapper active' : 'order-form-wrapper'}>
         <OrderForm
           setShowOrderForm={setShowOrderForm}
+          setIsSuccessInfo={setIsSuccessInfo}
           user={user} cart={cart}
           productsQuantityObj={productsQuantityObj}
           sizesObj={sizesObj}
         />
+      </div>
+      <div className={isSuccessInfo ? 'cart__bottom-info-success active' : 'cart__bottom-info-success'}>
+        <h5 className={'cart__bottom-info-title'}>
+          Thanks for your order!
+        </h5>
+        <span className={'cart__bottom-info-success-text'}>
+          We will email you when your order will be sent.
+        </span>
+        <button className={'cart__bottom-info-success-btn'} onClick={() => setIsSuccessInfo(false)}>
+          ok
+        </button>
       </div>
     </div>
   );

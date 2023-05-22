@@ -1,0 +1,24 @@
+@import '../../style/styles.scss';
+
+table, th, td {
+  border: 1px solid $title;
+}
+table {
+  margin: 0 auto 30px;
+  border-collapse: collapse;
+}
+th {
+  background-color: $title;
+  color: #fff;
+}
+td {
+  padding: 0 10px;
+  background-color: $bg;
+}
+tr {
+  text-align: center;
+}
+.order-bg {
+  background-color: #d27878;
+  color: #fff6a7;
+}
