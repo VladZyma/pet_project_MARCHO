@@ -5,7 +5,7 @@ const cors = require('cors');
 require('dotenv').config();
 
 const {config} = require('./config');
-const {userRouter, oauthRouter, productRouter} = require('./router');
+const {userRouter, oauthRouter, productRouter, orderRouter} = require('./router');
 
 const app = express();
 app.use(express.json());
@@ -22,6 +22,7 @@ app.use(cors(corsOptions));
 app.use('/users', userRouter);
 app.use('/auth', oauthRouter);
 app.use('/products', productRouter);
+app.use('/orders', orderRouter);
 
 app.use((error, req, res, next) => {
   res.status(error.status || 500).json({
