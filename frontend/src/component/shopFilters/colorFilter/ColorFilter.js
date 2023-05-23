@@ -14,11 +14,6 @@ const ColorFilter = ({query, setQuery}) => {
 
   const colorsArr = query.get('color')?.split(',');
   useEffect(() => {
-    console.log('MyUseEffect');
-
-
-    console.log('COLORS', colorsArr);
-
     if (colorsArr) {
       colorsArr.forEach(color => {
         switch (color) {
