@@ -22,7 +22,7 @@ const userController = {
         }),
       ]);
 
-      res.status(201).json(user);
+      res.sendStatus(201);
     } catch (e) {
       next(e);
     }
