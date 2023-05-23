@@ -85,51 +85,51 @@ const Contact = () => {
                 </div>
               </div>
             </div>
-            <div className={'contact__form-wrapper'}>
-              <h5 className={'contact__form-title title'}>
-                Contact Form
-              </h5>
-              <form className={'contact__form'} onSubmit={handleSubmit(onSubmit)}>
-                <div className={'contact__form-inner'}>
-                  <input
-                    className={'contact__form-input'}
-                    type={'text'}
-                    placeholder={'Your Name'}
-                    required={true}
-                    {...register('name')}
-                  />
-                  <input
-                    className={'contact__form-input'}
-                    type={'text'}
-                    defaultValue={user.email}
-                    {...register('email')}
-                  />
-                </div>
-                <input
-                  className={'contact__form-input'}
-                  type={'text'}
-                  placeholder={'Subject'}
-                  required={true}
-                  {...register('subject')}
-                />
-                <textarea
-                  className={'contact__form-textarea'}
-                  placeholder={'Message here'}
-                  required={true}
-                  {...register('message')}
-                >
-                </textarea>
-                <button className={'contact__form-button'} type={'submit'}>send message</button>
-                <div className={isFormPopUp ? 'contact__form-popup active' : 'contact__form-popup'}>
-                  <span className={'contact__form-popup-text'}>
-                    Thank You for your letter! We will answer as soon as possible!
-                  </span>
-                  <button className={'contact__form-popup-btn'} type={'button'} onClick={() => setIsFormPopUp(false)}>
-                    ok
-                  </button>
-                </div>
-              </form>
-            </div>
+            {/*<div className={'contact__form-wrapper'}>*/}
+            {/*  <h5 className={'contact__form-title title'}>*/}
+            {/*    Contact Form*/}
+            {/*  </h5>*/}
+            {/*  <form className={'contact__form'} onSubmit={handleSubmit(onSubmit)}>*/}
+            {/*    <div className={'contact__form-inner'}>*/}
+            {/*      <input*/}
+            {/*        className={'contact__form-input'}*/}
+            {/*        type={'text'}*/}
+            {/*        placeholder={'Your Name'}*/}
+            {/*        required={true}*/}
+            {/*        {...register('name')}*/}
+            {/*      />*/}
+            {/*      <input*/}
+            {/*        className={'contact__form-input'}*/}
+            {/*        type={'text'}*/}
+            {/*        defaultValue={user.email}*/}
+            {/*        {...register('email')}*/}
+            {/*      />*/}
+            {/*    </div>*/}
+            {/*    <input*/}
+            {/*      className={'contact__form-input'}*/}
+            {/*      type={'text'}*/}
+            {/*      placeholder={'Subject'}*/}
+            {/*      required={true}*/}
+            {/*      {...register('subject')}*/}
+            {/*    />*/}
+            {/*    <textarea*/}
+            {/*      className={'contact__form-textarea'}*/}
+            {/*      placeholder={'Message here'}*/}
+            {/*      required={true}*/}
+            {/*      {...register('message')}*/}
+            {/*    >*/}
+            {/*    </textarea>*/}
+            {/*    <button className={'contact__form-button'} type={'submit'}>send message</button>*/}
+            {/*    <div className={isFormPopUp ? 'contact__form-popup active' : 'contact__form-popup'}>*/}
+            {/*      <span className={'contact__form-popup-text'}>*/}
+            {/*        Thank You for your letter! We will answer as soon as possible!*/}
+            {/*      </span>*/}
+            {/*      <button className={'contact__form-popup-btn'} type={'button'} onClick={() => setIsFormPopUp(false)}>*/}
+            {/*        ok*/}
+            {/*      </button>*/}
+            {/*    </div>*/}
+            {/*  </form>*/}
+            {/*</div>*/}
           </div>
         </div>
       </div>

@@ -10,8 +10,9 @@
     justify-content: space-between;
   }
   &__content {
-    max-width: 370px;
-    margin-right: 30px;
+    //max-width: 370px;
+    width: 100%;
+    //margin-right: 30px;
   }
   &__title.title {
     margin-bottom: 20px;
@@ -22,12 +23,17 @@
   &__text {
     margin-bottom: 60px;
   }
+  &__items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
   &__item {
     display: flex;
     align-items: center;
-    &:not(:last-child) {
-      margin-bottom: 40px;
-    }
+    //&:not(:last-child) {
+    //  margin-bottom: 40px;
+    //}
   }
   &__item-text-wrapper {
     margin-left: 20px;

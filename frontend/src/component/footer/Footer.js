@@ -155,24 +155,28 @@ const Footer = ({setUserName}) => {
                     </div>
                     <div className={'footer__top-item footer__top-item-form'}>
                         <h5 className={'footer__top-item-title'}>
-                            Subscribe Our Newsletter
+                            {/*Subscribe Our Newsletter*/}
+                            Our News
                         </h5>
                         <p className={'footer__top-item-text'}>
+                            {/*Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor*/}
+                            {/*incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.*/}
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                            incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                             incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.
                         </p>
-                        <form className={'footer__form'} onSubmit={handleSubmit(submitHandler)}>
-                            <input
-                                className={'footer__form-input'}
-                                type='text' placeholder={'Your email address'}
-                                {...register('email')}
-                            />
-                            <button
-                                className={'footer__form-btn'}
-                                type={'submit'}>
-                                SUBSCRIBE
-                            </button>
-                        </form>
+                        {/*<form className={'footer__form'} onSubmit={handleSubmit(submitHandler)}>*/}
+                        {/*    <input*/}
+                        {/*        className={'footer__form-input'}*/}
+                        {/*        type='text' placeholder={'Your email address'}*/}
+                        {/*        {...register('email')}*/}
+                        {/*    />*/}
+                        {/*    <button*/}
+                        {/*        className={'footer__form-btn'}*/}
+                        {/*        type={'submit'}>*/}
+                        {/*        SUBSCRIBE*/}
+                        {/*    </button>*/}
+                        {/*</form>*/}
                     </div>
                 </div>
                 <div className={'footer__bottom'}>
