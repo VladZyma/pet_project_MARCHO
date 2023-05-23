@@ -1,5 +1,5 @@
 import RangeSlider from 'react-range-slider-input';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
 import 'react-range-slider-input/dist/style.css';
 import './priceFilter.scss';
@@ -8,6 +8,13 @@ const PriceFilter = ({query, setQuery}) => {
 
   const [minPrice, setMinPrice] = useState(15);
   const [maxPrice, setMaxPrice] = useState(75);
+
+  useEffect(() => {
+    if (query.has('priceMin') && query.has('priceMax')) {
+      setMinPrice(price => query.get('priceMin'));
+      setMaxPrice(price => query.get('priceMax'));
+    }
+  }, []);
 
   const search = {};
   for (let entry of query.entries()) {

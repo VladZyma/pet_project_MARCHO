@@ -25,6 +25,7 @@ const SearchFilter = ({query, setQuery}) => {
               className={'search__form-input'}
               type={'text'}
               placeholder={'Search your keyword...'}
+              defaultValue={query.get('title')}
               {...register('title')}
           />
           <button className={'search__form-button'}></button>

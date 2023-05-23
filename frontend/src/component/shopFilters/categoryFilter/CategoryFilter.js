@@ -10,9 +10,11 @@ const CategoryFilter = ({query, setQuery}) => {
     search[entry[0]] = entry[1];
   }
 
-  const onValueChange = (event) => {
-    setSelectedOption(event.target.value);
-  }
+  useEffect(() => {
+    if (query.has('category') && query.get('category') !== '') {
+      setSelectedOption(query.get('category'))
+    }
+  }, []);
 
   useEffect(() => {
     if (selectedOption !== 'all') {
@@ -21,6 +23,10 @@ const CategoryFilter = ({query, setQuery}) => {
       setQuery({...search, page: '1', category: ''});
     }
   }, [selectedOption]);
+
+  const onValueChange = (event) => {
+    setSelectedOption(event.target.value);
+  }
 
   return (
       <div className={'category'}>

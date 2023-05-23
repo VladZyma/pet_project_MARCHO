@@ -5,14 +5,62 @@ import './tagsFilter.scss';
 const TagsFilter = ({query, setQuery}) => {
 
   const [tags, setTags] = useState([]);
+  const [checkedJumper, setCheckedJumper] = useState(false);
+  const [checkedCoat, setCheckedCoat] = useState(false);
+  const [checkedHoodie, setCheckedHoodie] = useState(false);
+  const [checkedShirt, setCheckedShirt] = useState(false);
 
   const search = {};
   for (let entry of query.entries()) {
     search[entry[0]] = entry[1];
   }
 
+  const tagsArr = query.get('tags')?.split(',');
+
+  useEffect(() => {
+    if (tagsArr) {
+      tagsArr.forEach(tag => {
+        switch (tag) {
+          case 'jumper':
+            setCheckedJumper(!checkedJumper);
+            break;
+            case 'coat':
+            setCheckedCoat(!checkedCoat);
+            break;
+            case 'hoodie':
+            setCheckedHoodie(!checkedHoodie);
+            break;
+            case 'shirt':
+            setCheckedShirt(!checkedShirt);
+            break;
+        }
+      });
+      setTags(tagsArr);
+    }
+  }, []);
+
+  useEffect(() => {
+    const tagsString = tags.join(',');
+    setQuery({...search, page: '1', tags: tagsString});
+  }, [tags]);
+
   const onChangeHandler = (event) => {
     const target = event.target;
+
+    switch (target.value) {
+      case 'jumper':
+        setCheckedJumper(!checkedJumper);
+        break;
+      case 'coat':
+        setCheckedCoat(!checkedCoat);
+        break;
+      case 'hoodie':
+        setCheckedHoodie(!checkedHoodie);
+        break;
+      case 'shirt':
+        setCheckedShirt(!checkedShirt);
+        break;
+    }
 
     if (target.checked) {
       setTags(prevTags => [...prevTags, target.value]);
@@ -25,11 +73,6 @@ const TagsFilter = ({query, setQuery}) => {
     }
   };
 
-  useEffect(() => {
-    const tagsString = tags.join(',');
-    setQuery({...search, page: '1', tags: tagsString});
-  }, [tags]);
-
   return (
       <div className={'tags'}>
         <h3 className={'tags__header'}>
@@ -40,6 +83,7 @@ const TagsFilter = ({query, setQuery}) => {
             <input className={'tags__form-input'}
                    type={'checkbox'}
                    value={'jumper'}
+                   checked={checkedJumper}
                    onChange={onChangeHandler}
             />
             <div className={'tags__form-box'}>
@@ -50,6 +94,7 @@ const TagsFilter = ({query, setQuery}) => {
             <input className={'tags__form-input'}
                    type={'checkbox'}
                    value={'coat'}
+                   checked={checkedCoat}
                    onChange={onChangeHandler}
             />
             <div className={'tags__form-box'}>
@@ -60,6 +105,7 @@ const TagsFilter = ({query, setQuery}) => {
             <input className={'tags__form-input'}
                    type={'checkbox'}
                    value={'hoodie'}
+                   checked={checkedHoodie}
                    onChange={onChangeHandler}
             />
             <div className={'tags__form-box'}>
@@ -70,6 +116,7 @@ const TagsFilter = ({query, setQuery}) => {
             <input className={'tags__form-input'}
                    type={'checkbox'}
                    value={'shirt'}
+                   checked={checkedShirt}
                    onChange={onChangeHandler}
             />
             <div className={'tags__form-box'}>

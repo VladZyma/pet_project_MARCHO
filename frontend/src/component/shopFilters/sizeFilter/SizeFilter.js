@@ -11,9 +11,11 @@ const SizeFilter = ({query, setQuery}) => {
     search[entry[0]] = entry[1];
   }
 
-  const onValueChange = (event) => {
-    setSelectedOption(event.target.value);
-  }
+  useEffect(() => {
+    if (query.has('size') && query.get('size') !== '') {
+      setSelectedOption(query.get('size'));
+    }
+  }, []);
 
   useEffect(() => {
     if (selectedOption !== 'all') {
@@ -22,6 +24,10 @@ const SizeFilter = ({query, setQuery}) => {
       setQuery({...search, page: '1', size: ''});
     }
   }, [selectedOption]);
+
+  const onValueChange = (event) => {
+    setSelectedOption(event.target.value);
+  }
 
   return (
       <div className={'size'}>
